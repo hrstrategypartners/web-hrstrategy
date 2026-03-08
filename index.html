@@ -1339,180 +1339,55 @@ footer::before {
   .metric:first-child { border-top: none; }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   QUIÉNES SOMOS
-   ═══════════════════════════════════════════════════════════ */
-.quienes-section {
-  background: var(--ink); padding: 108px 80px;
-  position: relative; overflow: hidden;
-}
-.quienes-section::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 70% at 90% 20%, rgba(123,92,196,.18), transparent 60%),
-    radial-gradient(ellipse 45% 55% at 5% 85%, rgba(27,78,159,.28), transparent 55%);
-  pointer-events: none;
-}
-.quienes-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center; position: relative; z-index: 1;
-}
-.quienes-right {
-  padding: 48px; background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07); border-radius: 24px;
-  backdrop-filter: blur(12px); position: relative; overflow: hidden;
-}
-.quienes-right::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; background: var(--g3);
-}
-.ceo-quote-mark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 72px; font-weight: 400; color: var(--teal);
-  line-height: .8; opacity: .4; margin-bottom: 12px;
-}
-.ceo-story {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; font-style: italic; font-weight: 400;
-  color: rgba(255,255,255,.68); line-height: 1.78; margin-bottom: 28px;
-}
-.ceo-author {
-  display: flex; align-items: center; gap: 16px;
-  padding-top: 22px; border-top: 1px solid rgba(255,255,255,.07);
-}
-.ceo-avatar {
-  width: 50px; height: 50px; border-radius: 50%;
-  background: var(--g3); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px; font-weight: 600; color: #fff;
-  border: 2px solid rgba(255,255,255,.15);
-}
-.ceo-name { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); margin-bottom: 2px; }
-.ceo-role { font-family: 'Cormorant Garamond', serif; font-size: 12px; font-style: italic; color: rgba(255,255,255,.38); }
-.quienes-pillars {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 14px; margin-top: 36px; position: relative; z-index: 1;
-}
-.quienes-pillar {
-  padding: 20px 22px; background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06); border-radius: 14px;
-  transition: border-color .25s, background .25s; cursor: none;
-}
-.quienes-pillar:hover { border-color: rgba(43,134,152,.25); background: rgba(43,134,152,.04); }
-.pillar-icon { font-size: 22px; margin-bottom: 8px; }
-.pillar-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.62); margin-bottom: 5px; }
-.pillar-desc { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.55; }
-
-/* ═══════════════════════════════════════════════════════════
-   CURSOS Y CAPACITACIONES
-   ═══════════════════════════════════════════════════════════ */
-.cursos-section {
-  background: var(--iris2); padding: 108px 80px;
-  position: relative; overflow: hidden;
-}
-.cursos-section::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 1px; background: var(--border);
-}
-.cursos-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 22px; margin-top: 56px;
-}
-.curso-card {
-  background: #fff; border-radius: 20px;
-  border: 1px solid var(--border); overflow: hidden;
-  transition: transform .3s, box-shadow .3s; cursor: none;
-  box-shadow: var(--sh-sm); display: flex; flex-direction: column;
-}
-.curso-card:hover { transform: translateY(-8px); box-shadow: var(--sh-md); }
-.curso-accent { height: 4px; }
-.curso-body { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; }
-.curso-cat {
-  font-size: 8px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.curso-cat::before { content: ''; width: 18px; height: 1.5px; background: var(--teal); border-radius: 2px; }
-.curso-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px; font-weight: 600; letter-spacing: -.3px;
-  line-height: 1.15; color: var(--ink); margin-bottom: 12px;
-}
-.curso-desc { font-size: 12px; font-weight: 300; line-height: 1.72; color: var(--muted); margin-bottom: 20px; flex: 1; }
-.curso-meta { display: flex; align-items: center; gap: 8px; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap; margin-bottom: 16px; }
-.curso-tag {
-  font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 100px;
-  background: rgba(27,78,159,.06); color: var(--blue); border: 1px solid rgba(27,78,159,.1);
-}
-.curso-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--blue); text-decoration: none; transition: gap .2s, color .2s; cursor: none;
-}
-.curso-cta:hover { gap: 14px; color: var(--violet); }
-.curso-cta svg { width: 12px; height: 12px; }
-.cursos-note {
-  margin-top: 44px; padding: 36px 44px;
-  background: var(--ink2); border-radius: 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 32px; flex-wrap: wrap;
-  border: 1px solid rgba(255,255,255,.06);
-  position: relative; overflow: hidden;
-}
-.cursos-note::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gt); }
-.cursos-note-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -.3px; margin-bottom: 6px;
-}
-.cursos-note-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.38); }
-
-/* ═══════════════════════════════════════════════════════════
-   CONTACT FORM CARD
-   ═══════════════════════════════════════════════════════════ */
-.contact-form-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 28px 24px;
-  box-shadow: var(--sh-md);
-}
-.contact-form-title {
-  font-size: 11px; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 2px; color: var(--ink); margin-bottom: 18px;
-}
-.contact-form { display: flex; flex-direction: column; gap: 12px; }
-.cf-input, .cf-textarea {
-  width: 100%; padding: 13px 16px;
-  border-radius: 8px; border: 1px solid var(--border);
-  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 300;
-  color: var(--ink); background: var(--iris);
-  outline: none; transition: border-color .2s, box-shadow .2s;
-  resize: none; -webkit-appearance: none;
-}
-.cf-input:focus, .cf-textarea:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(43,134,152,.1);
-}
-.cf-input::placeholder, .cf-textarea::placeholder { color: var(--muted); }
-.cf-submit {
-  width: 100%; justify-content: center;
-  border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
-}
-
-/* ═══ RESPONSIVE nuevas secciones ═══════════════════════════ */
-@media (max-width: 1180px) {
-  .quienes-grid  { grid-template-columns: 1fr; gap: 48px; }
-  .cursos-grid   { grid-template-columns: 1fr 1fr; }
-  .quienes-section, .cursos-section { padding: 80px 56px; }
-}
-@media (max-width: 768px) {
-  .quienes-pillars { grid-template-columns: 1fr; }
-  .cursos-grid     { grid-template-columns: 1fr; }
-  .quienes-section, .cursos-section { padding: 68px 28px; }
-  .cursos-note     { padding: 28px; flex-direction: column; }
-}
+/* QUIÉNES SOMOS */
+.quienes-section{background:var(--ink);padding:108px 80px;position:relative;overflow:hidden}
+.quienes-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 90% 20%,rgba(123,92,196,.18),transparent 60%),radial-gradient(ellipse 45% 55% at 5% 85%,rgba(27,78,159,.28),transparent 55%);pointer-events:none}
+.quienes-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.quienes-right{padding:48px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:24px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.quienes-right::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g3)}
+.ceo-quote-mark{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:400;color:var(--teal);line-height:.8;opacity:.4;margin-bottom:12px}
+.ceo-story{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.68);line-height:1.78;margin-bottom:28px}
+.ceo-author{display:flex;align-items:center;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
+.ceo-avatar{width:50px;height:50px;border-radius:50%;background:var(--g3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;border:2px solid rgba(255,255,255,.15)}
+.ceo-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:2px}
+.ceo-role{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,.38)}
+.quienes-pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;position:relative;z-index:1}
+.quienes-pillar{padding:20px 22px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;transition:border-color .25s,background .25s}
+.quienes-pillar:hover{border-color:rgba(43,134,152,.25);background:rgba(43,134,152,.04)}
+.pillar-icon{font-size:22px;margin-bottom:8px}
+.pillar-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:5px}
+.pillar-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.55}
+/* CURSOS */
+.cursos-section{background:var(--iris2,#f8f7fc);padding:108px 80px;position:relative;overflow:hidden}
+.cursos-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.cursos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.curso-card{background:#fff;border-radius:20px;border:1px solid var(--border);overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:var(--sh-sm);display:flex;flex-direction:column}
+.curso-card:hover{transform:translateY(-8px);box-shadow:var(--sh-md)}
+.curso-accent{height:4px}
+.curso-body{padding:32px 28px;flex:1;display:flex;flex-direction:column}
+.curso-cat{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.curso-cat::before{content:'';width:18px;height:1.5px;background:var(--teal);border-radius:2px}
+.curso-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:-.3px;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.curso-desc{font-size:12px;font-weight:300;line-height:1.72;color:var(--muted);margin-bottom:20px;flex:1}
+.curso-meta{display:flex;align-items:center;gap:8px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap;margin-bottom:16px}
+.curso-tag{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:rgba(27,78,159,.06);color:var(--blue);border:1px solid rgba(27,78,159,.1)}
+.curso-cta{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);text-decoration:none;transition:gap .2s,color .2s}
+.curso-cta:hover{gap:14px;color:var(--violet)}
+.curso-cta svg{width:12px;height:12px}
+.cursos-note{margin-top:44px;padding:36px 44px;background:var(--ink2);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+.cursos-note::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gt)}
+.cursos-note-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;letter-spacing:-.3px;margin-bottom:6px}
+.cursos-note-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.38)}
+/* FORM CONTACTO */
+.contact-form-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 28px 24px;box-shadow:var(--sh-md);margin-top:16px}
+.contact-form-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--ink);margin-bottom:18px}
+.contact-form{display:flex;flex-direction:column;gap:12px}
+.cf-input,.cf-textarea{width:100%;padding:13px 16px;border-radius:8px;border:1px solid var(--border);font-family:'Outfit',sans-serif;font-size:13px;font-weight:300;color:var(--ink);background:#f8f7fc;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;-webkit-appearance:none;box-sizing:border-box}
+.cf-input:focus,.cf-textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,134,152,.1)}
+.cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
+.cf-submit{width:100%;justify-content:center;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+@media(max-width:1180px){.quienes-grid{grid-template-columns:1fr;gap:48px}.cursos-grid{grid-template-columns:1fr 1fr}.quienes-section,.cursos-section{padding:80px 56px}}
+@media(max-width:768px){.quienes-pillars{grid-template-columns:1fr}.cursos-grid{grid-template-columns:1fr}.quienes-section,.cursos-section{padding:68px 28px}.cursos-note{padding:28px;flex-direction:column}}
 
 </style>
 </head>
@@ -1567,12 +1442,7 @@ footer::before {
      ══════════════════════════════════════════════════════════════════ -->
 <header class="header" id="hdr">
   <a href="#" class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
-        <text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
-      </svg>
-    </div>
+    <div class="logo-mark"><svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/><text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text></svg></div>
     <div class="logo-teal" aria-hidden="true"></div><!-- línea teal obligatoria -->
     <div class="logo-text">
       <strong>HR Strategy Partners</strong>
@@ -1765,59 +1635,26 @@ footer::before {
      ══════════════════════════════════════════════════════════════════ -->
 <section class="quienes-section" id="quienes" aria-labelledby="quienes-h2">
   <div class="quienes-grid">
-
     <div>
       <div class="section-tag rv" style="color:var(--teal)">Quiénes Somos</div>
-      <h2 class="section-title section-title-white rv" style="margin-bottom:24px" id="quienes-h2">
-        Una consultora<br>
-        <em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:rgba(255,255,255,.38)">construida desde adentro</em>
-      </h2>
-      <p class="section-desc section-desc-white rv" style="margin-bottom:24px">
-        HR Strategy Partners nació de una convicción simple y poderosa: las personas son el único activo que no se puede replicar. Todo lo demás — tecnología, procesos, capital — es prescindible sin el equipo correcto, comprometido y en condiciones de dar lo mejor.
-      </p>
-      <p class="section-desc section-desc-white rv d1" style="margin-bottom:36px">
-        Trabajamos con organizaciones que ya entendieron eso. Con líderes que saben que el problema no es el mercado ni la economía: es la cultura, el liderazgo y los sistemas de gestión de talento. A esas organizaciones les ofrecemos algo que el mercado rara vez cumple: rigor metodológico con profunda sensibilidad humana.
-      </p>
+      <h2 class="section-title section-title-white rv" style="margin-bottom:24px" id="quienes-h2">Una consultora<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:rgba(255,255,255,.38)">construida desde adentro</em></h2>
+      <p class="section-desc section-desc-white rv" style="margin-bottom:24px">HR Strategy Partners nació de una convicción simple y poderosa: las personas son el único activo que no se puede replicar. Todo lo demás — tecnología, procesos, capital — es prescindible sin el equipo correcto, comprometido y en condiciones de dar lo mejor.</p>
+      <p class="section-desc section-desc-white rv d1" style="margin-bottom:36px">Trabajamos con organizaciones que ya entendieron eso. Con líderes que saben que el problema no es el mercado ni la economía: es la cultura, el liderazgo y los sistemas de gestión de talento. A esas organizaciones les ofrecemos lo que el mercado rara vez cumple: rigor metodológico con profunda sensibilidad humana.</p>
       <div class="quienes-pillars">
-        <div class="quienes-pillar rv">
-          <div class="pillar-icon">🎯</div>
-          <div class="pillar-title">Propósito claro</div>
-          <div class="pillar-desc">Cada intervención tiene un norte definido y métricas de impacto verificables desde el primer mes.</div>
-        </div>
-        <div class="quienes-pillar rv d1">
-          <div class="pillar-icon">🤝</div>
-          <div class="pillar-title">Alianzas reales</div>
-          <div class="pillar-desc">No somos proveedores. Somos el socio estratégico que se compromete con sus resultados.</div>
-        </div>
-        <div class="quienes-pillar rv d2">
-          <div class="pillar-icon">📚</div>
-          <div class="pillar-title">Formación continua</div>
-          <div class="pillar-desc">Actualización permanente en metodologías y tendencias globales de capital humano.</div>
-        </div>
-        <div class="quienes-pillar rv d3">
-          <div class="pillar-icon">📈</div>
-          <div class="pillar-title">Resultados medibles</div>
-          <div class="pillar-desc">ROI documentado desde la primera intervención. Sin promesas sin respaldo.</div>
-        </div>
+        <div class="quienes-pillar rv"><div class="pillar-icon">🎯</div><div class="pillar-title">Propósito claro</div><div class="pillar-desc">Cada intervención tiene un norte definido y métricas de impacto verificables desde el primer mes.</div></div>
+        <div class="quienes-pillar rv d1"><div class="pillar-icon">🤝</div><div class="pillar-title">Alianzas reales</div><div class="pillar-desc">No somos proveedores. Somos el socio estratégico que se compromete con sus resultados.</div></div>
+        <div class="quienes-pillar rv d2"><div class="pillar-icon">📚</div><div class="pillar-title">Formación continua</div><div class="pillar-desc">Actualización permanente en metodologías y tendencias globales de capital humano.</div></div>
+        <div class="quienes-pillar rv d3"><div class="pillar-icon">📈</div><div class="pillar-title">Resultados medibles</div><div class="pillar-desc">ROI documentado desde la primera intervención. Sin promesas sin respaldo.</div></div>
       </div>
     </div>
-
     <div class="quienes-right rv d1">
       <div class="ceo-quote-mark">&ldquo;</div>
-      <p class="ceo-story">
-        Empecé esta consultora después de años trabajando desde adentro de las organizaciones y viendo cómo el talento se perdía por falta de estructura, por liderazgos sin herramientas, por culturas que nadie había tenido el tiempo &mdash; ni el coraje &mdash; de diseñar con intención.
-        <br><br>
-        Cada empresa que acompañamos es una oportunidad de hacer lo que antes no pude hacer desde adentro: transformar el modo en que las personas trabajan juntas. Eso es lo que me levanta cada mañana. Y lo que garantizo personalmente en cada proyecto que firmamos.
-      </p>
+      <p class="ceo-story">Empecé esta consultora después de años trabajando desde adentro de las organizaciones y viendo cómo el talento se perdía por falta de estructura, por liderazgos sin herramientas, por culturas que nadie había tenido el tiempo &mdash; ni el coraje &mdash; de diseñar con intención.<br><br>Cada empresa que acompañamos es una oportunidad de hacer lo que antes no pude hacer desde adentro: transformar el modo en que las personas trabajan juntas. Eso es lo que me levanta cada mañana. Y lo que garantizo personalmente en cada proyecto que firmamos.</p>
       <div class="ceo-author">
         <div class="ceo-avatar">CN</div>
-        <div>
-          <div class="ceo-name">Carolina Navamuel</div>
-          <div class="ceo-role">Fundadora &amp; CEO · HR Strategy Partners</div>
-        </div>
+        <div><div class="ceo-name">Carolina Navamuel</div><div class="ceo-role">Fundadora &amp; CEO &middot; HR Strategy Partners</div></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1931,67 +1768,17 @@ footer::before {
      ══════════════════════════════════════════════════════════════════ -->
 <section class="cursos-section" id="cursos" aria-labelledby="cursos-h2">
   <div class="section-header rv">
-    <div>
-      <div class="teal-rule section-tag">Cursos y Capacitaciones</div>
-      <h2 class="section-title" id="cursos-h2">Formación que<br>Genera Resultados</h2>
-    </div>
-    <p class="section-desc">
-      Programas diseñados para líderes, equipos y profesionales de RRHH que quieren resultados reales. No teoría académica: metodología probada en organizaciones reales de la región.
-    </p>
+    <div><div class="teal-rule section-tag">Cursos y Capacitaciones</div><h2 class="section-title" id="cursos-h2">Formación que<br>Genera Resultados</h2></div>
+    <p class="section-desc">Programas diseñados para líderes, equipos y profesionales de RRHH que quieren resultados reales. No teoría académica: metodología probada en organizaciones reales de la región.</p>
   </div>
   <div class="cursos-grid">
-    <div class="curso-card rv">
-      <div class="curso-accent" style="background:var(--g3)"></div>
-      <div class="curso-body">
-        <div class="curso-cat">Liderazgo</div>
-        <h3 class="curso-title">Liderazgo de Alto Impacto para Organizaciones en Crecimiento</h3>
-        <p class="curso-desc">Programa intensivo para directores y gerentes que lideran equipos en contextos de alta complejidad. Herramientas concretas, aplicación inmediata, impacto verificable en la siguiente semana de trabajo.</p>
-        <div class="curso-meta">
-          <span class="curso-tag">Presencial / Online</span>
-          <span class="curso-tag">12 horas</span>
-          <span class="curso-tag">Certificado</span>
-        </div>
-        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    <div class="curso-card rv d1">
-      <div class="curso-accent" style="background:var(--g2)"></div>
-      <div class="curso-body">
-        <div class="curso-cat">Cultura Organizacional</div>
-        <h3 class="curso-title">Cómo Construir una Cultura que Atrae y Retiene el Mejor Talento</h3>
-        <p class="curso-desc">Workshop estratégico para equipos directivos. Diagnóstico cultural, diseño de EVP interno y hoja de ruta con KPIs de seguimiento. Resultados medibles en 90 días.</p>
-        <div class="curso-meta">
-          <span class="curso-tag">In-company</span>
-          <span class="curso-tag">8 horas</span>
-          <span class="curso-tag">Grupo reducido</span>
-        </div>
-        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    <div class="curso-card rv d2">
-      <div class="curso-accent" style="background:var(--gt)"></div>
-      <div class="curso-body">
-        <div class="curso-cat">Selección &amp; Decisión de Talento</div>
-        <h3 class="curso-title">Entrevistas por Competencias y Decisión de Contratación sin Sesgos</h3>
-        <p class="curso-desc">Formación práctica para líderes que seleccionan personas. Cómo evaluar fit cultural, detectar potencial real y reducir drásticamente el error de contratación.</p>
-        <div class="curso-meta">
-          <span class="curso-tag">Online</span>
-          <span class="curso-tag">6 horas</span>
-          <span class="curso-tag">Abierto / In-company</span>
-        </div>
-        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
+    <div class="curso-card rv"><div class="curso-accent" style="background:var(--g3)"></div><div class="curso-body"><div class="curso-cat">Liderazgo</div><h3 class="curso-title">Liderazgo de Alto Impacto para Organizaciones en Crecimiento</h3><p class="curso-desc">Programa intensivo para directores y gerentes que lideran equipos en contextos de alta complejidad. Herramientas concretas, aplicación inmediata, impacto verificable en la siguiente semana de trabajo.</p><div class="curso-meta"><span class="curso-tag">Presencial / Online</span><span class="curso-tag">12 horas</span><span class="curso-tag">Certificado</span></div><a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="curso-card rv d1"><div class="curso-accent" style="background:var(--g2)"></div><div class="curso-body"><div class="curso-cat">Cultura Organizacional</div><h3 class="curso-title">Cómo Construir una Cultura que Atrae y Retiene el Mejor Talento</h3><p class="curso-desc">Workshop estratégico para equipos directivos. Diagnóstico cultural, diseño de EVP interno y hoja de ruta con KPIs de seguimiento. Resultados medibles en 90 días.</p><div class="curso-meta"><span class="curso-tag">In-company</span><span class="curso-tag">8 horas</span><span class="curso-tag">Grupo reducido</span></div><a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="curso-card rv d2"><div class="curso-accent" style="background:var(--gt)"></div><div class="curso-body"><div class="curso-cat">Selección &amp; Decisión</div><h3 class="curso-title">Entrevistas por Competencias y Decisión de Contratación sin Sesgos</h3><p class="curso-desc">Formación práctica para líderes que seleccionan personas. Cómo evaluar fit cultural, detectar potencial real y reducir drásticamente el error de contratación.</p><div class="curso-meta"><span class="curso-tag">Online</span><span class="curso-tag">6 horas</span><span class="curso-tag">Abierto / In-company</span></div><a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
   </div>
   <div class="cursos-note rv">
-    <div>
-      <div class="cursos-note-title">¿Necesitás un programa a medida?</div>
-      <div class="cursos-note-sub">Diseñamos capacitaciones específicas para los desafíos concretos de tu organización. Diagnóstico previo incluido.</div>
-    </div>
-    <a href="mailto:contacto@hrstrategypartners.com.ar" class="btn-primary">
-      Solicitar propuesta
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <div><div class="cursos-note-title">¿Necesitás un programa a medida?</div><div class="cursos-note-sub">Diseñamos capacitaciones específicas para los desafíos concretos de tu organización. Diagnóstico previo incluido.</div></div>
+    <a href="mailto:contacto@hrstrategypartners.com.ar" class="btn-primary">Solicitar propuesta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
@@ -2100,7 +1887,7 @@ footer::before {
       <em>al máximo nivel?</em>
     </h2>
     <p class="cta-p rv">
-      Una sesión estratégica de 60 minutos para analizar su organización, identificar oportunidades concretas de transformación y diseñar el camino de mayor impacto.
+      Una sesión estratégica de 60 minutos para analizar su organización e identificar el camino de mayor impacto.
     </p>
     <div class="cta-actions rv">
       <!-- BTN PRINCIPAL — PARA MODIFICAR: cambia href por tu email o link de agenda -->
@@ -2248,7 +2035,7 @@ footer::before {
         <span style="font-style:italic;font-weight:400;color:var(--muted)">la conversación</span>
       </h2>
       <p class="section-desc" style="margin-top:20px;margin-bottom:36px">
-        Una sesión estratégica donde analizamos su organización, identificamos el potencial de transformación real y diseñamos el camino más directo para activarlo. Inversión con retorno medible desde la primera semana.
+        Una sesión estratégica donde analizamos su organización, identificamos el potencial real de transformación y diseñamos el camino más directo para activarlo. Inversión con retorno desde la primera semana.
       </p>
 
       <!-- Tagline de marca prominente -->
@@ -2274,64 +2061,57 @@ footer::before {
     <div class="contact-right rv d1">
 
       <a href="mailto:contacto@hrstrategypartners.com.ar" class="contact-card email-card">
-        <div class="contact-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </div>
-        <div class="contact-card-body">
-          <div class="contact-card-label">Email Oficial</div>
-          <div class="contact-card-value">contacto@hrstrategypartners.com.ar</div>
-        </div>
-        <div class="contact-card-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
+        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <div class="contact-card-body"><div class="contact-card-label">Email Oficial</div><div class="contact-card-value">contacto@hrstrategypartners.com.ar</div></div>
+        <div class="contact-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
 
-      <div class="contact-form-card">
+      <div class="contact-form-card" id="form-card">
         <h4 class="contact-form-title">Enviar mensaje directo</h4>
-        <form name="contacto-hrsp" method="POST" data-netlify="true" action="/">
-          <input type="hidden" name="form-name" value="contacto-hrsp" />
-         <div class="contact-form">
-          <input type="text" name="nombre" placeholder="Nombre y Apellido" required class="cf-input" />
-          <input type="email" name="email" placeholder="Email Corporativo" required class="cf-input" />
-          <textarea name="mensaje" placeholder="¿En qué podemos ayudar a su organización?" required class="cf-textarea" rows="4"></textarea>
-           <button type="submit" class="btn-primary cf-submit">
-            <span>Enviar Solicitud</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-    </div>
-  </form>
-</div>
+        <div id="cf-form-wrap">
+          <form id="contact-form-hrsp" class="contact-form" novalidate>
+            <input type="text"  id="cf-nombre"  name="nombre"  placeholder="Nombre y Apellido"    required class="cf-input" autocomplete="name" />
+            <input type="email" id="cf-email"   name="email"   placeholder="Email Corporativo"    required class="cf-input" autocomplete="email" />
+            <textarea id="cf-mensaje" name="mensaje" placeholder="¿En qué podemos ayudar a su organización?" required class="cf-textarea" rows="4"></textarea>
+            <p id="cf-error-msg" style="display:none;color:#c84fae;font-size:12px;font-weight:500;"></p>
+            <button type="submit" id="cf-btn" class="btn-primary cf-submit">
+              <span id="cf-btn-text">Enviar Solicitud</span>
+              <span id="cf-btn-spin" style="display:none;align-items:center">⏳</span>
+              <svg id="cf-btn-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+        <div id="cf-success" style="display:none;text-align:center;padding:24px 0">
+          <div style="font-size:40px;margin-bottom:10px">✅</div>
+          <div style="font-size:14px;font-weight:700;color:#0c1630;margin-bottom:6px">Mensaje recibido</div>
+          <div style="font-size:12px;font-weight:300;color:#6b7a99;line-height:1.6">Nos pondremos en contacto en menos de 24 horas hábiles.</div>
+        </div>
+        <div id="cf-fail" style="display:none;text-align:center;padding:24px 0">
+          <div style="font-size:40px;margin-bottom:10px">⚠️</div>
+          <div style="font-size:13px;font-weight:700;color:#0c1630;margin-bottom:8px">Error al enviar</div>
+          <div style="font-size:12px;color:#6b7a99;margin-bottom:12px;line-height:1.6">Escríbinos directamente:</div>
+          <a href="mailto:contacto@hrstrategypartners.com.ar" style="font-size:13px;font-weight:600;color:#1b4e9f">contacto@hrstrategypartners.com.ar</a>
+        </div>
+      </div>
 
-      <a href="tel:+5438722892985" class="contact-card phone-card">
-        <div class="contact-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div class="contact-card-body">
-          <div class="contact-card-label">Teléfono Directo</div>
-          <div class="contact-card-value">+54 387 228 9285</div>
-        </div>
-        <div class="contact-card-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
+      <a href="tel:+5438722892985" class="contact-card phone-card" style="margin-top:0">
+        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="contact-card-body"><div class="contact-card-label">Teléfono Directo</div><div class="contact-card-value">+54 387 228 9285</div></div>
+        <div class="contact-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
 
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════<!-- ══════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════════════ -->
 <footer id="footer" aria-label="Pie de página">
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="logo" style="display:inline-flex">
-        <div class="logo-mark">
-          <svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
-            <text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
-          </svg>
-        </div>
+        <div class="logo-mark"><svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/><text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text></svg></div>
         <div class="logo-teal" aria-hidden="true"></div>
         <div class="logo-text">
           <strong>HR Strategy Partners</strong>
@@ -2532,6 +2312,50 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }
   });
 });
+/* ═══════════════════════════════════════════════════════════
+   FORMULARIO DE CONTACTO — JS nativo con fallback mailto
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  var form = document.getElementById('contact-form-hrsp');
+  if (!form) return;
+  var errEl   = document.getElementById('cf-error-msg');
+  var wrap    = document.getElementById('cf-form-wrap');
+  var okEl    = document.getElementById('cf-success');
+  var failEl  = document.getElementById('cf-fail');
+  var btn     = document.getElementById('cf-btn');
+  var btnTxt  = document.getElementById('cf-btn-text');
+  var btnSpin = document.getElementById('cf-btn-spin');
+  var btnArr  = document.getElementById('cf-btn-arr');
+
+  function busy(on){
+    btn.disabled = on;
+    btnTxt.style.display  = on ? 'none' : '';
+    btnSpin.style.display = on ? 'inline-flex' : 'none';
+    btnArr.style.display  = on ? 'none' : '';
+  }
+  function showOk(){ wrap.style.display='none'; okEl.style.display='block'; }
+  function showFail(){ wrap.style.display='none'; failEl.style.display='block'; }
+  function err(msg){ errEl.textContent=msg; errEl.style.display='block'; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.style.display = 'none';
+    var nombre  = document.getElementById('cf-nombre').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var mensaje = document.getElementById('cf-mensaje').value.trim();
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!nombre)        { err('Por favor ingresá tu nombre.'); return; }
+    if (!re.test(email)){ err('Ingresá un email válido.'); return; }
+    if (!mensaje)       { err('Escribí tu mensaje antes de enviar.'); return; }
+    busy(true);
+    /* Fallback garantizado: abre cliente de email con datos prellenados */
+    var subj = encodeURIComponent('Consulta desde hrstrategypartners.com.ar');
+    var body = encodeURIComponent('Nombre: '+nombre+'\nEmail: '+email+'\n\nMensaje:\n'+mensaje);
+    window.location.href = 'mailto:contacto@hrstrategypartners.com.ar?subject='+subj+'&body='+body;
+    setTimeout(function(){ busy(false); showOk(); }, 1200);
+  });
+})();
+
 
 </script>
 </body>
