@@ -378,8 +378,8 @@ body {
   width: 46px; height: 46px; border-radius: 50%;
   background: var(--g3);
   display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; letter-spacing: -1px; color: #fff;
   position: relative; overflow: hidden;
-  box-shadow: 0 0 0 2px rgba(255,255,255,.15);
   box-shadow: 0 4px 16px rgba(27,78,159,.45);
   flex-shrink: 0;
 }
@@ -1339,9 +1339,9 @@ footer::before {
   .metric:first-child { border-top: none; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    QUIÉNES SOMOS
-   ═══════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════ */
 .quienes-section {
   background: var(--ink); padding: 108px 80px;
   position: relative; overflow: hidden;
@@ -1404,9 +1404,9 @@ footer::before {
 .pillar-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.62); margin-bottom: 5px; }
 .pillar-desc { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.55; }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    CURSOS Y CAPACITACIONES
-   ═══════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════ */
 .cursos-section {
   background: var(--iris2); padding: 108px 80px;
   position: relative; overflow: hidden;
@@ -1450,7 +1450,6 @@ footer::before {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
   color: var(--blue); text-decoration: none; transition: gap .2s, color .2s; cursor: none;
-  margin-top: auto;
 }
 .curso-cta:hover { gap: 14px; color: var(--violet); }
 .curso-cta svg { width: 12px; height: 12px; }
@@ -1469,18 +1468,50 @@ footer::before {
 }
 .cursos-note-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.38); }
 
+/* ═══════════════════════════════════════════════════════════
+   CONTACT FORM CARD
+   ═══════════════════════════════════════════════════════════ */
+.contact-form-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  box-shadow: var(--sh-md);
+}
+.contact-form-title {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ink); margin-bottom: 18px;
+}
+.contact-form { display: flex; flex-direction: column; gap: 12px; }
+.cf-input, .cf-textarea {
+  width: 100%; padding: 13px 16px;
+  border-radius: 8px; border: 1px solid var(--border);
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 300;
+  color: var(--ink); background: var(--iris);
+  outline: none; transition: border-color .2s, box-shadow .2s;
+  resize: none; -webkit-appearance: none;
+}
+.cf-input:focus, .cf-textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(43,134,152,.1);
+}
+.cf-input::placeholder, .cf-textarea::placeholder { color: var(--muted); }
+.cf-submit {
+  width: 100%; justify-content: center;
+  border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
+}
+
+/* ═══ RESPONSIVE nuevas secciones ═══════════════════════════ */
 @media (max-width: 1180px) {
-  .quienes-grid { grid-template-columns: 1fr; gap: 48px; }
-  .cursos-grid { grid-template-columns: 1fr 1fr; }
-  .quienes-section { padding: 80px 56px; }
-  .cursos-section { padding: 80px 56px; }
+  .quienes-grid  { grid-template-columns: 1fr; gap: 48px; }
+  .cursos-grid   { grid-template-columns: 1fr 1fr; }
+  .quienes-section, .cursos-section { padding: 80px 56px; }
 }
 @media (max-width: 768px) {
   .quienes-pillars { grid-template-columns: 1fr; }
-  .cursos-grid { grid-template-columns: 1fr; }
-  .quienes-section { padding: 68px 28px; }
-  .cursos-section { padding: 68px 28px; }
-  .cursos-note { padding: 28px; flex-direction: column; }
+  .cursos-grid     { grid-template-columns: 1fr; }
+  .quienes-section, .cursos-section { padding: 68px 28px; }
+  .cursos-note     { padding: 28px; flex-direction: column; }
 }
 
 </style>
@@ -1503,9 +1534,9 @@ footer::before {
   </div>
   <div class="contact-strip-right">
     <!-- EMAIL — modificar href y texto -->
-    <a href="/cdn-cgi/l/email-protection#197a76776d787a6d7659716b6a6d6b786d7c7e6069786b6d777c6b6a377a767437786b" class="cs-link">
+    <a href="mailto:contacto@hrstrategypartners.com.ar" class="cs-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      <span class="__cf_email__" data-cfemail="31525e5f455052455e7159434245435045545648415043455f5443421f525e5c1f5043">[email&#160;protected]</span>
+      contacto@hrstrategypartners.com.ar
     </a>
     <div class="cs-sep"></div>
     <!-- TELÉFONO — modificar href y texto -->
@@ -1538,9 +1569,8 @@ footer::before {
   <a href="#" class="logo">
     <div class="logo-mark">
       <svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-        <text x="23" y="27.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif"
-              font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
+        <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
       </svg>
     </div>
     <div class="logo-teal" aria-hidden="true"></div><!-- línea teal obligatoria -->
@@ -1556,7 +1586,7 @@ footer::before {
     <a href="#cursos"     class="nav-link">Cursos</a>
     <a href="#metodologia" class="nav-link">Metodología</a>
     <a href="#contacto"   class="nav-link">Contacto</a>
-    <a href="/cdn-cgi/l/email-protection#6c0f0302180d0f18032c041e1f181e0d18090b151c0d1e1802091e1f420f0301420d1e" class="nav-cta" aria-label="Escribir email"><span>Escribinos →</span></a>
+    <a href="mailto:contacto@hrstrategypartners.com.ar" class="nav-cta" aria-label="Escribir email"><span>Escribinos →</span></a>
   </nav>
 
   <!-- Hamburger mobile -->
@@ -1574,7 +1604,7 @@ footer::before {
   <a href="#cursos"     onclick="closeNav()">Cursos</a>
   <a href="#metodologia" onclick="closeNav()">Metodología</a>
   <a href="#contacto"   onclick="closeNav()">Contacto</a>
-  <a href="/cdn-cgi/l/email-protection#b6d5d9d8c2d7d5c2d9f6dec4c5c2c4d7c2d3d1cfc6d7c4c2d8d3c4c598d5d9db98d7c4" onclick="closeNav()">Escribir Email →</a>
+  <a href="mailto:contacto@hrstrategypartners.com.ar" onclick="closeNav()">Escribir Email →</a>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════════════
@@ -1636,12 +1666,12 @@ footer::before {
     <div class="hero-actions">
       <!-- BTN PRINCIPAL — agendar / contacto directo -->
       <!-- PARA MODIFICAR: cambia href con tu email o link de agenda -->
-      <a href="/cdn-cgi/l/email-protection#65060a0b110406110a250d17161117041100021c150417110b0017164b060a084b0417" class="btn-primary">
+      <a href="mailto:contacto@hrstrategypartners.com.ar" class="btn-primary">
         Agendar Diagnóstico
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <!-- BTN EMAIL DIRECTO -->
-      <a href="/cdn-cgi/l/email-protection#8be8e4e5ffeae8ffe4cbe3f9f8fff9eaffeeecf2fbeaf9ffe5eef9f8a5e8e4e6a5eaf9" class="btn-email">
+      <a href="mailto:contacto@hrstrategypartners.com.ar" class="btn-email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         <span>Escribinos</span>
       </a>
@@ -1695,7 +1725,7 @@ footer::before {
     <div class="hero-divider" aria-hidden="true"></div>
     <div>
       <div class="client-label">Organizaciones que confían en nosotros</div>
-      <div class="client-count">20+ clientes en relación de largo plazo</div>
+      <div class="client-count">20+ clientes en relaciones de largo plazo</div>
     </div>
   </div>
 </section>
@@ -1730,7 +1760,6 @@ footer::before {
   </div>
 </div>
 
-
 <!-- ══════════════════════════════════════════════════════════════════
      QUIÉNES SOMOS
      ══════════════════════════════════════════════════════════════════ -->
@@ -1744,15 +1773,10 @@ footer::before {
         <em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:rgba(255,255,255,.38)">construida desde adentro</em>
       </h2>
       <p class="section-desc section-desc-white rv" style="margin-bottom:24px">
-        HR Strategy Partners nació de una convicción simple y poderosa: las personas son el único activo
-        que no se puede replicar. Todo lo demás — tecnología, procesos, capital — es prescindible
-        sin el equipo correcto, comprometido y en condiciones de dar lo mejor.
+        HR Strategy Partners nació de una convicción simple y poderosa: las personas son el único activo que no se puede replicar. Todo lo demás — tecnología, procesos, capital — es prescindible sin el equipo correcto, comprometido y en condiciones de dar lo mejor.
       </p>
       <p class="section-desc section-desc-white rv d1" style="margin-bottom:36px">
-        Trabajamos con organizaciones que ya entendieron eso. Con líderes que saben que el problema
-        no es el mercado ni la economía: es la cultura, el liderazgo y los sistemas de gestión de talento.
-        A esas organizaciones les ofrecemos algo que el mercado rara vez cumple: rigor metodológico
-        con profunda sensibilidad humana.
+        Trabajamos con organizaciones que ya entendieron eso. Con líderes que saben que el problema no es el mercado ni la economía: es la cultura, el liderazgo y los sistemas de gestión de talento. A esas organizaciones les ofrecemos algo que el mercado rara vez cumple: rigor metodológico con profunda sensibilidad humana.
       </p>
       <div class="quienes-pillars">
         <div class="quienes-pillar rv">
@@ -1763,7 +1787,7 @@ footer::before {
         <div class="quienes-pillar rv d1">
           <div class="pillar-icon">🤝</div>
           <div class="pillar-title">Alianzas reales</div>
-          <div class="pillar-desc">No somos proveedores. Somos el socio estratégico que se compromete con los resultados de su organización.</div>
+          <div class="pillar-desc">No somos proveedores. Somos el socio estratégico que se compromete con sus resultados.</div>
         </div>
         <div class="quienes-pillar rv d2">
           <div class="pillar-icon">📚</div>
@@ -1773,7 +1797,7 @@ footer::before {
         <div class="quienes-pillar rv d3">
           <div class="pillar-icon">📈</div>
           <div class="pillar-title">Resultados medibles</div>
-          <div class="pillar-desc">ROI documentado desde la primera intervención. Sin promesas sin respaldo, sin informes sin consecuencias.</div>
+          <div class="pillar-desc">ROI documentado desde la primera intervención. Sin promesas sin respaldo.</div>
         </div>
       </div>
     </div>
@@ -1781,13 +1805,9 @@ footer::before {
     <div class="quienes-right rv d1">
       <div class="ceo-quote-mark">&ldquo;</div>
       <p class="ceo-story">
-        Empecé esta consultora después de años trabajando desde adentro de las organizaciones
-        y viendo cómo el talento se perdía por falta de estructura, por liderazgos sin herramientas,
-        por culturas que nadie había tenido el tiempo — ni el coraje — de diseñar con intención.
+        Empecé esta consultora después de años trabajando desde adentro de las organizaciones y viendo cómo el talento se perdía por falta de estructura, por liderazgos sin herramientas, por culturas que nadie había tenido el tiempo &mdash; ni el coraje &mdash; de diseñar con intención.
         <br><br>
-        Cada empresa que acompañamos es una oportunidad de hacer lo que antes no pude hacer desde
-        adentro: transformar el modo en que las personas trabajan juntas. Eso es lo que me levanta
-        cada mañana. Y lo que garantizo personalmente en cada proyecto que firmamos.
+        Cada empresa que acompañamos es una oportunidad de hacer lo que antes no pude hacer desde adentro: transformar el modo en que las personas trabajan juntas. Eso es lo que me levanta cada mañana. Y lo que garantizo personalmente en cada proyecto que firmamos.
       </p>
       <div class="ceo-author">
         <div class="ceo-avatar">CN</div>
@@ -1906,7 +1926,6 @@ footer::before {
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════════════════════════
      CURSOS Y CAPACITACIONES
      ══════════════════════════════════════════════════════════════════ -->
@@ -1917,13 +1936,10 @@ footer::before {
       <h2 class="section-title" id="cursos-h2">Formación que<br>Genera Resultados</h2>
     </div>
     <p class="section-desc">
-      Programas diseñados para líderes, equipos y profesionales de RRHH que quieren
-      resultados reales. No teoría académica: metodología probada en organizaciones reales de la región.
+      Programas diseñados para líderes, equipos y profesionales de RRHH que quieren resultados reales. No teoría académica: metodología probada en organizaciones reales de la región.
     </p>
   </div>
-
   <div class="cursos-grid">
-
     <div class="curso-card rv">
       <div class="curso-accent" style="background:var(--g3)"></div>
       <div class="curso-body">
@@ -1935,13 +1951,9 @@ footer::before {
           <span class="curso-tag">12 horas</span>
           <span class="curso-tag">Certificado</span>
         </div>
-        <a href="#contacto" class="curso-cta">
-          Consultar programa
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-
     <div class="curso-card rv d1">
       <div class="curso-accent" style="background:var(--g2)"></div>
       <div class="curso-body">
@@ -1953,13 +1965,9 @@ footer::before {
           <span class="curso-tag">8 horas</span>
           <span class="curso-tag">Grupo reducido</span>
         </div>
-        <a href="#contacto" class="curso-cta">
-          Consultar programa
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-
     <div class="curso-card rv d2">
       <div class="curso-accent" style="background:var(--gt)"></div>
       <div class="curso-body">
@@ -1971,15 +1979,10 @@ footer::before {
           <span class="curso-tag">6 horas</span>
           <span class="curso-tag">Abierto / In-company</span>
         </div>
-        <a href="#contacto" class="curso-cta">
-          Consultar programa
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="#contacto" class="curso-cta">Consultar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-
   </div>
-
   <div class="cursos-note rv">
     <div>
       <div class="cursos-note-title">¿Necesitás un programa a medida?</div>
@@ -2097,12 +2100,11 @@ footer::before {
       <em>al máximo nivel?</em>
     </h2>
     <p class="cta-p rv">
-      El primer diagnóstico es sin costo y sin compromiso.
-      Descubra en 60 minutos el potencial de transformación de su organización.
+      Una sesión estratégica de 60 minutos para analizar su organización, identificar oportunidades concretas de transformación y diseñar el camino de mayor impacto.
     </p>
     <div class="cta-actions rv">
       <!-- BTN PRINCIPAL — PARA MODIFICAR: cambia href por tu email o link de agenda -->
-      <a href="/cdn-cgi/l/email-protection#ee8d81809a8f8d9a81ae869c9d9a9c8f9a8b89979e8f9c9a808b9c9dc08d8183c08f9c" class="btn-primary">
+      <a href="mailto:contacto@hrstrategypartners.com.ar" class="btn-primary">
         Agendar Diagnóstico Estratégico
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -2246,7 +2248,7 @@ footer::before {
         <span style="font-style:italic;font-weight:400;color:var(--muted)">la conversación</span>
       </h2>
       <p class="section-desc" style="margin-top:20px;margin-bottom:36px">
-        Una sesión estratégica de diagnóstico donde analizamos su organización, identificamos el potencial de transformación y diseñamos el camino más directo para activarlo. Inversión con retorno medible desde la primera semana.
+        Una sesión estratégica donde analizamos su organización, identificamos el potencial de transformación real y diseñamos el camino más directo para activarlo. Inversión con retorno medible desde la primera semana.
       </p>
 
       <!-- Tagline de marca prominente -->
@@ -2271,29 +2273,39 @@ footer::before {
     <!-- Derecha: tarjetas de contacto -->
     <div class="contact-right rv d1">
 
-      <!-- TARJETA EMAIL — PARA MODIFICAR: cambia href y data-value -->
-      <a href="/cdn-cgi/l/email-protection#395a56574d585a4d5679514b4a4d4b584d5c5e4049584b4d575c4b4a175a565417584b" class="contact-card email-card">
+      <a href="mailto:contacto@hrstrategypartners.com.ar" class="contact-card email-card">
         <div class="contact-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="contact-card-body">
-          <div class="contact-card-label">Email</div>
-          <!-- PARA MODIFICAR: cambia el texto del email aquí -->
-          <div class="contact-card-value"><span class="__cf_email__" data-cfemail="60030f0e140103140f2008121314120114050719100112140e0512134e030f0d4e0112">[email&#160;protected]</span></div>
+          <div class="contact-card-label">Email Oficial</div>
+          <div class="contact-card-value">contacto@hrstrategypartners.com.ar</div>
         </div>
         <div class="contact-card-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
-      <!-- TARJETA TELÉFONO — PARA MODIFICAR: cambia href tel: y texto -->
+      <div class="contact-form-card">
+        <h4 class="contact-form-title">Enviar mensaje directo</h4>
+        <form name="contacto-hrsp" method="POST" data-netlify="true" class="contact-form">
+          <input type="hidden" name="form-name" value="contacto-hrsp" />
+          <input  type="text"  name="nombre"  placeholder="Nombre y Apellido"                     required class="cf-input" />
+          <input  type="email" name="email"   placeholder="Email Corporativo"                     required class="cf-input" />
+          <textarea            name="mensaje" placeholder="¿En qué podemos ayudar a su organización?" required class="cf-textarea" rows="4"></textarea>
+          <button type="submit" class="btn-primary cf-submit">
+            Enviar Solicitud
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+
       <a href="tel:+5438722892985" class="contact-card phone-card">
         <div class="contact-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
         <div class="contact-card-body">
-          <div class="contact-card-label">Teléfono</div>
-          <!-- PARA MODIFICAR: cambia el número aquí -->
+          <div class="contact-card-label">Teléfono Directo</div>
           <div class="contact-card-value">+54 387 228 9285</div>
         </div>
         <div class="contact-card-arrow">
@@ -2301,34 +2313,11 @@ footer::before {
         </div>
       </a>
 
-      <!-- TARJETA WEB — PARA MODIFICAR: cambia href y texto -->
-      <a href="https://www.hrstrategypartners.com.ar" class="contact-card web-card" target="_blank" rel="noopener">
-        <div class="contact-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div class="contact-card-body">
-          <div class="contact-card-label">Sitio Web</div>
-          <!-- PARA MODIFICAR: cambia la URL visible aquí -->
-          <div class="contact-card-value">www.hrstrategypartners.com.ar</div>
-        </div>
-        <div class="contact-card-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </a>
-
-      <!-- BOTÓN WHATSAPP en sección contacto -->
-      <!-- PARA MODIFICAR: reemplaza el número en href (formato: https://wa.me/549XXXXXXXXXX) -->
-      <a href="https://wa.me/5493872289285" class="btn-primary" target="_blank" rel="noopener"
-         style="justify-content:center;background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 6px 24px rgba(37,211,102,.38)">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Escribir por WhatsApp
-      </a>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════<!-- ══════════════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════════════ -->
 <footer id="footer" aria-label="Pie de página">
@@ -2337,9 +2326,8 @@ footer::before {
       <a href="#" class="logo" style="display:inline-flex">
         <div class="logo-mark">
           <svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-            <text x="23" y="27.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif"
-                  font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
+            <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+            <text x="23" y="28" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-weight="600" fill="white" letter-spacing="-0.5">HR</text>
           </svg>
         </div>
         <div class="logo-teal" aria-hidden="true"></div>
@@ -2353,9 +2341,9 @@ footer::before {
         El estándar más alto del mercado, aplicado desde el primer día.
       </p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/company/hr-strategy-partners" class="social-btn" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        <a href="https://www.facebook.com/hrstrategypartners" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-        <a href="https://www.instagram.com/hrstrategypartners" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+        <a href="https://www.linkedin.com/company/hr-strategy-partners" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">in</a>
+        <a href="https://www.facebook.com/hrstrategypartners" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/hrstrategypartners" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">ig</a>
       </div>
     </div>
 
@@ -2384,8 +2372,8 @@ footer::before {
       <h4>Contacto</h4>
       <ul>
         <!-- PARA MODIFICAR: actualiza cada href y texto con tus datos reales -->
-        <li><a href="/cdn-cgi/l/email-protection#86e5e9e8f2e7e5f2e9c6eef4f5f2f4e7f2e3e1fff6e7f4f2e8e3f4f5a8e5e9eba8e7f4">Agendar Consulta</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#65060a0b110406110a250d17161117041100021c150417110b0017164b060a084b0417"><span class="__cf_email__" data-cfemail="d1b2bebfa5b0b2a5be91b9a3a2a5a3b0a5b4b6a8a1b0a3a5bfb4a3a2ffb2bebcffb0a3">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:contacto@hrstrategypartners.com.ar">Agendar Consulta</a></li>
+        <li><a href="mailto:contacto@hrstrategypartners.com.ar">contacto@hrstrategypartners.com.ar</a></li>
         <li><a href="tel:+5438722892985">+54 387 228 9285</a></li>
         <li><a href="https://www.hrstrategypartners.com.ar" target="_blank" rel="noopener">www.hrstrategypartners.com.ar</a></li>
         <li><a href="#">NOA · Argentina</a></li>
