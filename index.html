@@ -1389,6 +1389,105 @@ footer::before {
 @media(max-width:1180px){.quienes-grid{grid-template-columns:1fr;gap:48px}.cursos-grid{grid-template-columns:1fr 1fr}.quienes-section,.cursos-section{padding:80px 56px}}
 @media(max-width:768px){.quienes-pillars{grid-template-columns:1fr}.cursos-grid{grid-template-columns:1fr}.quienes-section,.cursos-section{padding:68px 28px}.cursos-note{padding:28px;flex-direction:column}}
 
+
+.quienes-section{background:var(--ink);padding:108px 80px;position:relative;overflow:hidden}
+.quienes-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 90% 20%,rgba(123,92,196,.18),transparent 60%),radial-gradient(ellipse 45% 55% at 5% 85%,rgba(27,78,159,.28),transparent 55%);pointer-events:none}
+.quienes-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.quienes-right{padding:48px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:24px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.quienes-right::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g3)}
+.ceo-quote-mark{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:400;color:var(--teal);line-height:.8;opacity:.4;margin-bottom:12px}
+.ceo-story{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.68);line-height:1.78;margin-bottom:28px}
+.ceo-author{display:flex;align-items:center;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
+.ceo-avatar{width:50px;height:50px;border-radius:50%;background:var(--g3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;border:2px solid rgba(255,255,255,.15)}
+.ceo-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:2px}
+.ceo-role{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,.38)}
+.quienes-pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;position:relative;z-index:1}
+.quienes-pillar{padding:20px 22px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;transition:border-color .25s,background .25s}
+.quienes-pillar:hover{border-color:rgba(43,134,152,.25);background:rgba(43,134,152,.04)}
+.pillar-icon{font-size:22px;margin-bottom:8px}
+.pillar-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:5px}
+.pillar-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.55}
+.cursos-section{background:#f8f7fc;padding:108px 80px;position:relative;overflow:hidden}
+.cursos-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.cursos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.curso-card{background:#fff;border-radius:20px;border:1px solid var(--border);overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:0 2px 12px rgba(27,78,159,.09);display:flex;flex-direction:column}
+.curso-card:hover{transform:translateY(-8px);box-shadow:0 8px 40px rgba(27,78,159,.14)}
+.curso-accent{height:4px}
+.curso-body{padding:32px 28px;flex:1;display:flex;flex-direction:column}
+.curso-cat{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.curso-cat::before{content:'';width:18px;height:1.5px;background:var(--teal);border-radius:2px}
+.curso-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:-.3px;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.curso-desc{font-size:12px;font-weight:300;line-height:1.72;color:var(--muted);margin-bottom:20px;flex:1}
+.curso-meta{display:flex;align-items:center;gap:8px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap;margin-bottom:16px}
+.curso-tag{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:rgba(27,78,159,.06);color:var(--blue);border:1px solid rgba(27,78,159,.1)}
+.curso-cta{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);text-decoration:none;transition:gap .2s,color .2s}
+.curso-cta:hover{gap:14px;color:var(--violet)}
+.curso-cta svg{width:12px;height:12px}
+.cursos-note{margin-top:44px;padding:36px 44px;background:var(--ink2);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+.cursos-note::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(135deg,#1B4E9F,#7B5CC4,#C84FAE)}
+.cursos-note-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;letter-spacing:-.3px;margin-bottom:6px}
+.cursos-note-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.38)}
+.contact-form-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 28px 24px;box-shadow:0 8px 40px rgba(27,78,159,.14);margin-top:16px}
+.contact-form-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--ink);margin-bottom:18px}
+.contact-form{display:flex;flex-direction:column;gap:12px}
+.cf-input,.cf-textarea{width:100%;padding:13px 16px;border-radius:8px;border:1px solid var(--border);font-family:'Outfit',sans-serif;font-size:13px;font-weight:300;color:var(--ink);background:#f8f7fc;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;-webkit-appearance:none;box-sizing:border-box}
+.cf-input:focus,.cf-textarea:focus{border-color:#2B8698;box-shadow:0 0 0 3px rgba(43,134,152,.1)}
+.cf-input::placeholder,.cf-textarea::placeholder{color:#6B7A99}
+.cf-submit{width:100%;justify-content:center;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+.identidad-toggle-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border-radius:100px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);cursor:pointer;transition:all .25s}
+.identidad-toggle-btn:hover{border-color:#2B8698;color:rgba(255,255,255,.85);background:rgba(43,134,152,.1)}
+.identidad-toggle-btn.open{border-color:#2B8698;color:rgba(255,255,255,.85)}
+.identidad-toggle-btn svg{width:14px;height:14px;transition:transform .3s}
+.identidad-toggle-btn.open svg{transform:rotate(180deg)}
+.identidad-collapsible{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(0.4,0,0.2,1),opacity .4s ease;opacity:0}
+.identidad-collapsible.open{max-height:4000px;opacity:1}
+@media(max-width:1180px){.quienes-grid{grid-template-columns:1fr;gap:48px}.cursos-grid{grid-template-columns:1fr 1fr}.quienes-section,.cursos-section{padding:80px 56px}}
+@media(max-width:768px){.quienes-pillars{grid-template-columns:1fr}.cursos-grid{grid-template-columns:1fr}.quienes-section,.cursos-section{padding:68px 28px}.cursos-note{padding:28px;flex-direction:column}}
+
+
+/* MODALES SERVICIOS */
+.svc-modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(12,22,48,.84);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.svc-modal-overlay.active{opacity:1;pointer-events:all}
+.svc-modal{background:#fff;border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 48px 120px rgba(12,22,48,.4);transform:translateY(32px) scale(.96);transition:transform .4s cubic-bezier(0.34,1.56,0.64,1)}
+.svc-modal-overlay.active .svc-modal{transform:translateY(0) scale(1)}
+.svc-modal-hero{background:var(--ink);padding:52px 52px 44px;border-radius:24px 24px 0 0;position:relative;overflow:hidden}
+.svc-modal-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 10%,rgba(123,92,196,.22),transparent 55%),radial-gradient(ellipse 40% 50% at 0% 90%,rgba(27,78,159,.2),transparent 50%)}
+.svc-modal-accent{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#1B4E9F,#7B5CC4,#C84FAE)}
+.svc-modal-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:400;color:rgba(255,255,255,.06);letter-spacing:-3px;line-height:1;position:absolute;bottom:20px;right:44px}
+.svc-modal-close{position:absolute;top:18px;right:18px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;transition:all .2s;font-family:sans-serif}
+.svc-modal-close:hover{background:rgba(255,255,255,.18);color:#fff}
+.svc-modal-icon{font-size:32px;margin-bottom:14px;position:relative;z-index:1}
+.svc-modal-tag{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#2B8698;margin-bottom:10px;position:relative;z-index:1;display:flex;align-items:center;gap:10px}
+.svc-modal-tag::before{content:'';width:20px;height:1.5px;background:#2B8698;border-radius:2px}
+.svc-modal-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.5px;margin-bottom:14px;position:relative;z-index:1}
+.svc-modal-subtitle{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(255,255,255,.4);position:relative;z-index:1}
+.svc-modal-body{padding:44px 52px}
+.svc-m-section{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#2B8698;margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+.svc-m-section:first-child{margin-top:0}
+.svc-m-section::before{content:'';width:16px;height:1.5px;background:#2B8698;border-radius:2px}
+.svc-lead{font-size:16px;font-weight:300;line-height:1.8;color:#1E2A4A;margin-bottom:20px}
+.svc-body-text{font-size:14px;font-weight:300;line-height:1.78;color:#6B7A99;margin-bottom:18px}
+.svc-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.svc-pillar{padding:18px 20px;background:#f8f7fc;border-radius:12px;border:1px solid rgba(27,78,159,.1);border-left:3px solid #2B8698}
+.svc-pillar-title{font-size:12px;font-weight:700;color:#0C1630;margin-bottom:5px}
+.svc-pillar-desc{font-size:12px;font-weight:300;color:#6B7A99;line-height:1.55}
+.svc-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.svc-outcome{display:flex;align-items:flex-start;gap:10px;padding:13px 15px;background:#f8f7fc;border-radius:10px;border:1px solid rgba(27,78,159,.08)}
+.svc-outcome-icon{width:22px;height:22px;min-width:22px;border-radius:50%;background:rgba(43,134,152,.1);border:1px solid rgba(43,134,152,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:#2B8698;margin-top:1px;font-weight:700}
+.svc-outcome-text{font-size:12px;font-weight:400;color:#1E2A4A;line-height:1.5}
+.svc-process{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.svc-step{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:#f8f7fc;border-radius:12px;border:1px solid rgba(27,78,159,.08)}
+.svc-step-num{width:28px;height:28px;min-width:28px;border-radius:50%;background:linear-gradient(135deg,#1B4E9F,#7B5CC4,#C84FAE);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;margin-top:1px}
+.svc-step-title{font-size:13px;font-weight:700;color:#0C1630;margin-bottom:3px}
+.svc-step-desc{font-size:12px;font-weight:300;color:#6B7A99;line-height:1.5}
+.svc-kpis{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.svc-kpi{flex:1;min-width:110px;padding:18px 14px;border-radius:12px;background:#0C1630;text-align:center}
+.svc-kpi-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;line-height:1;background:linear-gradient(135deg,#1B4E9F,#7B5CC4,#C84FAE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.svc-kpi-label{font-size:10px;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.8px}
+.svc-modal-cta{margin-top:32px;padding-top:24px;border-top:1px solid rgba(27,78,159,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.svc-modal-cta-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#6B7A99}
+@media(max-width:640px){.svc-modal-hero,.svc-modal-body{padding:28px 24px}.svc-pillars,.svc-outcomes{grid-template-columns:1fr}.svc-modal-num{font-size:52px}}
+
 </style>
 </head>
 <body>
@@ -1576,7 +1675,7 @@ footer::before {
     </div>
     <div class="stat-pill">
       <div class="stat-accent" style="background:var(--g3);background:linear-gradient(180deg,var(--violet),var(--teal))"></div>
-      <div class="stat-num">40<span class="stat-unit">+</span></div>
+      <div class="stat-num">28</div>
       <div class="stat-meta">
         <span class="stat-label">Proyectos</span>
         <span class="stat-sub">en organizaciones de la región</span>
@@ -1605,29 +1704,30 @@ footer::before {
      ══════════════════════════════════════════════════════════════════ -->
 <div class="metrics-band" aria-label="Métricas de impacto">
   <div class="metric rv">
-    <div class="metric-n counter" data-target="5">0<span class="u">+</span></div>
+    <div class="metric-n counter" data-target="15">0<span class="u">+</span></div>
     <div class="metric-bar"></div>
-    <div class="metric-label">Años de trayectoria</div>
+    <div class="metric-label">Años de experiencia</div>
     <div class="metric-desc">Experiencia aplicada, no teórica</div>
   </div>
   <div class="metric rv d1">
-    <div class="metric-n counter" data-target="40">0<span class="u">+</span></div>
+    <div class="metric-n counter" data-target="28">0<span class="u">+</span></div>
     <div class="metric-bar" style="background:linear-gradient(135deg,var(--violet),var(--magenta))"></div>
     <div class="metric-label">Proyectos exitosos</div>
     <div class="metric-desc">Organizaciones transformadas</div>
   </div>
   <div class="metric rv d2">
-    <div class="metric-n counter" data-target="300">0<span class="u">+</span></div>
+    <div class="metric-n counter" data-target="40">0<span class="u">+</span></div>
     <div class="metric-bar" style="background:linear-gradient(135deg,var(--teal),var(--blue))"></div>
     <div class="metric-label">Profesionales capacitados</div>
     <div class="metric-desc">A través de nuestros programas</div>
   </div>
-  <div class="metric rv d3">
-    <div class="metric-n counter" data-target="20">0<span class="u">+</span></div>
-    <div class="metric-bar" style="background:var(--g2)"></div>
-    <div class="metric-label">Clientes activos</div>
-    <div class="metric-desc">Alianzas de largo plazo</div>
+  <div class="metric rv d2">
+    <div class="metric-n counter" data-target="18">0<span class="u">+</span></div>
+    <div class="metric-bar" style="background:linear-gradient(135deg,var(--teal),#2B8698)"></div>
+    <div class="metric-label">Reestructuras implementadas</div>
+    <div class="metric-desc">Con impacto medible en 90 días</div>
   </div>
+
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════
@@ -1691,7 +1791,7 @@ footer::before {
         Diseñamos la narrativa que define por qué los mejores quieren trabajar con usted,
         y construimos los sistemas para que eso sea sostenible en el tiempo.
       </p>
-      <a href="#footer" class="svc-link">
+      <a href="#" class="svc-link" data-modal="svc1">
         Conocer más
         <div class="svc-link-dot">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1708,7 +1808,7 @@ footer::before {
       </div>
       <h3 class="svc-title" id="svc2">Atracción y Selección<br>de Talento</h3>
       <p class="svc-desc">Metodología boutique con criterio ejecutivo. Garantizamos fit cultural y competencial en cada incorporación estratégica.</p>
-      <a href="#footer" class="svc-link">
+      <a href="#" class="svc-link" data-modal="svc2">
         Conocer más
         <div class="svc-link-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
@@ -1723,7 +1823,7 @@ footer::before {
       </div>
       <h3 class="svc-title" id="svc3">Diseño<br>Organizacional</h3>
       <p class="svc-desc">Rediseño de estructuras y procesos para maximizar agilidad, eficiencia y capacidad de escala con visión de largo plazo.</p>
-      <a href="#footer" class="svc-link">
+      <a href="#" class="svc-link" data-modal="svc3">
         Conocer más
         <div class="svc-link-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
@@ -1738,7 +1838,7 @@ footer::before {
       </div>
       <h3 class="svc-title" id="svc4">Desarrollo de Liderazgo y Capacitación Continua</h3>
       <p class="svc-desc">Programas de desarrollo aplicado para líderes en todos los niveles. Metodología basada en evidencia con impacto verificable. La formación continua no es un valor decorativo aquí — es el diferenciador estratégico más poderoso de su organización.</p>
-      <a href="#footer" class="svc-link">
+      <a href="#" class="svc-link" data-modal="svc4">
         Conocer más
         <div class="svc-link-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
@@ -1753,7 +1853,7 @@ footer::before {
       </div>
       <h3 class="svc-title" id="svc5">HR Business<br>Partnership</h3>
       <p class="svc-desc">Equipo de RR.HH. de élite integrado a su operación. La ventaja de un departamento senior sin la estructura fija.</p>
-      <a href="#footer" class="svc-link">
+      <a href="#" class="svc-link" data-modal="svc5">
         Conocer más
         <div class="svc-link-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
@@ -1901,10 +2001,10 @@ footer::before {
         +54 387 228 9285
       </a>
       <!-- BTN WEB — PARA MODIFICAR: cambia href y texto -->
-      <a href="https://www.hrstrategypartners.com.ar" class="btn-web" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        Ver sitio web
-      </a>
+      <button id="identidad-toggle-btn" class="identidad-toggle-btn" aria-expanded="false" aria-controls="identidad-collapsible">
+        <span>Ver Sistema de Identidad Visual</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
     </div>
   </div>
 </div>
@@ -1912,6 +2012,8 @@ footer::before {
 <!-- ══════════════════════════════════════════════════════════════════
      SISTEMA DE IDENTIDAD VISUAL
      ══════════════════════════════════════════════════════════════════ -->
+
+<div id="identidad-collapsible" class="identidad-collapsible" aria-hidden="true">
 <section class="section section-iris" id="identidad" aria-labelledby="id-h2">
   <div class="section-header rv">
     <div>
@@ -2020,6 +2122,8 @@ footer::before {
     </div>
   </div>
 </section>
+</div>
+
 
 <!-- ══════════════════════════════════════════════════════════════════
      SECCIÓN CONTACTO DEDICADA
@@ -2193,7 +2297,9 @@ footer::before {
 <!-- ══════════════════════════════════════════════════════════════════
      JAVASCRIPT
      ══════════════════════════════════════════════════════════════════ -->
+
 <script>
+
 /* ═══════════════════════════════════════════════════════════════════
    HR STRATEGY PARTNERS — JavaScript
    ═══════════════════════════════════════════════════════════════════ */
@@ -2312,51 +2418,314 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }
   });
 });
-/* ═══════════════════════════════════════════════════════════
-   FORMULARIO DE CONTACTO — JS nativo con fallback mailto
-   ═══════════════════════════════════════════════════════════ */
+
+
 (function(){
-  var form = document.getElementById('contact-form-hrsp');
-  if (!form) return;
-  var errEl   = document.getElementById('cf-error-msg');
-  var wrap    = document.getElementById('cf-form-wrap');
-  var okEl    = document.getElementById('cf-success');
-  var failEl  = document.getElementById('cf-fail');
-  var btn     = document.getElementById('cf-btn');
-  var btnTxt  = document.getElementById('cf-btn-text');
-  var btnSpin = document.getElementById('cf-btn-spin');
-  var btnArr  = document.getElementById('cf-btn-arr');
-
-  function busy(on){
-    btn.disabled = on;
-    btnTxt.style.display  = on ? 'none' : '';
-    btnSpin.style.display = on ? 'inline-flex' : 'none';
-    btnArr.style.display  = on ? 'none' : '';
-  }
-  function showOk(){ wrap.style.display='none'; okEl.style.display='block'; }
-  function showFail(){ wrap.style.display='none'; failEl.style.display='block'; }
-  function err(msg){ errEl.textContent=msg; errEl.style.display='block'; }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    errEl.style.display = 'none';
-    var nombre  = document.getElementById('cf-nombre').value.trim();
-    var email   = document.getElementById('cf-email').value.trim();
-    var mensaje = document.getElementById('cf-mensaje').value.trim();
-    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!nombre)        { err('Por favor ingresá tu nombre.'); return; }
-    if (!re.test(email)){ err('Ingresá un email válido.'); return; }
-    if (!mensaje)       { err('Escribí tu mensaje antes de enviar.'); return; }
+  var form=document.getElementById('contact-form-hrsp');
+  if(!form)return;
+  var errEl=document.getElementById('cf-error-msg');
+  var wrap=document.getElementById('cf-form-wrap');
+  var okEl=document.getElementById('cf-success');
+  var failEl=document.getElementById('cf-fail');
+  var btn=document.getElementById('cf-btn');
+  var btnTxt=document.getElementById('cf-btn-text');
+  var btnSpin=document.getElementById('cf-btn-spin');
+  var btnArr=document.getElementById('cf-btn-arr');
+  function busy(on){btn.disabled=on;btnTxt.style.display=on?'none':'';btnSpin.style.display=on?'inline-flex':'none';btnArr.style.display=on?'none':'';}
+  function showOk(){wrap.style.display='none';okEl.style.display='block';failEl.style.display='none';}
+  function showFail(){wrap.style.display='none';failEl.style.display='block';okEl.style.display='none';}
+  function showErr(msg){errEl.textContent=msg;errEl.style.display='block';}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();errEl.style.display='none';
+    var n=document.getElementById('cf-nombre').value.trim();
+    var em=document.getElementById('cf-email').value.trim();
+    var m=document.getElementById('cf-mensaje').value.trim();
+    var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!n){showErr('Por favor ingresá tu nombre.');return;}
+    if(!re.test(em)){showErr('Ingresá un email válido.');return;}
+    if(!m){showErr('Escribí tu mensaje antes de enviar.');return;}
     busy(true);
-    /* Fallback garantizado: abre cliente de email con datos prellenados */
-    var subj = encodeURIComponent('Consulta desde hrstrategypartners.com.ar');
-    var body = encodeURIComponent('Nombre: '+nombre+'\nEmail: '+email+'\n\nMensaje:\n'+mensaje);
-    window.location.href = 'mailto:contacto@hrstrategypartners.com.ar?subject='+subj+'&body='+body;
-    setTimeout(function(){ busy(false); showOk(); }, 1200);
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:'b03c2c55-744c-421a-b075-8d4c54f31ad0',name:n,email:em,message:m,subject:'Nuevo contacto desde HR Strategy Partners'})
+    }).then(function(r){return r.json();}).then(function(d){busy(false);if(d.success){showOk();}else{mlFb(n,em,m);}}).catch(function(){busy(false);mlFb(n,em,m);});
+  });
+  function mlFb(n,em,m){
+    var s=encodeURIComponent('Consulta desde hrstrategypartners.com.ar');
+    var b=encodeURIComponent('Nombre: '+n+'\nEmail: '+em+'\n\nMensaje:\n'+m);
+    window.location.href='mailto:contacto@hrstrategypartners.com.ar?subject='+s+'&body='+b;
+    setTimeout(showOk,1000);
+  }
+})();
+
+(function(){
+  var btn=document.getElementById('identidad-toggle-btn');
+  var col=document.getElementById('identidad-collapsible');
+  if(!btn||!col)return;
+  btn.addEventListener('click',function(){
+    var open=col.classList.contains('open');
+    col.classList.toggle('open',!open);
+    btn.classList.toggle('open',!open);
+    btn.querySelector('span').textContent=open?'Ver Sistema de Identidad Visual':'Ocultar Identidad Visual';
+    btn.setAttribute('aria-expanded',String(!open));
   });
 })();
 
+/* MODALES SERVICIOS — event delegation (DOM-order safe) */
+(function(){
+  function closeM(o){o.classList.remove('active');document.body.style.overflow='';}
+
+  // Abrir: delegado en document, funciona antes de que los modales existan
+  document.addEventListener('click',function(e){
+    // Botón "Conocer más"
+    var btn=e.target.closest('.svc-link[data-modal]');
+    if(btn){
+      e.preventDefault();
+      var overlay=document.getElementById('modal-'+btn.getAttribute('data-modal'));
+      if(!overlay)return;
+      overlay.classList.add('active');
+      document.body.style.overflow='hidden';
+      var f=overlay.querySelectorAll('button,.svc-modal-close');
+      if(f.length)f[0].focus();
+      return;
+    }
+    // Botón X cerrar
+    var closeBtn=e.target.closest('.svc-modal-close');
+    if(closeBtn){
+      var overlay=closeBtn.closest('.svc-modal-overlay');
+      if(overlay)closeM(overlay);
+      return;
+    }
+    // Click en backdrop (overlay directo)
+    if(e.target.classList.contains('svc-modal-overlay')){
+      closeM(e.target);
+      return;
+    }
+  });
+
+  // ESC
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      var a=document.querySelector('.svc-modal-overlay.active');
+      if(a)closeM(a);
+    }
+  });
+})();
 
 </script>
+<!-- MODALES DE SERVICIOS ══════════════════════════════════════════ -->
+
+<div class="svc-modal-overlay" id="modal-svc1" role="dialog" aria-modal="true" aria-labelledby="msvc1-title">
+  <div class="svc-modal">
+    <div class="svc-modal-hero">
+      <div class="svc-modal-accent"></div>
+      <button class="svc-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="svc-modal-icon">🎯</div>
+      <div class="svc-modal-tag">Servicio Flagship</div>
+      <h2 class="svc-modal-title" id="msvc1-title">Estrategia de<br>Marca Empleadora</h2>
+      <p class="svc-modal-subtitle">— la organización que el talento de élite elige</p>
+      <div class="svc-modal-num">01</div>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-lead">La marca empleadora no es comunicación. Es arquitectura estratégica. Diseñamos la propuesta de valor que convierte su organización en la primera opción del talento crítico, y construimos los sistemas para que esa promesa sea sostenible en el tiempo.</p>
+      <div class="svc-m-section">El problema que resolvemos</div>
+      <p class="svc-body-text">El 73% de las organizaciones pierde talento clave por razones prevenibles. No porque les falten buenos proyectos — sino porque compiten con las mismas palabras que todos: "trabajo en equipo", "crecimiento profesional", "ambiente dinámico". Nosotros construimos lo que ningún competidor puede copiar: su historia auténtica, verificable y diferenciadora.</p>
+      <div class="svc-m-section">Proceso metodológico</div>
+      <div class="svc-process">
+        <div class="svc-step"><div class="svc-step-num">1</div><div><div class="svc-step-title">Diagnóstico de Percepción</div><div class="svc-step-desc">Análisis interno y externo de cómo su organización es percibida por el talento actual, potencial y el mercado. Benchmarking competitivo.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">2</div><div><div class="svc-step-title">Arquitectura de EVP</div><div class="svc-step-desc">Diseño de la Propuesta de Valor al Empleado con pilares diferenciadores, narrativa de marca y mensajes clave por segmento de talento crítico.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">3</div><div><div class="svc-step-title">Ecosistema de Comunicación</div><div class="svc-step-desc">Implementación en todos los puntos de contacto: selección, onboarding, canales digitales y cultura interna.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">4</div><div><div class="svc-step-title">Medición y Optimización</div><div class="svc-step-desc">KPIs de marca empleadora: tiempo de cobertura, calidad de candidatos, NPS y tasa de aceptación de ofertas.</div></div></div>
+      </div>
+      <div class="svc-m-section">Resultados documentados</div>
+      <div class="svc-kpis">
+        <div class="svc-kpi"><div class="svc-kpi-n">-40%</div><div class="svc-kpi-label">tiempo de cobertura</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">+65%</div><div class="svc-kpi-label">calidad candidatos</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">+30%</div><div class="svc-kpi-label">aceptación de ofertas</div></div>
+      </div>
+      <div class="svc-m-section">Entregables</div>
+      <div class="svc-pillars">
+        <div class="svc-pillar"><div class="svc-pillar-title">Análisis de mercado laboral</div><div class="svc-pillar-desc">Posicionamiento vs. competidores directos en atracción de talento crítico.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">EVP documentada</div><div class="svc-pillar-desc">Manual de marca empleadora con mensajes, tono, pilares y aplicaciones prácticas.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Guía de implementación</div><div class="svc-pillar-desc">Plan de activación por canal con responsables, plazos y métricas de seguimiento.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Seguimiento 90 días</div><div class="svc-pillar-desc">Acompañamiento post-entrega para asegurar adopción y ajuste fino.</div></div>
+      </div>
+      <div class="svc-modal-cta">
+        <p class="svc-modal-cta-text">¿Su organización comunica lo que realmente vale?</p>
+        <a href="#contacto" class="btn-primary" onclick="document.getElementById('modal-svc1').classList.remove('active');document.body.style.overflow=''">Agendar consulta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-svc2" role="dialog" aria-modal="true" aria-labelledby="msvc2-title">
+  <div class="svc-modal">
+    <div class="svc-modal-hero">
+      <div class="svc-modal-accent"></div>
+      <button class="svc-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="svc-modal-icon">🔍</div>
+      <div class="svc-modal-tag">Servicio Premium</div>
+      <h2 class="svc-modal-title" id="msvc2-title">Atracción y Selección<br>de Talento</h2>
+      <p class="svc-modal-subtitle">— el criterio ejecutivo que elimina el error</p>
+      <div class="svc-modal-num">02</div>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-lead">Una mala contratación en posición crítica cuesta entre 1.5x y 3x el salario anual del puesto. Sin contar el impacto en equipo, cultura y proyectos en curso. Nuestra metodología boutique elimina ese riesgo con un proceso que va mucho más allá del CV.</p>
+      <div class="svc-m-section">Lo que nos diferencia</div>
+      <p class="svc-body-text">No somos una bolsa de trabajo ni una agencia de reclutamiento masivo. Aplicamos criterio ejecutivo a cada búsqueda: entendemos el negocio, el equipo que recibirá al candidato, la cultura que hay que fortalecer y el liderazgo que la posición requiere. Cada proceso es único. Cada recomendación, fundamentada.</p>
+      <div class="svc-m-section">Metodología de selección</div>
+      <div class="svc-process">
+        <div class="svc-step"><div class="svc-step-num">1</div><div><div class="svc-step-title">Briefing Estratégico</div><div class="svc-step-desc">Análisis profundo del rol: competencias técnicas, impacto esperado, dinámica de equipo y perfil cultural requerido.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">2</div><div><div class="svc-step-title">Búsqueda Activa y Pasiva</div><div class="svc-step-desc">Acceso al talento que no está buscando activamente. Red ejecutiva propia más herramientas de sourcing de última generación.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">3</div><div><div class="svc-step-title">Evaluación por Competencias</div><div class="svc-step-desc">Entrevistas estructuradas modelo STAR + evaluación de potencial y fit cultural. Sin sesgos, con criterio documentado.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">4</div><div><div class="svc-step-title">Presentación y Seguimiento</div><div class="svc-step-desc">Informe ejecutivo de terna finalista. Acompañamiento en negociación y seguimiento a 90 días post-incorporación.</div></div></div>
+      </div>
+      <div class="svc-m-section">Impacto documentado</div>
+      <div class="svc-kpis">
+        <div class="svc-kpi"><div class="svc-kpi-n">94%</div><div class="svc-kpi-label">permanencia 12 meses</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">-35%</div><div class="svc-kpi-label">tiempo de cobertura</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">100%</div><div class="svc-kpi-label">fit cultural verificado</div></div>
+      </div>
+      <div class="svc-m-section">Posiciones que gestionamos</div>
+      <div class="svc-outcomes">
+        <div class="svc-outcome"><div class="svc-outcome-icon">✓</div><div class="svc-outcome-text">Posiciones C-Suite y dirección general</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">✓</div><div class="svc-outcome-text">Líderes de equipo y gerencias medias críticas</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">✓</div><div class="svc-outcome-text">Roles técnicos críticos y especialistas escasos</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">✓</div><div class="svc-outcome-text">Perfiles comerciales de alto rendimiento</div></div>
+      </div>
+      <div class="svc-modal-cta">
+        <p class="svc-modal-cta-text">La próxima contratación crítica no debería ser una apuesta.</p>
+        <a href="#contacto" class="btn-primary" onclick="document.getElementById('modal-svc2').classList.remove('active');document.body.style.overflow=''">Iniciar proceso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-svc3" role="dialog" aria-modal="true" aria-labelledby="msvc3-title">
+  <div class="svc-modal">
+    <div class="svc-modal-hero">
+      <div class="svc-modal-accent"></div>
+      <button class="svc-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="svc-modal-icon">📊</div>
+      <div class="svc-modal-tag">Servicio Estratégico</div>
+      <h2 class="svc-modal-title" id="msvc3-title">Diseño<br>Organizacional</h2>
+      <p class="svc-modal-subtitle">— estructuras que escalan sin perder lo que funciona</p>
+      <div class="svc-modal-num">03</div>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-lead">El crecimiento sin diseño organizacional produce caos. Las estructuras que funcionaron con 20 personas fracasan con 80. Rediseñamos la arquitectura de su organización para que pueda escalar sin perder agilidad, cultura ni rentabilidad.</p>
+      <div class="svc-m-section">Señales de que lo necesita</div>
+      <div class="svc-outcomes">
+        <div class="svc-outcome"><div class="svc-outcome-icon">→</div><div class="svc-outcome-text">La empresa creció y las responsabilidades están poco claras</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">→</div><div class="svc-outcome-text">Hay superposición de roles y decisiones que nadie toma</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">→</div><div class="svc-outcome-text">Expansión a nuevos mercados o líneas de negocio</div></div>
+        <div class="svc-outcome"><div class="svc-outcome-icon">→</div><div class="svc-outcome-text">Fusiones, adquisiciones o reestructuraciones críticas</div></div>
+      </div>
+      <div class="svc-m-section">Proceso metodológico</div>
+      <div class="svc-process">
+        <div class="svc-step"><div class="svc-step-num">1</div><div><div class="svc-step-title">Diagnóstico Estructural</div><div class="svc-step-desc">Mapeo del estado actual: roles, responsabilidades, flujos de decisión, cuellos de botella y brechas críticas de capacidad.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">2</div><div><div class="svc-step-title">Diseño del Modelo Objetivo</div><div class="svc-step-desc">Arquitectura organizacional alineada con la estrategia de negocio. Estructuras, funciones, niveles y mecanismos de coordinación.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">3</div><div><div class="svc-step-title">Plan de Transición</div><div class="svc-step-desc">Hoja de ruta con gestión del cambio, comunicación interna y mitigación de riesgos de transición.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">4</div><div><div class="svc-step-title">Implementación Acompañada</div><div class="svc-step-desc">Ejecución con presencia directa, resolución de conflictos en tiempo real y ajustes basados en retroalimentación.</div></div></div>
+      </div>
+      <div class="svc-m-section">Resultados en 90 días</div>
+      <div class="svc-kpis">
+        <div class="svc-kpi"><div class="svc-kpi-n">+28%</div><div class="svc-kpi-label">velocidad de decisión</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">-22%</div><div class="svc-kpi-label">costos operativos</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">+40%</div><div class="svc-kpi-label">claridad de roles</div></div>
+      </div>
+      <div class="svc-modal-cta">
+        <p class="svc-modal-cta-text">¿Su estructura acompaña o frena su crecimiento?</p>
+        <a href="#contacto" class="btn-primary" onclick="document.getElementById('modal-svc3').classList.remove('active');document.body.style.overflow=''">Solicitar diagnóstico <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-svc4" role="dialog" aria-modal="true" aria-labelledby="msvc4-title">
+  <div class="svc-modal">
+    <div class="svc-modal-hero">
+      <div class="svc-modal-accent"></div>
+      <button class="svc-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="svc-modal-icon">🎓</div>
+      <div class="svc-modal-tag">Formación Ejecutiva</div>
+      <h2 class="svc-modal-title" id="msvc4-title">Desarrollo de Liderazgo<br>y Capacitación Continua</h2>
+      <p class="svc-modal-subtitle">— líderes que multiplican, no que retienen</p>
+      <div class="svc-modal-num">04</div>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-lead">La formación continua no es un beneficio: es la única ventaja competitiva que no se puede copiar. Diseñamos programas que transforman gerentes en líderes estratégicos y equipos promedio en organizaciones de alto rendimiento.</p>
+      <div class="svc-m-section">Nuestra filosofía</div>
+      <p class="svc-body-text">Rechazamos la capacitación decorativa — la que llena agendas pero no cambia comportamientos. Cada programa parte de un diagnóstico real, tiene objetivos de impacto medibles y se evalúa no por satisfacción sino por transformación observable en el trabajo cotidiano.</p>
+      <div class="svc-m-section">Programas disponibles</div>
+      <div class="svc-pillars">
+        <div class="svc-pillar"><div class="svc-pillar-title">Liderazgo de Alto Impacto</div><div class="svc-pillar-desc">Para directores y gerentes. Gestión estratégica, comunicación ejecutiva y decisión bajo presión.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Cultura y Gestión del Cambio</div><div class="svc-pillar-desc">Herramientas para liderar transformaciones sin perder equipo ni productividad en el proceso.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Líderes de Primera Línea</div><div class="svc-pillar-desc">Para supervisores y jefes de equipo. El salto de ejecutor a líder con metodología aplicada.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Programas In-Company</div><div class="svc-pillar-desc">Diseñados a medida para su industria, cultura y desafíos específicos. Máximo impacto, mínima disrupción.</div></div>
+      </div>
+      <div class="svc-m-section">Proceso de implementación</div>
+      <div class="svc-process">
+        <div class="svc-step"><div class="svc-step-num">1</div><div><div class="svc-step-title">Diagnóstico de Brechas</div><div class="svc-step-desc">Identificación de las competencias críticas que limitan el desempeño actual y el crecimiento futuro.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">2</div><div><div class="svc-step-title">Diseño Personalizado</div><div class="svc-step-desc">Programa a medida con contenidos y casos de su industria. Sin material genérico de librería.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">3</div><div><div class="svc-step-title">Implementación Aplicada</div><div class="svc-step-desc">Sesiones con aplicación inmediata. Entre sesiones: proyectos de impacto real con seguimiento.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">4</div><div><div class="svc-step-title">Evaluación de Transferencia</div><div class="svc-step-desc">Medición de cambio de comportamiento a 30, 60 y 90 días. ROI documentado y presentado.</div></div></div>
+      </div>
+      <div class="svc-m-section">Impacto verificable</div>
+      <div class="svc-kpis">
+        <div class="svc-kpi"><div class="svc-kpi-n">+35%</div><div class="svc-kpi-label">performance de equipo</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">-45%</div><div class="svc-kpi-label">conflictos internos</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">96%</div><div class="svc-kpi-label">aplicación práctica</div></div>
+      </div>
+      <div class="svc-modal-cta">
+        <p class="svc-modal-cta-text">¿Sus líderes están listos para el siguiente nivel?</p>
+        <a href="#contacto" class="btn-primary" onclick="document.getElementById('modal-svc4').classList.remove('active');document.body.style.overflow=''">Diseñar programa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-svc5" role="dialog" aria-modal="true" aria-labelledby="msvc5-title">
+  <div class="svc-modal">
+    <div class="svc-modal-hero">
+      <div class="svc-modal-accent"></div>
+      <button class="svc-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="svc-modal-icon">🤝</div>
+      <div class="svc-modal-tag">Alianza Estratégica</div>
+      <h2 class="svc-modal-title" id="msvc5-title">HR Business<br>Partnership</h2>
+      <p class="svc-modal-subtitle">— su equipo de RR.HH. de élite, integrado</p>
+      <div class="svc-modal-num">05</div>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-lead">El HR Business Partnership es la modalidad más poderosa que ofrecemos: nos integramos a su operación como equipo estratégico de capital humano, con la profundidad de un departamento senior sin la rigidez de la estructura fija.</p>
+      <div class="svc-m-section">Para qué tipo de organización</div>
+      <p class="svc-body-text">PyMEs y medianas empresas en crecimiento que necesitan capacidad estratégica de RR.HH. de élite pero no tienen escala para sostenerlo internamente. También para organizaciones en transición crítica que necesitan refuerzo senior durante un período definido.</p>
+      <div class="svc-m-section">Lo que obtenés</div>
+      <div class="svc-pillars">
+        <div class="svc-pillar"><div class="svc-pillar-title">Estrategia de capital humano</div><div class="svc-pillar-desc">Alineada con los objetivos de negocio. No HR por HR — HR que protege la rentabilidad.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Gestión operativa de RR.HH.</div><div class="svc-pillar-desc">Procesos, políticas y administración con estándares de calidad internacional.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Selección y desarrollo integrados</div><div class="svc-pillar-desc">Acceso a nuestra metodología completa de atracción, selección y formación.</div></div>
+        <div class="svc-pillar"><div class="svc-pillar-title">Presencia ejecutiva</div><div class="svc-pillar-desc">Participación en comité de dirección. Voz de capital humano en decisiones estratégicas.</div></div>
+      </div>
+      <div class="svc-m-section">Modelos de colaboración</div>
+      <div class="svc-process">
+        <div class="svc-step"><div class="svc-step-num">A</div><div><div class="svc-step-title">Fractional CPO</div><div class="svc-step-desc">Dirección de capital humano part-time con presencia semanal y visión de largo plazo. Ideal para organizaciones de 30-150 personas.</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">B</div><div><div class="svc-step-title">HR Project Partner</div><div class="svc-step-desc">Integración para un proyecto específico de transformación con duración definida (3-12 meses).</div></div></div>
+        <div class="svc-step"><div class="svc-step-num">C</div><div><div class="svc-step-title">HR On-Demand</div><div class="svc-step-desc">Banco de horas estratégico para momentos de alta demanda o decisiones críticas puntuales.</div></div></div>
+      </div>
+      <div class="svc-m-section">Valor diferencial</div>
+      <div class="svc-kpis">
+        <div class="svc-kpi"><div class="svc-kpi-n">-60%</div><div class="svc-kpi-label">vs. contratar internamente</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">3x</div><div class="svc-kpi-label">capacidad estratégica</div></div>
+        <div class="svc-kpi"><div class="svc-kpi-n">Day 1</div><div class="svc-kpi-label">impacto desde el inicio</div></div>
+      </div>
+      <div class="svc-modal-cta">
+        <p class="svc-modal-cta-text">El equipo de RR.HH. que siempre quisieron, ahora disponible.</p>
+        <a href="#contacto" class="btn-primary" onclick="document.getElementById('modal-svc5').classList.remove('active');document.body.style.overflow=''">Explorar alianza <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
