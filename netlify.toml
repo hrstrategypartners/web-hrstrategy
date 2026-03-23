@@ -1,26 +1,2 @@
 [build.processing]
-  skip_processing = false
-
-[build.processing.html]
-  pretty_urls = true
-
-[[headers]]
-  for = "/*"
-    [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-
-[build.processing.css]
-  bundle = false
-  minify = false
-
-[build.processing.js]
-  bundle = false
-  minify = false
-
-[build.processing.images]
-  compress = false
-```
-
-**4.** Scroll abajo → commit message:
-```
-Agregar netlify.toml — desactivar post-processing
+  skip_processing = true
