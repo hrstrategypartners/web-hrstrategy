@@ -213,16 +213,20 @@ var missing = [];
 var TOTAL = 12;
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Bind click to all check items
-  var items = document.querySelectorAll(".ci");
-  for (var i = 0; i < items.length; i++) {
-    (function(item) {
-      item.addEventListener("click", function(e) {
+  // Use event delegation at document level for maximum reliability
+  // This ensures clicks work even if elements are not found during initial binding
+  document.addEventListener("click", function(e) {
+    // Check if clicked element or any parent has class "ci"
+    var el = e.target;
+    while (el && el !== document) {
+      if (el.classList && el.classList.contains("ci")) {
         e.preventDefault();
-        toggleItem(item);
-      });
-    })(items[i]);
-  }
+        toggleItem(el);
+        return;
+      }
+      el = el.parentElement;
+    }
+  });
 
   // Bind form submit - double-bind for safety
   var form = document.getElementById("capform");

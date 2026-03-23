@@ -267,7 +267,7 @@ var NOTES = [
 
 document.addEventListener("DOMContentLoaded", function() {
   try {
-    // Build scale options for each question using IIFE to capture q and v correctly
+    // Build scale options for each question
     for (var q = 1; q <= 5; q++) {
       (function(qq) {
         var container = document.getElementById("sc" + qq);
@@ -276,8 +276,8 @@ document.addEventListener("DOMContentLoaded", function() {
           (function(vv) {
             var opt = document.createElement("div");
             opt.className = "sopt";
-            opt.setAttribute("data-q", qq);
-            opt.setAttribute("data-v", vv);
+            opt.setAttribute("data-q", String(qq));
+            opt.setAttribute("data-v", String(vv));
             var spanVal = document.createElement("span");
             spanVal.className = "sval";
             spanVal.textContent = vv;
@@ -286,26 +286,41 @@ document.addEventListener("DOMContentLoaded", function() {
             spanLbl.textContent = vv === 1 ? "Bajo" : vv === 5 ? "Alto" : "";
             opt.appendChild(spanVal);
             opt.appendChild(spanLbl);
-            opt.addEventListener("click", function(e) {
-              e.preventDefault();
-              selectOpt(qq, vv, opt);
-            });
             container.appendChild(opt);
           })(v);
         }
       })(q);
     }
 
-    // Bind calculate button
-    var btn = document.getElementById("bcalc");
-    if (btn) {
-      btn.addEventListener("click", function(e) {
-        e.preventDefault();
-        calcular();
-      });
-    }
+    // Use event delegation at document level for .sopt clicks (works on dynamically created elements)
+    document.addEventListener("click", function(e) {
+      var el = e.target;
+      // Walk up DOM to find .sopt
+      while (el && el !== document) {
+        if (el.classList && el.classList.contains("sopt")) {
+          e.preventDefault();
+          var qq = parseInt(el.getAttribute("data-q"), 10);
+          var vv = parseInt(el.getAttribute("data-v"), 10);
+          if (!isNaN(qq) && !isNaN(vv)) {
+            selectOpt(qq, vv, el);
+          }
+          return;
+        }
+        el = el.parentElement;
+      }
+      // Also handle bcalc button via delegation
+      el = e.target;
+      while (el && el !== document) {
+        if (el.id === "bcalc") {
+          e.preventDefault();
+          calcular();
+          return;
+        }
+        el = el.parentElement;
+      }
+    });
 
-    // Bind form submit - double-bind for safety
+    // Bind form submit
     var form = document.getElementById("capform");
     if (form) {
       form.addEventListener("submit", function(e) {

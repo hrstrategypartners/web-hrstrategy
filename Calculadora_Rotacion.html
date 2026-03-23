@@ -157,22 +157,22 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;hei
       <div class="fgrid">
         <div class="ff">
           <label>Salario mensual promedio</label>
-          <div class="ipre"><span>$</span><input type="number" id="f_sal" placeholder="450000" min="1"/></div>
+          <div class="ipre"><span>$</span><input type="number" id="f_sal" placeholder="450000" min="1" oninput="checkStep1()" onchange="checkStep1()"/></div>
           <span class="hint">De las posiciones que rotan con mas frecuencia (ARS)</span>
         </div>
         <div class="ff">
           <label>Personas en la organizacion</label>
-          <input type="number" id="f_emp" placeholder="45" min="1"/>
+          <input type="number" id="f_emp" placeholder="45" min="1" oninput="checkStep1()" onchange="checkStep1()"/>
           <span class="hint">Total de colaboradores activos hoy</span>
         </div>
         <div class="ff">
           <label>Posiciones que rotaron (12 meses)</label>
-          <input type="number" id="f_rot" placeholder="6" min="0"/>
+          <input type="number" id="f_rot" placeholder="6" min="0" oninput="checkStep1()" onchange="checkStep1()"/>
           <span class="hint">Bajas voluntarias mas desvinculaciones</span>
         </div>
         <div class="ff">
           <label>Sector</label>
-          <select id="f_sec">
+          <select id="f_sec" onchange="checkStep1()">
             <option value="mi sector">Mi sector</option>
             <option>Construccion / Infraestructura</option>
             <option>Manufactura / Industria</option>
@@ -430,16 +430,24 @@ function sendForm() {
 
 document.addEventListener("DOMContentLoaded", function() {
   try {
-    // Step 1 validation
+    // Step 1 validation - use multiple events to ensure Chrome fires correctly
     ["f_sal", "f_emp", "f_rot"].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) {
-        el.addEventListener("input", checkStep1);
-        el.addEventListener("change", checkStep1);
+        ["input", "change", "keyup", "blur", "paste"].forEach(function(evt) {
+          el.addEventListener(evt, function() { setTimeout(checkStep1, 10); });
+        });
       }
     });
     var fSec = document.getElementById("f_sec");
-    if (fSec) fSec.addEventListener("change", checkStep1);
+    if (fSec) {
+      fSec.addEventListener("change", checkStep1);
+      fSec.addEventListener("blur", checkStep1);
+    }
+    // Run once on load in case fields already have values (autofill, back-button etc)
+    checkStep1();
+    // Poll every 300ms as fallback for browsers where events don't fire reliably
+    setInterval(checkStep1, 300);
 
     // Step 1 next
     var btn1 = document.getElementById("btn1");
