@@ -1,2 +1,23 @@
+# Herramienta 1: Checklist de Contratación
+[[redirects]]
+  from = "/checklist_contratacion"
+  to = "/checklist_contratacion.html"
+  status = 200
+
+# Herramienta 2: Diagnóstico de Liderazgo
+[[redirects]]
+  from = "/diagnostico_liderazgo"
+  to = "/diagnostico_liderazgo.html"
+  status = 200
+
+# Herramienta 3: Calculadora de Rotación
+[[redirects]]
+  from = "/calculadora_rotacion"
+  to = "/calculadora_rotacion.html"
+  status = 200
+
+# Configuración de URLs limpias y procesamiento
 [build.processing]
-  skip_processing = true
+  skip_processing = false
+[build.processing.html]
+  pretty_urls = true
