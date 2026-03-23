@@ -3,780 +3,455 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Calculadora de Costo de Rotación — HR Strategy Partners</title>
+<title>Calculadora de Rotacion - HR Strategy Partners</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#1B4E9F;
-  --blue-deep:#0F2E6B;
-  --blue-light:#EEF2FA;
-  --violet:#7B5CC4;
-  --violet-light:#F3F0FB;
-  --magenta:#C84FAE;
-  --magenta-light:#FCF0F9;
-  --teal:#2B8698;
-  --teal-light:#EDF6F8;
-  --ink:#0C1630;
-  --ink2:#1E2A4A;
-  --muted:#6B7A99;
-  --border:rgba(27,78,159,.12);
-  --off-white:#F8F7FC;
-  --white:#FFFFFF;
-  --g-main:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --blue:#1B4E9F;--blue-light:#EEF2FA;
+  --violet:#7B5CC4;--violet-light:#F3F0FB;
+  --magenta:#C84FAE;--magenta-light:#FCF0F9;
+  --teal:#2B8698;--teal-light:#EDF6F8;
+  --ink:#0C1630;--ink2:#1E2A4A;--muted:#6B7A99;
+  --border:rgba(27,78,159,.12);--off:#F8F7FC;--white:#fff;
+  --grad:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
   --shadow-sm:0 2px 12px rgba(27,78,159,.07);
   --shadow-md:0 8px 32px rgba(27,78,159,.11);
-  --shadow-lg:0 20px 60px rgba(27,78,159,.14);
 }
-
-html{-webkit-font-smoothing:antialiased;font-size:16px;scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--off-white);color:var(--ink);line-height:1.6}
-
-/* ── HEADER (único elemento oscuro, igual que el sitio) ── */
-.site-header{
-  background:var(--ink);
-  padding:0 0 0 0;
-  position:sticky;top:0;z-index:100;
-}
-.header-top{
-  padding:10px 48px;
-  background:rgba(255,255,255,.04);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:11px;color:rgba(255,255,255,.35);
-}
-.header-top a{color:rgba(255,255,255,.35);text-decoration:none}
-.header-top a:hover{color:rgba(255,255,255,.7)}
-.header-main{
-  padding:16px 48px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-sym{
-  width:38px;height:38px;border-radius:10px;
-  background:var(--g-main);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:900;color:#fff;letter-spacing:-.5px;
-}
-.logo-text{display:flex;flex-direction:column;gap:1px}
-.logo-name{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff}
-.logo-sub{font-size:8px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--teal)}
-.header-tag{
-  padding:6px 16px;border:1px solid rgba(255,255,255,.12);border-radius:100px;
-  font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,.4);
-}
-
-/* ── HERO ── */
-.hero{
-  background:var(--ink);
-  padding:72px 48px 80px;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 50% 60% at 85% 20%,rgba(123,92,196,.18) 0%,transparent 60%),
-    radial-gradient(ellipse 35% 45% at 5% 80%,rgba(27,78,159,.22) 0%,transparent 55%);
-}
-.hero-inner{position:relative;z-index:2;max-width:960px;margin:0 auto}
-.hero-label{
-  font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-  color:var(--teal);margin-bottom:18px;
-  display:flex;align-items:center;gap:10px;
-}
-.hero-label::before{content:'';width:18px;height:1px;background:var(--teal)}
-.hero-h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(40px,5.5vw,72px);
-  font-weight:300;line-height:.95;letter-spacing:-2.5px;
-  color:#fff;margin-bottom:20px;
-}
-.hero-h1 strong{font-weight:600}
-.hero-h1 em{
-  font-style:italic;
-  background:var(--g-main);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-sub{
-  font-size:15px;font-weight:300;color:rgba(255,255,255,.5);
-  max-width:520px;line-height:1.8;
-  border-left:2px solid rgba(255,255,255,.1);padding-left:16px;
-}
-
-/* ── STEP INDICATOR (sobre fondo claro, como el sitio) ── */
-.steps-track{
-  background:var(--white);
-  border-bottom:1px solid var(--border);
-  padding:0 48px;
-}
-.steps-inner{
-  max-width:960px;margin:0 auto;
-  display:flex;
-}
-.step-tab{
-  padding:18px 24px;
-  display:flex;align-items:center;gap:10px;
-  border-bottom:2px solid transparent;
-  cursor:pointer;transition:all .2s;
-  font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  color:var(--muted);
-}
-.step-tab.done{color:var(--teal);border-bottom-color:var(--teal)}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-height:1.6}
+.hdr{background:var(--ink);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lsym{width:34px;height:34px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff}
+.lname{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.lsub{font-size:8px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase}
+.htag{padding:5px 14px;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.hero{background:var(--ink);padding:56px 40px 64px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 55% at 90% 20%,rgba(123,92,196,.18) 0%,transparent 58%)}
+.hi{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.hlbl{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.hh1{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,5vw,60px);font-weight:300;line-height:.95;letter-spacing:-2px;color:#fff;margin-bottom:16px}
+.hh1 strong{font-weight:600}
+.hh1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:14px;color:rgba(255,255,255,.5);max-width:500px;line-height:1.8;border-left:2px solid rgba(255,255,255,.1);padding-left:14px}
+.steps-track{background:var(--white);border-bottom:1px solid var(--border);padding:0 40px;position:sticky;top:62px;z-index:90}
+.steps-inner{max-width:900px;margin:0 auto;display:flex}
+.step-tab{padding:16px 20px;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 .step-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.step-circle{
-  width:22px;height:22px;border-radius:50%;
-  border:1.5px solid currentColor;
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:700;
-  flex-shrink:0;transition:all .2s;
-}
+.step-tab.done{color:var(--teal);border-bottom-color:var(--teal)}
+.step-circle{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
 .step-tab.done .step-circle{background:var(--teal);border-color:var(--teal);color:#fff}
 .step-tab.active .step-circle{background:var(--blue);border-color:var(--blue);color:#fff}
-
-/* ── MAIN LAYOUT ── */
-.main{max-width:960px;margin:0 auto;padding:48px 48px 80px}
-
-/* ── CARD ── */
-.card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow-md);
-}
-.card-step{display:none}
-.card-step.active{display:block}
-
-.card-head{
-  padding:24px 32px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:14px;
-  background:var(--off-white);
-}
-.ch-badge{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--g-main);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:800;color:#fff;flex-shrink:0;
-}
-.ch-title{font-size:15px;font-weight:700;color:var(--ink)}
-.ch-sub{font-size:12px;color:var(--muted);margin-top:1px}
-
-/* ── FORM FIELDS ── */
-.form-body{padding:32px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{
-  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);
-}
-.field .hint{font-size:11px;color:var(--muted);opacity:.7;line-height:1.5}
-.field input,.field select{
-  padding:12px 15px;
-  border:1.5px solid var(--border);
-  border-radius:10px;
-  background:var(--white);
-  font-family:'Outfit',sans-serif;
-  font-size:14px;color:var(--ink);
-  outline:none;
-  transition:border-color .2s,box-shadow .2s;
-  appearance:none;
-}
-.field input:focus,.field select:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(27,78,159,.08);
-}
-.field input::placeholder{color:rgba(107,122,153,.5)}
-.input-pre{position:relative}
-.input-pre span{
-  position:absolute;left:13px;top:50%;transform:translateY(-50%);
-  font-size:13px;font-weight:600;color:var(--muted);pointer-events:none;
-}
-.input-pre input{padding-left:30px}
-
-/* ── SLIDER CARDS ── */
-.slider-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
-.slider-card{
-  border:1px solid var(--border);border-radius:14px;
-  padding:20px 24px;background:var(--white);
-  display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;
-  transition:border-color .2s,box-shadow .2s;
-}
-.slider-card:hover{border-color:rgba(27,78,159,.25);box-shadow:var(--shadow-sm)}
-.sc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--teal);margin-bottom:4px;font-weight:500}
-.sc-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.sc-desc{font-size:11px;color:var(--muted);line-height:1.5}
-.sc-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.sc-val{
-  font-family:'Cormorant Garamond',serif;
-  font-size:28px;font-weight:600;color:var(--blue);line-height:1;
-}
-input[type=range]{
-  -webkit-appearance:none;width:100%;height:4px;
-  border-radius:2px;background:var(--border);outline:none;cursor:pointer;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
-  background:var(--blue);cursor:pointer;box-shadow:0 2px 8px rgba(27,78,159,.3);
-  transition:transform .15s;
-}
-input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
-
-/* ── BOTONES ── */
-.btn-primary{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  width:100%;padding:15px;border-radius:100px;
-  background:var(--magenta);border:none;cursor:pointer;
-  font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;color:#fff;
-  transition:opacity .2s,transform .15s,box-shadow .2s;
-}
-.btn-primary:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 8px 24px rgba(200,79,174,.3)}
-.btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
-.btn-secondary{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  padding:13px 24px;border-radius:100px;
-  background:transparent;border:1.5px solid var(--border);cursor:pointer;
-  font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
-  transition:all .2s;
-}
-.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
-.btn-row{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:0 32px 32px}
-
-/* ── RESULTADO ── */
-.result-body{padding:32px}
-.result-hero-card{
-  background:var(--ink);border-radius:16px;
-  padding:40px;margin-bottom:24px;
-  position:relative;overflow:hidden;text-align:center;
-}
-.result-hero-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(123,92,196,.15) 0%,transparent 60%);
-}
-.rhc-inner{position:relative;z-index:2}
-.rhc-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.rhc-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(52px,8vw,84px);
-  font-weight:600;line-height:1;letter-spacing:-3px;
-  background:var(--g-main);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block;margin-bottom:8px;
-}
-.rhc-period{font-size:13px;color:rgba(255,255,255,.35);font-weight:300}
-
-.breakdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.bk-item{
-  border:1px solid var(--border);border-radius:12px;
-  padding:16px 20px;background:var(--off-white);
-}
-.bk-label{font-size:11px;color:var(--muted);margin-bottom:6px;line-height:1.4}
-.bk-val{
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;font-weight:600;color:var(--blue);
-}
-.urgency{
-  border-radius:12px;padding:18px 22px;margin-bottom:24px;
-  display:flex;align-items:flex-start;gap:14px;
-  font-size:13px;line-height:1.65;
-}
-.urgency.high{background:var(--magenta-light);border:1px solid rgba(200,79,174,.2);color:var(--ink2)}
-.urgency.high strong{color:var(--magenta)}
-.urgency.mid{background:var(--violet-light);border:1px solid rgba(123,92,196,.2);color:var(--ink2)}
-.urgency.mid strong{color:var(--violet)}
-.urgency.low{background:var(--teal-light);border:1px solid rgba(43,134,152,.2);color:var(--ink2)}
-.urgency.low strong{color:var(--teal)}
-.urgency-icon{font-size:24px;flex-shrink:0;margin-top:-2px}
-
-/* ── CAPTURA EMAIL ── */
-.capture-body{padding:40px 32px}
-.capture-head{text-align:center;margin-bottom:32px}
-.cap-icon{
-  width:56px;height:56px;border-radius:14px;background:var(--blue-light);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;margin:0 auto 16px;
-}
-.cap-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);letter-spacing:-.3px;margin-bottom:8px;line-height:1.2}
-.cap-sub{font-size:14px;color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto}
-.cap-number{
-  background:var(--blue-light);border:1px solid rgba(27,78,159,.15);
-  border-radius:12px;padding:16px 20px;
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:24px;
-}
-.cap-num-label{font-size:12px;color:var(--blue);font-weight:600}
-.cap-num-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--blue)}
-.capture-form{display:flex;flex-direction:column;gap:14px}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn-submit{
-  width:100%;padding:15px;border-radius:100px;
-  background:var(--magenta);border:none;cursor:pointer;
-  font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;color:#fff;
-  transition:opacity .2s,transform .15s;margin-top:4px;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
-.btn-submit:hover{opacity:.9;transform:translateY(-1px)}
-.btn-submit:disabled{opacity:.35;cursor:not-allowed;transform:none}
-.loader{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
+.main{max-width:900px;margin:0 auto;padding:40px 40px 80px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-md)}
+.cstep{display:none}
+.cstep.active{display:block}
+.chead{padding:20px 28px;border-bottom:1px solid var(--border);background:var(--off);display:flex;align-items:center;gap:12px}
+.chbadge{width:30px;height:30px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.chtitle{font-size:14px;font-weight:700;color:var(--ink)}
+.chsub{font-size:12px;color:var(--muted);margin-top:1px}
+.fbody{padding:28px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.ff{display:flex;flex-direction:column;gap:5px}
+.ff label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.ff .hint{font-size:10px;color:var(--muted);opacity:.7;margin-top:2px}
+.ff input,.ff select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--white);font-family:Outfit,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;appearance:none}
+.ff input:focus,.ff select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,78,159,.08)}
+.ff input::placeholder{color:rgba(107,122,153,.5)}
+.ipre{position:relative}
+.ipre span{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:var(--muted);pointer-events:none}
+.ipre input{padding-left:28px}
+.bprimary{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;margin-top:8px}
+.bprimary:hover{opacity:.9;transform:translateY(-1px)}
+.bprimary:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.bsecondary{padding:12px 22px;border-radius:100px;background:transparent;border:1.5px solid var(--border);cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:all .2s}
+.bsecondary:hover{border-color:var(--blue);color:var(--blue)}
+.brow{display:grid;grid-template-columns:auto 1fr;gap:12px;margin-top:20px}
+.sgrid{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.scard{border:1px solid var(--border);border-radius:12px;padding:16px 20px;background:var(--white);display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:center;transition:border-color .2s}
+.scard:hover{border-color:rgba(27,78,159,.25)}
+.sctag{font-family:monospace;font-size:9px;color:var(--teal);margin-bottom:3px}
+.sclabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.scdesc{font-size:11px;color:var(--muted);line-height:1.5}
+.scright{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.scval{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--blue);line-height:1}
+input[type="range"]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;box-shadow:0 2px 8px rgba(27,78,159,.3)}
+.rh{background:var(--ink);border-radius:14px;padding:36px;margin-bottom:20px;position:relative;overflow:hidden;text-align:center}
+.rh::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(123,92,196,.15) 0%,transparent 60%)}
+.rhi{position:relative;z-index:2}
+.rhlbl{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.rhnum{font-family:"Cormorant Garamond",serif;font-size:clamp(48px,8vw,80px);font-weight:600;line-height:1;letter-spacing:-3px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:6px}
+.rhper{font-size:13px;color:rgba(255,255,255,.35)}
+.bkgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.bk{border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:var(--off)}
+.bkl{font-size:11px;color:var(--muted);margin-bottom:5px;line-height:1.4}
+.bkv{font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:var(--blue)}
+.urgency{border-radius:12px;padding:16px 18px;margin-bottom:18px;display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.65}
+.urg-hi{background:var(--magenta-light);border:1px solid rgba(200,79,174,.2)}
+.urg-hi strong{color:var(--magenta)}
+.urg-mi{background:var(--violet-light);border:1px solid rgba(123,92,196,.2)}
+.urg-mi strong{color:var(--violet)}
+.urg-lo{background:var(--teal-light);border:1px solid rgba(43,134,152,.2)}
+.urg-lo strong{color:var(--teal)}
+.capbody{padding:28px}
+.capscorerow{display:flex;justify-content:space-between;align-items:center;background:var(--blue-light);border:1px solid rgba(27,78,159,.15);border-radius:10px;padding:14px 18px;margin-bottom:20px}
+.csrlab{font-size:12px;color:var(--blue);font-weight:600}
+.csrval{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;color:var(--blue)}
+.capform{display:flex;flex-direction:column;gap:12px}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bsend{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.bsend:hover{opacity:.9;transform:translateY(-1px)}
+.bsend:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.ld{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
-.privacy{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
-
-/* ── SUCCESS ── */
-.success-state{display:none;text-align:center;padding:48px 32px}
-.success-state.show{display:block}
-.suc-check{
-  width:64px;height:64px;border-radius:50%;
-  background:var(--teal-light);border:2px solid var(--teal);
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;margin:0 auto 20px;
-}
-.suc-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.suc-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:400px;margin:0 auto 28px}
-.suc-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--magenta);color:#fff;
-  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  padding:14px 32px;border-radius:100px;text-decoration:none;
-  transition:opacity .2s;
-}
-.suc-cta:hover{opacity:.88}
-.suc-num-block{
-  background:var(--off-white);border:1px solid var(--border);
-  border-radius:12px;padding:16px;margin:20px 0;
-}
-.suc-num-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.suc-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--blue)}
-
-/* ── FOOTER ── */
-.site-footer{
-  background:var(--ink);padding:32px 48px;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:12px;
-}
-.sf-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.sf-info{font-size:11px;color:rgba(255,255,255,.25);text-align:right;line-height:1.8}
-
-@media(max-width:720px){
-  .hero,.main,.header-main,.header-top,.steps-inner,.site-footer{padding-left:20px;padding-right:20px}
-  .form-grid,.breakdown-grid,.btn-row,.cf-row{grid-template-columns:1fr}
-  .slider-card{grid-template-columns:1fr}
-  .sc-right{align-items:flex-start}
-  input[type=range]{width:100%}
-}
+.prv{font-size:11px;color:var(--muted);text-align:center;margin-top:10px}
+.sucblock{display:none;text-align:center;padding:36px 16px}
+.sucblock.show{display:block}
+.sico{font-size:48px;margin-bottom:14px;display:block}
+.stit{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.ssub{font-size:14px;color:var(--muted);line-height:1.75;max-width:380px;margin:0 auto 22px}
+.scta{display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 26px;border-radius:100px;text-decoration:none}
+.foot{background:var(--ink);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fb{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.fi{font-size:11px;color:rgba(255,255,255,.25);text-align:right;line-height:1.8}
+@media(max-width:680px){.hdr,.hero,.steps-track,.main,.foot{padding-left:18px;padding-right:18px}.fgrid,.bkgrid,.crow{grid-template-columns:1fr}.scard{grid-template-columns:1fr}.scright{align-items:flex-start}.steps-track{top:54px}.brow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-top">
-    <span>HR Strategy Partners · Consultoría Boutique | Alianzas Estratégicas</span>
-    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc9f9392889d9f8893bc948e8f888e9d88999b858c9d8e8892998e8fd29f9391d29d8e">[email&#160;protected]</a> · +54 387 228 9285</span>
-  </div>
-  <div class="header-main">
-    <a href="https://www.hrstrategypartners.com.ar" class="logo" target="_blank">
-      <div class="logo-sym">HR</div>
-      <div class="logo-text">
-        <span class="logo-name">HR Strategy Partners</span>
-        <span class="logo-sub">Alianzas Estratégicas</span>
-      </div>
-    </a>
-    <div class="header-tag">Herramienta Gratuita · Flujo 01</div>
-  </div>
+<header class="hdr">
+  <a href="https://www.hrstrategypartners.com.ar" class="logo">
+    <div class="lsym">HR</div>
+    <div><div class="lname">HR Strategy Partners</div><div class="lsub">Alianzas Estrategicas</div></div>
+  </a>
+  <div class="htag">Lead Magnet - Flujo 01</div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-label">Calculadora de Costo de Rotación</div>
-    <h1 class="hero-h1">
-      <strong>¿Cuánto te cuesta realmente</strong><br>
-      <em>tu rotación de personas?</em>
-    </h1>
-    <p class="hero-sub">La mayoría de las empresas subestima este número hasta que lo calcula. Completá 3 pasos y conocé el costo real — en pesos, sin estimaciones genéricas.</p>
+  <div class="hi">
+    <div class="hlbl">Calculadora de Costo de Rotacion</div>
+    <h1 class="hh1"><strong>Cuanto te cuesta realmente</strong><br><em>tu rotacion de personas?</em></h1>
+    <p class="hsub">La mayoria de las empresas subestima este numero hasta que lo calcula. Completa 3 pasos y conoce el costo real en pesos, sin estimaciones genericas.</p>
   </div>
 </section>
 
-<!-- STEP TABS -->
 <div class="steps-track">
   <div class="steps-inner">
-    <div class="step-tab active" id="tab1"><div class="step-circle">1</div>Tu empresa</div>
-    <div class="step-tab" id="tab2"><div class="step-circle">2</div>Variables</div>
-    <div class="step-tab" id="tab3"><div class="step-circle">3</div>Resultado</div>
-    <div class="step-tab" id="tab4"><div class="step-circle">4</div>Tu informe</div>
+    <div class="step-tab active" id="t1"><div class="step-circle" id="tc1">1</div>Tu empresa</div>
+    <div class="step-tab" id="t2"><div class="step-circle" id="tc2">2</div>Variables</div>
+    <div class="step-tab" id="t3"><div class="step-circle" id="tc3">3</div>Resultado</div>
+    <div class="step-tab" id="t4"><div class="step-circle" id="tc4">4</div>Tu informe</div>
   </div>
 </div>
 
-<!-- MAIN -->
 <main class="main">
-  <div class="card">
+<div class="card">
 
-    <!-- STEP 1 -->
-    <div class="card-step active" id="s1">
-      <div class="card-head">
-        <div class="ch-badge">1</div>
-        <div>
-          <div class="ch-title">Datos de tu organización</div>
-          <div class="ch-sub">Sin estos datos el cálculo no tiene precisión real para tu empresa específica</div>
+  <!-- STEP 1 -->
+  <div class="cstep active" id="s1">
+    <div class="chead"><div class="chbadge">1</div><div><div class="chtitle">Datos de tu organizacion</div><div class="chsub">Sin estos datos el calculo no tiene precision real para tu empresa</div></div></div>
+    <div class="fbody">
+      <div class="fgrid">
+        <div class="ff">
+          <label>Salario mensual promedio</label>
+          <div class="ipre"><span>$</span><input type="number" id="f_sal" placeholder="450000" min="1"/></div>
+          <span class="hint">De las posiciones que rotan con mas frecuencia (ARS)</span>
+        </div>
+        <div class="ff">
+          <label>Personas en la organizacion</label>
+          <input type="number" id="f_emp" placeholder="45" min="1"/>
+          <span class="hint">Total de colaboradores activos hoy</span>
+        </div>
+        <div class="ff">
+          <label>Posiciones que rotaron (12 meses)</label>
+          <input type="number" id="f_rot" placeholder="6" min="0"/>
+          <span class="hint">Bajas voluntarias mas desvinculaciones</span>
+        </div>
+        <div class="ff">
+          <label>Sector</label>
+          <select id="f_sec">
+            <option value="mi sector">Mi sector</option>
+            <option>Construccion / Infraestructura</option>
+            <option>Manufactura / Industria</option>
+            <option>Agroindustria</option>
+            <option>Servicios empresariales</option>
+            <option>Salud</option>
+            <option>Logistica / Transporte</option>
+            <option>Comercio / Retail</option>
+            <option>Tecnologia</option>
+            <option>Otro</option>
+          </select>
         </div>
       </div>
-      <div class="form-body">
-        <div class="form-grid">
-          <div class="field">
-            <label>Salario mensual promedio</label>
-            <div class="input-pre">
-              <span>$</span>
-              <input type="number" id="salario" placeholder="450.000" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
-            </div>
-            <span class="hint">De las posiciones que rotan con más frecuencia (ARS)</span>
-          </div>
-          <div class="field">
-            <label>Personas en la organización</label>
-            <input type="number" id="empleados" placeholder="45" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
-            <span class="hint">Total de colaboradores activos hoy</span>
-          </div>
-          <div class="field">
-            <label>Posiciones que rotaron (últimos 12 meses)</label>
-            <input type="number" id="rotaciones" placeholder="6" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
-            <span class="hint">Bajas voluntarias + desvinculaciones</span>
-          </div>
-          <div class="field">
-            <label>Sector / Industria</label>
-            <select id="sector" onchange="val1()" onclick="val1()">
-              <option value="">Seleccioná...</option>
-              <option>Construcción / Infraestructura</option>
-              <option>Manufactura / Industria</option>
-              <option>Agroindustria</option>
-              <option>Servicios empresariales</option>
-              <option>Salud</option>
-              <option>Logística / Transporte</option>
-              <option>Comercio / Retail</option>
-              <option>Tecnología</option>
-              <option>Otro</option>
-            </select>
-          </div>
+      <button class="bprimary" id="btn1" disabled>Continuar - ajustar variables</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="cstep" id="s2">
+    <div class="chead"><div class="chbadge">2</div><div><div class="chtitle">Ajusta las variables a tu realidad</div><div class="chsub">Valores predeterminados basados en promedios del mercado NOA</div></div></div>
+    <div class="fbody">
+      <div class="sgrid">
+        <div class="scard">
+          <div><div class="sctag">VAR 01</div><div class="sclabel">Meses para cubrir una vacante</div><div class="scdesc">Desde que la persona sale hasta que el reemplazante opera con normalidad</div></div>
+          <div class="scright"><div class="scval" id="v1">2 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">meses</small></div><input type="range" id="r1" min="1" max="8" step="0.5" value="2"/></div>
         </div>
-        <button class="btn-primary" id="btn1" onclick="go(2)" disabled>Continuar — ajustar variables →</button>
+        <div class="scard">
+          <div><div class="sctag">VAR 02</div><div class="sclabel">Productividad del reemplazante (primeros 60 dias)</div><div class="scdesc">Porcentaje de productividad plena en los primeros 2 meses</div></div>
+          <div class="scright"><div class="scval" id="v2">45 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">%</small></div><input type="range" id="r2" min="10" max="90" step="5" value="45"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 03</div><div class="sclabel">Costo de busqueda y seleccion por posicion</div><div class="scdesc">Tiempo del equipo mas publicaciones mas entrevistas (en pesos)</div></div>
+          <div class="scright"><div class="scval" id="v3">$ <small style="font-size:13px;font-family:Outfit,sans-serif">80.000</small></div><input type="range" id="r3" min="20000" max="500000" step="10000" value="80000"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 04</div><div class="sclabel">Costo de capacitacion e induccion</div><div class="scdesc">Tiempo de lider mas materiales mas RRHH en primeros 30 dias</div></div>
+          <div class="scright"><div class="scval" id="v4">$ <small style="font-size:13px;font-family:Outfit,sans-serif">45.000</small></div><input type="range" id="r4" min="10000" max="300000" step="5000" value="45000"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 05</div><div class="sclabel">Caida de productividad del equipo durante la transicion</div><div class="scdesc">Porcentaje de baja en el equipo directo mientras la posicion esta vacante</div></div>
+          <div class="scright"><div class="scval" id="v5">15 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">%</small></div><input type="range" id="r5" min="5" max="40" step="5" value="15"/></div>
+        </div>
+      </div>
+      <div class="brow">
+        <button class="bsecondary" id="btn_back2">Atras</button>
+        <button class="bprimary" id="btn2">Ver mi resultado</button>
       </div>
     </div>
+  </div>
 
-    <!-- STEP 2 -->
-    <div class="card-step" id="s2">
-      <div class="card-head">
-        <div class="ch-badge">2</div>
-        <div>
-          <div class="ch-title">Ajustá las variables a tu realidad</div>
-          <div class="ch-sub">Valores predeterminados basados en promedios del mercado NOA — podés ajustarlos</div>
-        </div>
+  <!-- STEP 3 -->
+  <div class="cstep" id="s3">
+    <div class="chead"><div class="chbadge" style="background:var(--magenta);background-image:none">3</div><div><div class="chtitle">Tu resultado</div><div class="chsub" id="s3sub">Basado en los datos de tu organizacion</div></div></div>
+    <div class="fbody">
+      <div class="rh"><div class="rhi">
+        <div class="rhlbl">Costo anual estimado de rotacion</div>
+        <span class="rhnum" id="totalnum">$ 0</span>
+        <div class="rhper">en los ultimos 12 meses, incluyendo costos directos e indirectos</div>
+      </div></div>
+      <div class="bkgrid">
+        <div class="bk"><div class="bkl">Productividad perdida (vacantes + transicion)</div><div class="bkv" id="bk1">$ 0</div></div>
+        <div class="bk"><div class="bkl">Busqueda y seleccion</div><div class="bkv" id="bk2">$ 0</div></div>
+        <div class="bk"><div class="bkl">Capacitacion e induccion</div><div class="bkv" id="bk3">$ 0</div></div>
+        <div class="bk"><div class="bkl">Impacto en equipo circundante</div><div class="bkv" id="bk4">$ 0</div></div>
       </div>
-      <div class="form-body">
-        <div class="slider-grid">
-          <div class="slider-card">
-            <div>
-              <div class="sc-tag">VAR 01</div>
-              <div class="sc-label">Meses para cubrir una vacante</div>
-              <div class="sc-desc">Desde que la persona sale hasta que el reemplazante opera con normalidad</div>
-            </div>
-            <div class="sc-right">
-              <div class="sc-val" id="v1">2 <span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">meses</span></div>
-              <input type="range" id="r1" min="1" max="8" step="0.5" value="2" oninput="upd('v1',this.value,'months')"/>
-            </div>
-          </div>
-          <div class="slider-card">
-            <div>
-              <div class="sc-tag">VAR 02</div>
-              <div class="sc-label">Productividad del reemplazante (primeros 60 días)</div>
-              <div class="sc-desc">% de productividad plena que alcanza el nuevo colaborador en los primeros 2 meses</div>
-            </div>
-            <div class="sc-right">
-              <div class="sc-val" id="v2">45 <span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">%</span></div>
-              <input type="range" id="r2" min="10" max="90" step="5" value="45" oninput="upd('v2',this.value,'pct')"/>
-            </div>
-          </div>
-          <div class="slider-card">
-            <div>
-              <div class="sc-tag">VAR 03</div>
-              <div class="sc-label">Costo de búsqueda y selección por posición</div>
-              <div class="sc-desc">Tiempo del equipo + publicaciones + entrevistas (estimado en pesos)</div>
-            </div>
-            <div class="sc-right">
-              <div class="sc-val" id="v3"><span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">$</span> 80.000</div>
-              <input type="range" id="r3" min="20000" max="500000" step="10000" value="80000" oninput="upd('v3',this.value,'$')"/>
-            </div>
-          </div>
-          <div class="slider-card">
-            <div>
-              <div class="sc-tag">VAR 04</div>
-              <div class="sc-label">Costo de capacitación e inducción</div>
-              <div class="sc-desc">Tiempo de líder + materiales + dedicación RRHH en los primeros 30 días</div>
-            </div>
-            <div class="sc-right">
-              <div class="sc-val" id="v4"><span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">$</span> 45.000</div>
-              <input type="range" id="r4" min="10000" max="300000" step="5000" value="45000" oninput="upd('v4',this.value,'$')"/>
-            </div>
-          </div>
-          <div class="slider-card">
-            <div>
-              <div class="sc-tag">VAR 05</div>
-              <div class="sc-label">Caída de productividad del equipo durante la transición</div>
-              <div class="sc-desc">% de baja en el equipo directo mientras la posición está vacante</div>
-            </div>
-            <div class="sc-right">
-              <div class="sc-val" id="v5">15 <span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">%</span></div>
-              <input type="range" id="r5" min="5" max="40" step="5" value="15" oninput="upd('v5',this.value,'pct')"/>
-            </div>
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn-secondary" onclick="go(1)">← Atrás</button>
-          <button class="btn-primary" onclick="calcular()">Ver mi resultado →</button>
-        </div>
+      <div class="urgency" id="urg"><span id="urgicon">&#9889;</span>&nbsp;<span id="urgtext"></span></div>
+      <div class="brow">
+        <button class="bsecondary" id="btn_back3">Ajustar</button>
+        <button class="bprimary" id="btn3">Recibir analisis completo</button>
       </div>
     </div>
+  </div>
 
-    <!-- STEP 3 -->
-    <div class="card-step" id="s3">
-      <div class="card-head">
-        <div class="ch-badge" style="background:var(--magenta)">3</div>
-        <div>
-          <div class="ch-title">Tu resultado</div>
-          <div class="ch-sub" id="s3sub">Basado en los datos de tu organización</div>
+  <!-- STEP 4 -->
+  <div class="cstep" id="s4">
+    <div class="sucblock" id="sucstate">
+      <span class="sico">&#9989;</span>
+      <h3 class="stit">Tu analisis esta en camino</h3>
+      <p class="ssub">En los proximos minutos recibis el desglose completo con recomendaciones especificas para reducir este numero en los proximos 90 dias.</p>
+      <a href="https://calendly.com/hrstrategypartners/diagnostico" class="scta">Agendar diagnostico estrategico</a>
+    </div>
+    <div id="capwrap">
+      <div class="chead"><div class="chbadge" style="background:var(--violet);background-image:none">4</div><div><div class="chtitle">Recibi tu analisis completo</div><div class="chsub">Con recomendaciones especificas para reducir este numero</div></div></div>
+      <div class="capbody">
+        <div class="capscorerow">
+          <span class="csrlab">Tu costo calculado</span>
+          <span class="csrval" id="capnum">$ 0</span>
         </div>
-      </div>
-      <div class="result-body">
-        <div class="result-hero-card">
-          <div class="rhc-inner">
-            <div class="rhc-label">Costo anual estimado de rotación</div>
-            <span class="rhc-num" id="totalNum">$ 0</span>
-            <div class="rhc-period">en los últimos 12 meses · incluyendo costos directos e indirectos</div>
+        <form class="capform" id="capform">
+          <input type="hidden" name="access_key" value="560db779-dcde-47d3-9945-1795d14184f3"/>
+          <input type="hidden" name="subject" value="Nuevo lead - Calculadora Rotacion HRSP"/>
+          <input type="hidden" name="from_name" value="HR Strategy Partners"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="hidden" name="costo_calculado" id="h_costo"/>
+          <input type="hidden" name="sector" id="h_sector"/>
+          <input type="hidden" name="empleados" id="h_emp2"/>
+          <input type="hidden" name="rotaciones" id="h_rot2"/>
+          <div class="crow">
+            <div class="ff"><label>Nombre *</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
+            <div class="ff"><label>Empresa *</label><input type="text" name="empresa" placeholder="Tu organizacion" required/></div>
           </div>
-        </div>
-        <div class="breakdown-grid">
-          <div class="bk-item">
-            <div class="bk-label">Productividad perdida (vacantes + transición)</div>
-            <div class="bk-val" id="bk1">$ 0</div>
-          </div>
-          <div class="bk-item">
-            <div class="bk-label">Búsqueda y selección</div>
-            <div class="bk-val" id="bk2">$ 0</div>
-          </div>
-          <div class="bk-item">
-            <div class="bk-label">Capacitación e inducción</div>
-            <div class="bk-val" id="bk3">$ 0</div>
-          </div>
-          <div class="bk-item">
-            <div class="bk-label">Impacto en equipo circundante</div>
-            <div class="bk-val" id="bk4">$ 0</div>
-          </div>
-        </div>
-        <div class="urgency high" id="urgency">
-          <span class="urgency-icon">⚡</span>
-          <span id="urgencyText"></span>
-        </div>
-        <div class="btn-row" style="padding:0">
-          <button class="btn-secondary" onclick="go(2)">← Ajustar</button>
-          <button class="btn-primary" onclick="go(4)">Recibir análisis completo →</button>
-        </div>
+          <div class="ff"><label>Email *</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
+          <div class="ff"><label>Telefono (opcional)</label><input type="tel" name="telefono" placeholder="+54 387 000 0000"/></div>
+          <button type="submit" class="bsend" id="bsend">
+            <span id="btxt">Enviarme el analisis completo</span>
+            <div class="ld" id="ld"></div>
+          </button>
+        </form>
+        <p class="prv">Sin spam. Solo el analisis que pediste.</p>
       </div>
     </div>
+  </div>
 
-    <!-- STEP 4 -->
-    <div class="card-step" id="s4">
-      <div class="success-state" id="successState">
-        <div class="suc-check">✅</div>
-        <h3 class="suc-title">Tu análisis está en camino</h3>
-        <p class="suc-sub">En los próximos minutos recibís el desglose completo en tu email, con recomendaciones específicas para reducir este número en los próximos 90 días.</p>
-        <div class="suc-num-block">
-          <div class="suc-num-label">Tu costo de rotación calculado</div>
-          <div class="suc-num" id="sucNum">$ 0</div>
-        </div>
-        <a href="https://calendly.com/hrstrategypartners/diagnostico" target="_blank" class="suc-cta">Agendar diagnóstico estratégico →</a>
-      </div>
-      <div id="captureWrap">
-        <div class="card-head">
-          <div class="ch-badge" style="background:var(--violet)">4</div>
-          <div>
-            <div class="ch-title">Recibí tu análisis completo</div>
-            <div class="ch-sub">Con las recomendaciones específicas para reducir este número</div>
-          </div>
-        </div>
-        <div class="capture-body">
-          <div class="capture-head">
-            <div class="cap-icon">📊</div>
-            <h3 class="cap-title">Un número no alcanza.<br>Necesitás el contexto.</h3>
-            <p class="cap-sub">Te envío el desglose con las principales causas de rotación en tu sector y las palancas de mayor impacto para reducirla en 90 días.</p>
-          </div>
-          <div class="cap-number">
-            <span class="cap-num-label">Tu costo calculado</span>
-            <span class="cap-num-val" id="capNum">$ 0</span>
-          </div>
-          <form class="capture-form" id="captureForm" onsubmit="submitForm(event)">
-            <input type="hidden" name="access_key" value="560db779-dcde-47d3-9945-1795d14184f3"/>
-            <input type="hidden" name="subject" value="Nuevo lead — Calculadora de Rotación HRSP"/>
-            <input type="hidden" name="from_name" value="HR Strategy Partners"/>
-            <input type="hidden" name="redirect" value="false"/>
-            <input type="hidden" name="costo_calculado" id="h_costo"/>
-            <input type="hidden" name="sector" id="h_sector"/>
-            <input type="hidden" name="empleados" id="h_emp"/>
-            <input type="hidden" name="rotaciones" id="h_rot"/>
-            <div class="cf-row">
-              <div class="field"><label>Nombre *</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
-              <div class="field"><label>Empresa *</label><input type="text" name="empresa" placeholder="Tu organización" required/></div>
-            </div>
-            <div class="field"><label>Email *</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
-            <div class="field"><label>Teléfono (opcional)</label><input type="tel" name="telefono" placeholder="+54 387 000 0000"/></div>
-            <button type="submit" class="btn-submit" id="subBtn">
-              <span id="subTxt">Enviarme el análisis completo →</span>
-              <div class="loader" id="subLoader"></div>
-            </button>
-          </form>
-          <p class="privacy">Sin spam. Solo el análisis que pediste. Si el número justifica la conversación, te lo digo yo.</p>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /card -->
+</div>
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div>
-    <div class="sf-brand">HR Strategy Partners</div>
-    <div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:3px">Consultoría Boutique · Alianzas Estratégicas · NOA · Argentina</div>
-  </div>
-  <div class="sf-info">
-    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6b5b9b8a2b7b5a2b996bea4a5a2a4b7a2b3b1afa6b7a4a2b8b3a4a5f8b5b9bbf8b7a4">[email&#160;protected]</a><br>
-    +54 387 228 9285 · www.hrstrategypartners.com.ar
-  </div>
+<footer class="foot">
+  <div><div class="fb">HR Strategy Partners</div><div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:3px">Consultoria Boutique - NOA - Argentina</div></div>
+  <div class="fi">contacto&#64;hrstrategypartners.com.ar<br>+54 387 228 9285</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let total=0, desg={};
+<script>
+var total = 0;
+var desg = {};
 
-function go(n){
-  document.querySelectorAll('.card-step').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
-  [1,2,3,4].forEach(i=>{
-    const t=document.getElementById('tab'+i);
-    t.classList.remove('active','done');
-    if(i<n){t.classList.add('done');t.querySelector('.step-circle').textContent='✓'}
-    else if(i===n){t.classList.add('active');t.querySelector('.step-circle').textContent=i}
-    else t.querySelector('.step-circle').textContent=i;
-  });
-  window.scrollTo({top:0,behavior:'smooth'});
+function fmt(n) {
+  return Math.round(n).toLocaleString("es-AR");
 }
 
-function val1(){
-  var s=document.getElementById('salario').value;
-  var e=document.getElementById('empleados').value;
-  var r=document.getElementById('rotaciones').value;
-  var ok = s.length>0 && e.length>0 && r.length>0 && parseFloat(s)>0 && parseFloat(e)>0;
-  document.getElementById('btn1').disabled = !ok;
-}
-
-// Fallback: también habilitar el botón al hacer click directo si los campos están completos
-document.addEventListener('DOMContentLoaded', function(){
-  ['salario','empleados','rotaciones'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el){
-      el.addEventListener('input', val1);
-      el.addEventListener('change', val1);
-      el.addEventListener('keyup', val1);
+function goStep(n) {
+  for (var i = 1; i <= 4; i++) {
+    var s = document.getElementById("s" + i);
+    var t = document.getElementById("t" + i);
+    var tc = document.getElementById("tc" + i);
+    if (s) s.classList.toggle("active", i === n);
+    if (t) {
+      t.classList.remove("active", "done");
+      if (i < n) { t.classList.add("done"); if(tc) tc.textContent = "✓"; }
+      else if (i === n) { t.classList.add("active"); if(tc) tc.textContent = i; }
+      else { if(tc) tc.textContent = i; }
     }
-  });
-  var sec=document.getElementById('sector');
-  if(sec) sec.addEventListener('change', val1);
-});
-
-function fmt(n){return Math.round(n).toLocaleString('es-AR')}
-
-function upd(id,val,type){
-  const el=document.getElementById(id);
-  const n=parseFloat(val);
-  if(type==='$') el.innerHTML=`<span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">$</span> ${fmt(n)}`;
-  else if(type==='pct') el.innerHTML=`${n} <span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">%</span>`;
-  else if(type==='months') el.innerHTML=`${n} <span style="font-size:14px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400">meses</span>`;
-}
-
-function calcular(){
-  const sal=parseFloat(document.getElementById('salario').value)||0;
-  const emp=parseInt(document.getElementById('empleados').value)||1;
-  const rot=parseInt(document.getElementById('rotaciones').value)||0;
-  const mes=parseFloat(document.getElementById('r1').value);
-  const prd=parseFloat(document.getElementById('r2').value)/100;
-  const bus=parseFloat(document.getElementById('r3').value);
-  const cap=parseFloat(document.getElementById('r4').value);
-  const tea=parseFloat(document.getElementById('r5').value)/100;
-
-  const c1=sal*mes*(1-prd)*rot;
-  const c2=bus*rot;
-  const c3=cap*rot;
-  const teamSz=Math.max(3,Math.round(emp/Math.max(rot,1)));
-  const c4=sal*teamSz*(mes/2)*tea*rot;
-  total=c1+c2+c3+c4;
-  desg={c1,c2,c3,c4};
-
-  document.getElementById('totalNum').textContent='$ '+fmt(total);
-  document.getElementById('bk1').textContent='$ '+fmt(c1);
-  document.getElementById('bk2').textContent='$ '+fmt(c2);
-  document.getElementById('bk3').textContent='$ '+fmt(c3);
-  document.getElementById('bk4').textContent='$ '+fmt(c4);
-  document.getElementById('sucNum').textContent='$ '+fmt(total);
-  document.getElementById('capNum').textContent='$ '+fmt(total);
-  document.getElementById('s3sub').textContent=`${rot} rotaciones en 12 meses · sector ${document.getElementById('sector').value}`;
-
-  const eq=total/sal;
-  const urg=document.getElementById('urgency');
-  const urgT=document.getElementById('urgencyText');
-  urg.className='urgency';
-  if(eq>=8){
-    urg.classList.add('high');
-    urgT.innerHTML=`<strong>Impacto crítico:</strong> Tu rotación equivale a ${eq.toFixed(1)} salarios anuales. Este número justifica intervención inmediata — cada mes que pasa amplifica la pérdida.`;
-  } else if(eq>=4){
-    urg.classList.add('mid');
-    urgT.innerHTML=`<strong>Impacto significativo:</strong> Tu rotación equivale a ${eq.toFixed(1)} salarios anuales. Reducirla un 40% en 6 meses es un objetivo realista con el proceso correcto.`;
-  } else {
-    urg.classList.add('low');
-    urgT.innerHTML=`<strong>Impacto moderado:</strong> Tu rotación equivale a ${eq.toFixed(1)} salarios anuales. Hay margen de mejora concreto, especialmente en costos de transición.`;
   }
-
-  document.getElementById('h_costo').value='$ '+fmt(total);
-  document.getElementById('h_sector').value=document.getElementById('sector').value;
-  document.getElementById('h_emp').value=document.getElementById('empleados').value;
-  document.getElementById('h_rot').value=rot;
-
-  go(3);
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-async function submitForm(e){
-  e.preventDefault();
-  const btn=document.getElementById('subBtn');
-  const txt=document.getElementById('subTxt');
-  const ldr=document.getElementById('subLoader');
-  btn.disabled=true; txt.style.display='none'; ldr.style.display='block';
+function checkStep1() {
+  var sal = document.getElementById("f_sal").value;
+  var emp = document.getElementById("f_emp").value;
+  var rot = document.getElementById("f_rot").value;
+  var ok = sal && emp && rot && parseFloat(sal) > 0 && parseFloat(emp) > 0;
+  document.getElementById("btn1").disabled = !ok;
+}
 
-  const fd=new FormData(document.getElementById('captureForm'));
-  fd.append('message',
-    `NUEVO LEAD — CALCULADORA ROTACIÓN\n\n`+
-    `Costo calculado: ${fd.get('costo_calculado')}\n`+
-    `Empresa: ${fd.get('empresa')}\n`+
-    `Sector: ${fd.get('sector')}\n`+
-    `Empleados: ${fd.get('empleados')}\n`+
-    `Rotaciones: ${fd.get('rotaciones')}\n\n`+
-    `Desglose:\n`+
-    `· Productividad perdida: $ ${fmt(desg.c1)}\n`+
-    `· Búsqueda y selección: $ ${fmt(desg.c2)}\n`+
-    `· Capacitación: $ ${fmt(desg.c3)}\n`+
-    `· Impacto en equipo: $ ${fmt(desg.c4)}`
+function updateSlider(id, val, type) {
+  var el = document.getElementById(id);
+  var n = parseFloat(val);
+  var sm = "<small style=\"font-size:13px;color:var(--muted);font-family:Outfit,sans-serif\">";
+  if (type === "$") el.innerHTML = "$ " + sm + fmt(n) + "</small>";
+  else if (type === "pct") el.innerHTML = n + " " + sm + "%</small>";
+  else if (type === "m") el.innerHTML = n + " " + sm + "meses</small>";
+}
+
+function calcular() {
+  var sal = parseFloat(document.getElementById("f_sal").value) || 0;
+  var emp = parseInt(document.getElementById("f_emp").value) || 1;
+  var rot = parseInt(document.getElementById("f_rot").value) || 0;
+  var mes = parseFloat(document.getElementById("r1").value);
+  var prd = parseFloat(document.getElementById("r2").value) / 100;
+  var bus = parseFloat(document.getElementById("r3").value);
+  var cap = parseFloat(document.getElementById("r4").value);
+  var tea = parseFloat(document.getElementById("r5").value) / 100;
+
+  var c1 = sal * mes * (1 - prd) * rot;
+  var c2 = bus * rot;
+  var c3 = cap * rot;
+  var tsz = Math.max(3, Math.round(emp / Math.max(rot, 1)));
+  var c4 = sal * tsz * (mes / 2) * tea * rot;
+  total = c1 + c2 + c3 + c4;
+  desg = { c1: c1, c2: c2, c3: c3, c4: c4 };
+
+  document.getElementById("totalnum").textContent = "$ " + fmt(total);
+  document.getElementById("bk1").textContent = "$ " + fmt(c1);
+  document.getElementById("bk2").textContent = "$ " + fmt(c2);
+  document.getElementById("bk3").textContent = "$ " + fmt(c3);
+  document.getElementById("bk4").textContent = "$ " + fmt(c4);
+  document.getElementById("capnum").textContent = "$ " + fmt(total);
+  document.getElementById("s3sub").textContent = rot + " rotaciones en 12 meses";
+  document.getElementById("h_costo").value = "$ " + fmt(total);
+  document.getElementById("h_sector").value = document.getElementById("f_sec").value;
+  document.getElementById("h_emp2").value = document.getElementById("f_emp").value;
+  document.getElementById("h_rot2").value = rot;
+
+  var eq = sal > 0 ? total / sal : 0;
+  var urg = document.getElementById("urg");
+  var urgT = document.getElementById("urgtext");
+  urg.className = "urgency";
+  if (eq >= 8) {
+    urg.classList.add("urg-hi");
+    urgT.innerHTML = "<strong>Impacto critico:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Este numero justifica intervencion inmediata.";
+  } else if (eq >= 4) {
+    urg.classList.add("urg-mi");
+    urgT.innerHTML = "<strong>Impacto significativo:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Reducirla un 40% en 6 meses es un objetivo realista.";
+  } else {
+    urg.classList.add("urg-lo");
+    urgT.innerHTML = "<strong>Impacto moderado:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Hay margen de mejora concreto.";
+  }
+  goStep(3);
+}
+
+function sendForm() {
+  var btn = document.getElementById("bsend");
+  var btxt = document.getElementById("btxt");
+  var ld = document.getElementById("ld");
+  btn.disabled = true; btxt.style.display = "none"; ld.style.display = "block";
+
+  var form = document.getElementById("capform");
+  var fd = new FormData(form);
+  fd.append("message",
+    "NUEVO LEAD CALCULADORA ROTACION\n\n" +
+    "Costo: " + fd.get("costo_calculado") + "\n" +
+    "Empresa: " + (fd.get("empresa") || "") + "\n" +
+    "Sector: " + (fd.get("sector") || "") + "\n" +
+    "Empleados: " + (fd.get("empleados") || "") + "\n" +
+    "Rotaciones: " + (fd.get("rotaciones") || "") + "\n\n" +
+    "Desglose:\n" +
+    "- Productividad: $ " + fmt(desg.c1) + "\n" +
+    "- Busqueda: $ " + fmt(desg.c2) + "\n" +
+    "- Capacitacion: $ " + fmt(desg.c3) + "\n" +
+    "- Equipo: $ " + fmt(desg.c4)
   );
 
-  try{
-    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
-    const d=await r.json();
-    if(d.success){
-      docu
+  fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.success) {
+        document.getElementById("capwrap").style.display = "none";
+        document.getElementById("sucstate").classList.add("show");
+      } else { throw new Error(d.message); }
+    })
+    .catch(function() {
+      btn.disabled = false; btxt.style.display = "block"; ld.style.display = "none";
+      alert("Error al enviar. Escribinos a contacto@hrstrategypartners.com.ar");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Step 1 validation
+  ["f_sal", "f_emp", "f_rot"].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("input", checkStep1);
+      el.addEventListener("change", checkStep1);
+    }
+  });
+  document.getElementById("f_sec").addEventListener("change", checkStep1);
+
+  // Step 1 next
+  document.getElementById("btn1").addEventListener("click", function() { goStep(2); });
+
+  // Step 2 sliders
+  document.getElementById("r1").addEventListener("input", function() { updateSlider("v1", this.value, "m"); });
+  document.getElementById("r2").addEventListener("input", function() { updateSlider("v2", this.value, "pct"); });
+  document.getElementById("r3").addEventListener("input", function() { updateSlider("v3", this.value, "$"); });
+  document.getElementById("r4").addEventListener("input", function() { updateSlider("v4", this.value, "$"); });
+  document.getElementById("r5").addEventListener("input", function() { updateSlider("v5", this.value, "pct"); });
+
+  // Step 2 nav
+  document.getElementById("btn_back2").addEventListener("click", function() { goStep(1); });
+  document.getElementById("btn2").addEventListener("click", function() { calcular(); });
+
+  // Step 3 nav
+  document.getElementById("btn_back3").addEventListener("click", function() { goStep(2); });
+  document.getElementById("btn3").addEventListener("click", function() { goStep(4); });
+
+  // Form submit
+  document.getElementById("capform").addEventListener("submit", function(e) {
+    e.preventDefault();
+    sendForm();
+  });
+});
+</script>
+</body>
+</html>
