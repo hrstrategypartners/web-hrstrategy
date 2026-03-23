@@ -431,23 +431,23 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
             <label>Salario mensual promedio</label>
             <div class="input-pre">
               <span>$</span>
-              <input type="number" id="salario" placeholder="450.000" min="0" oninput="val1()"/>
+              <input type="number" id="salario" placeholder="450.000" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
             </div>
             <span class="hint">De las posiciones que rotan con más frecuencia (ARS)</span>
           </div>
           <div class="field">
             <label>Personas en la organización</label>
-            <input type="number" id="empleados" placeholder="45" min="1" oninput="val1()"/>
+            <input type="number" id="empleados" placeholder="45" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
             <span class="hint">Total de colaboradores activos hoy</span>
           </div>
           <div class="field">
             <label>Posiciones que rotaron (últimos 12 meses)</label>
-            <input type="number" id="rotaciones" placeholder="6" min="0" oninput="val1()"/>
+            <input type="number" id="rotaciones" placeholder="6" min="1" oninput="val1()" onchange="val1()" onkeyup="val1()"/>
             <span class="hint">Bajas voluntarias + desvinculaciones</span>
           </div>
           <div class="field">
             <label>Sector / Industria</label>
-            <select id="sector" onchange="val1()">
+            <select id="sector" onchange="val1()" onclick="val1()">
               <option value="">Seleccioná...</option>
               <option>Construcción / Infraestructura</option>
               <option>Manufactura / Industria</option>
@@ -672,12 +672,26 @@ function go(n){
 }
 
 function val1(){
-  const ok=document.getElementById('salario').value &&
-            document.getElementById('empleados').value &&
-            document.getElementById('rotaciones').value &&
-            document.getElementById('sector').value;
-  document.getElementById('btn1').disabled=!ok;
+  var s=document.getElementById('salario').value;
+  var e=document.getElementById('empleados').value;
+  var r=document.getElementById('rotaciones').value;
+  var ok = s.length>0 && e.length>0 && r.length>0 && parseFloat(s)>0 && parseFloat(e)>0;
+  document.getElementById('btn1').disabled = !ok;
 }
+
+// Fallback: también habilitar el botón al hacer click directo si los campos están completos
+document.addEventListener('DOMContentLoaded', function(){
+  ['salario','empleados','rotaciones'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){
+      el.addEventListener('input', val1);
+      el.addEventListener('change', val1);
+      el.addEventListener('keyup', val1);
+    }
+  });
+  var sec=document.getElementById('sector');
+  if(sec) sec.addEventListener('change', val1);
+});
 
 function fmt(n){return Math.round(n).toLocaleString('es-AR')}
 
