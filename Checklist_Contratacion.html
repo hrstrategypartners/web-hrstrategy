@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Checklist de Contratación Crítica — HR Strategy Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B4E9F; --blue-light:#EEF2FA; --blue-mid:#3468C0;
+  --violet:#7B5CC4; --violet-light:#F3F0FB;
+  --magenta:#C84FAE; --magenta-light:#FCF0F9;
+  --teal:#2B8698; --teal-light:#EDF6F8;
+  --ink:#0C1630; --ink2:#1E2A4A; --muted:#6B7A99;
+  --border:rgba(27,78,159,.12); --off-white:#F8F7FC; --white:#FFFFFF;
+  --g-main:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --shadow-sm:0 2px 12px rgba(27,78,159,.07);
+  --shadow-md:0 8px 32px rgba(27,78,159,.11);
+}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit',sans-serif;background:var(--off-white);color:var(--ink);line-height:1.6}
+
+/* HEADER */
+.site-header{background:var(--ink);position:sticky;top:0;z-index:100}
+.ht{padding:9px 48px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.35)}
+.ht a{color:rgba(255,255,255,.35);text-decoration:none}
+.hm{padding:15px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-sym{width:36px;height:36px;border-radius:9px;background:var(--g-main);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff}
+.logo-name{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff}
+.logo-sub{font-size:8px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-top:1px}
+.hdr-tag{padding:5px 15px;border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* HERO */
+.hero{background:var(--ink);padding:64px 48px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 55% at 88% 20%,rgba(123,92,196,.18) 0%,transparent 58%),radial-gradient(ellipse 30% 40% at 5% 85%,rgba(27,78,159,.2) 0%,transparent 55%)}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.hero-lbl{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-lbl::before{content:'';width:16px;height:1px;background:var(--teal)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:.95;letter-spacing:-2px;color:#fff;margin-bottom:18px}
+.hero-h1 strong{font-weight:600}
+.hero-h1 em{font-style:italic;background:var(--g-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.5);max-width:500px;line-height:1.8;border-left:2px solid rgba(255,255,255,.1);padding-left:14px}
+
+/* SCORE STRIP */
+.score-strip{background:var(--white);border-bottom:1px solid var(--border);padding:20px 48px;position:sticky;top:64px;z-index:90}
+.score-strip-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:24px}
+.ss-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--blue);line-height:1;min-width:56px}
+.ss-info{flex:1}
+.ss-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ss-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.prog-track{background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-fill{height:100%;background:var(--g-main);border-radius:100px;transition:width .4s cubic-bezier(.16,1,.3,1);width:0}
+.ss-of{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* RESULT BADGE */
+.result-badge{margin:0 auto;max-width:900px;padding:0 48px}
+.rb{border-radius:12px;padding:16px 20px;margin:20px 0;font-size:13px;line-height:1.65;display:none}
+.rb.show{display:flex;align-items:flex-start;gap:12px}
+.rb-high{background:var(--magenta-light);border:1px solid rgba(200,79,174,.2);color:var(--ink2)}
+.rb-high strong{color:var(--magenta)}
+.rb-mid{background:var(--violet-light);border:1px solid rgba(123,92,196,.2);color:var(--ink2)}
+.rb-mid strong{color:var(--violet)}
+.rb-good{background:var(--teal-light);border:1px solid rgba(43,134,152,.2);color:var(--ink2)}
+.rb-good strong{color:var(--teal)}
+.rb-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:36px 48px 80px}
+
+/* SECTION */
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.sh-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--teal);font-weight:500}
+.sh-title{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+.section-block{margin-bottom:32px}
+
+/* CHECK ITEMS */
+.check-list{display:flex;flex-direction:column;gap:8px}
+.check-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 20px;
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  cursor:pointer;
+  transition:all .2s;
+  user-select:none;
+}
+.check-item:hover{border-color:rgba(27,78,159,.25);box-shadow:var(--shadow-sm);transform:translateX(2px)}
+.check-item.checked{background:var(--teal-light);border-color:rgba(43,134,152,.35)}
+.check-box{
+  width:22px;height:22px;min-width:22px;
+  border-radius:6px;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:transparent;
+  transition:all .2s;margin-top:1px;flex-shrink:0;
+}
+.check-item.checked .check-box{background:var(--teal);border-color:var(--teal);color:#fff}
+.check-content{flex:1}
+.check-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:3px}
+.check-item.checked .check-n{color:var(--teal)}
+.check-text{font-size:13px;font-weight:600;color:var(--ink);line-height:1.45;margin-bottom:3px}
+.check-item.checked .check-text{color:var(--ink)}
+.check-why{font-size:11px;color:var(--muted);line-height:1.5}
+.check-item.checked .check-why{color:var(--teal)}
+
+/* CAPTURE */
+.capture-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:20px;overflow:hidden;margin-top:8px;
+  box-shadow:var(--shadow-md);
+}
+.cap-head{
+  padding:24px 32px;border-bottom:1px solid var(--border);
+  background:var(--off-white);
+}
+.cap-head-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.cap-head-sub{font-size:13px;color:var(--muted)}
+.cap-body{padding:32px}
+.cap-score-row{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--blue-light);border:1px solid rgba(27,78,159,.15);
+  border-radius:12px;padding:16px 20px;margin-bottom:24px;
+}
+.csr-label{font-size:12px;color:var(--blue);font-weight:600}
+.csr-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--blue)}
+.cap-form{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.field input{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
+.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,78,159,.08)}
+.field input::placeholder{color:rgba(107,122,153,.5)}
+.btn-send{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.btn-send:hover{opacity:.9;transform:translateY(-1px)}
+.btn-send:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.loader{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.privacy{font-size:11px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* SUCCESS */
+.success-block{display:none;text-align:center;padding:40px 0}
+.success-block.show{display:block}
+.suc-icon{font-size:48px;margin-bottom:16px;display:block}
+.suc-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.suc-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:400px;margin:0 auto 24px}
+.suc-cta{display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;border-radius:100px;text-decoration:none;transition:opacity .2s}
+.suc-cta:hover{opacity:.88}
+
+/* FOOTER */
+.site-footer{background:var(--ink);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.sf-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sf-info{font-size:11px;color:rgba(255,255,255,.25);text-align:right;line-height:1.8}
+
+@media(max-width:720px){
+  .ht,.hm,.hero,.score-strip,.result-badge,.main,.site-footer{padding-left:20px;padding-right:20px}
+  .score-strip{top:56px}
+  .cf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="ht">
+    <span>HR Strategy Partners · Consultoría Boutique | Alianzas Estratégicas</span>
+    <a href="/cdn-cgi/l/email-protection#a7c4c8c9d3c6c4d3c8e7cfd5d4d3d5c6d3c2c0ded7c6d5d3c9c2d5d489c4c8ca89c6d5"><span class="__cf_email__" data-cfemail="ff9c90918b9e9c8b90bf978d8c8b8d9e8b9a98868f9e8d8b919a8d8cd19c9092d19e8d">[email&#160;protected]</span></a>
+  </div>
+  <div class="hm">
+    <a href="https://www.hrstrategypartners.com.ar" class="logo" target="_blank">
+      <div class="logo-sym">HR</div>
+      <div>
+        <div class="logo-name">HR Strategy Partners</div>
+        <div class="logo-sub">Alianzas Estratégicas</div>
+      </div>
+    </a>
+    <div class="hdr-tag">Lead Magnet · Flujo 02</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-lbl">Checklist de Contratación Crítica</div>
+    <h1 class="hero-h1">
+      <strong>12 preguntas antes</strong><br>
+      <em>de publicar la vacante</em>
+    </h1>
+    <p class="hero-sub">El error de contratación más común no ocurre en la entrevista — ocurre antes. Estos 12 puntos miden la solidez de tu proceso con un puntaje que te dice exactamente cuál es tu riesgo.</p>
+  </div>
+</section>
+
+<!-- SCORE STICKY -->
+<div class="score-strip">
+  <div class="score-strip-inner">
+    <div class="ss-num" id="scoreNum">0</div>
+    <div class="ss-info">
+      <div class="ss-label">Puntaje actual</div>
+      <div class="ss-title" id="scoreTitle">Hacé click en cada punto que tu proceso cumple</div>
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+      <div class="ss-of">sobre 12 puntos posibles</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT BADGE -->
+<div class="result-badge">
+  <div class="rb" id="rb">
+    <span class="rb-icon" id="rbIcon">⚡</span>
+    <span id="rbText"></span>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- BLOQUE 1 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="sh-num">BLOQUE 01</span>
+      <span class="sh-title">Definición del puesto</span>
+    </div>
+    <div class="check-list">
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">01/12</div>
+          <div class="check-text">El perfil del puesto fue revisado en los últimos 6 meses — no es una copia del anterior</div>
+          <div class="check-why">Los roles evolucionan. Un perfil obsoleto atrae candidatos equivocados desde el día uno.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">02/12</div>
+          <div class="check-text">Sabés exactamente qué resultado tiene que producir esta persona en los primeros 90 días</div>
+          <div class="check-why">Si no podés describir el éxito del primer trimestre, no podés evaluar al candidato correctamente.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">03/12</div>
+          <div class="check-text">El equipo que recibirá al nuevo colaborador participó en la definición del perfil</div>
+          <div class="check-why">El 40% de los fracasos de integración se deben a expectativas incompatibles del equipo receptor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="sh-num">BLOQUE 02</span>
+      <span class="sh-title">Proceso de evaluación</span>
+    </div>
+    <div class="check-list">
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">04/12</div>
+          <div class="check-text">Tenés criterios documentados de evaluación más allá del CV</div>
+          <div class="check-why">Sin criterios previos, la decisión se toma por simpatía o intuición — no por evidencia.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">05/12</div>
+          <div class="check-text">Las preguntas de entrevista están estructuradas y son consistentes entre todos los candidatos</div>
+          <div class="check-why">La entrevista no estructurada tiene validez predictiva del 14%. La estructurada: 51%.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">06/12</div>
+          <div class="check-text">Definiste los valores culturales innegociables para este rol y sabés cómo evaluarlos</div>
+          <div class="check-why">La competencia técnica se puede desarrollar. El fit cultural, no.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">07/12</div>
+          <div class="check-text">Tenés un proceso de referencia laboral con preguntas específicas — no solo "¿lo recomendarías?"</div>
+          <div class="check-why">Las referencias mal tomadas generan información inútil. Las bien tomadas evitan errores costosos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="sh-num">BLOQUE 03</span>
+      <span class="sh-title">Condiciones y decisión</span>
+    </div>
+    <div class="check-list">
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">08/12</div>
+          <div class="check-text">El salario y los beneficios son competitivos para el perfil (validado contra el mercado actual)</div>
+          <div class="check-why">Publicar debajo del mercado filtra exactamente al talento que querés atraer.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">09/12</div>
+          <div class="check-text">El proceso de decisión tiene criterios claros y más de una persona involucrada</div>
+          <div class="check-why">Las decisiones unipersonales bajo urgencia son el origen del 70% de los errores de contratación.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 4 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="sh-num">BLOQUE 04</span>
+      <span class="sh-title">Integración y seguimiento</span>
+    </div>
+    <div class="check-list">
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">10/12</div>
+          <div class="check-text">El onboarding de los primeros 30 días está planificado antes de que la persona ingrese</div>
+          <div class="check-why">El 80% de los fracasos de contratación ocurren por problemas de integración, no de competencia.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">11/12</div>
+          <div class="check-text">Sabés cómo vas a evaluar si la persona está funcionando al mes 1, 2 y 3</div>
+          <div class="check-why">Sin métricas claras de integración, los problemas se detectan tarde — cuando ya costaron caro.</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggle(this)">
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-n">12/12</div>
+          <div class="check-text">Las personas que entrevistarán al candidato saben cómo hacerlo sin sesgos</div>
+          <div class="check-why">Los sesgos inconscientes en entrevistas no estructuradas eliminan al mejor candidato.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPTURA -->
+  <div class="capture-card">
+    <div class="cap-head">
+      <div class="cap-head-title" id="capTitle">Recibí tu diagnóstico detallado</div>
+      <div class="cap-head-sub" id="capSub">Con recomendaciones específicas para los puntos que no marcaste y cómo resolverlos antes de publicar</div>
+    </div>
+    <div class="cap-body">
+      <div class="cap-score-row">
+        <span class="csr-label">Tu puntaje actual</span>
+        <span class="csr-val"><span id="capScoreNum">0</span>/12</span>
+      </div>
+      <form class="cap-form" id="capForm" onsubmit="enviar(event)">
+        <input type="hidden" name="access_key" value="f788ba69-1691-4df2-b49c-207b3bcc5231"/>
+        <input type="hidden" name="subject" value="Nuevo lead — Checklist Contratación HRSP"/>
+        <input type="hidden" name="from_name" value="HR Strategy Partners"/>
+        <input type="hidden" name="redirect" value="false"/>
+        <input type="hidden" name="puntaje" id="h_puntaje"/>
+        <input type="hidden" name="puntos_faltantes" id="h_faltantes"/>
+        <div class="cf-row">
+          <div class="field"><label>Nombre *</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
+          <div class="field"><label>Empresa *</label><input type="text" name="empresa" placeholder="Tu organización" required/></div>
+        </div>
+        <div class="field"><label>Email *</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
+        <div class="field"><label>Posición a cubrir</label><input type="text" name="posicion" placeholder="Ej: Gerente Comercial, Jefe de Producción..."/></div>
+        <button type="submit" class="btn-send" id="sendBtn">
+          <span id="sendTxt">Recibir análisis de mi proceso →</span>
+          <div class="loader" id="sendLoader"></div>
+        </button>
+      </form>
+      <p class="privacy">Sin spam. Solo el análisis de los puntos que faltaron.</p>
+      <div class="success-block" id="capSuccess">
+        <span class="suc-icon">✅</span>
+        <h3 class="suc-title">Análisis en camino</h3>
+        <p class="suc-sub">Revisá tu email. Si tu puntaje es menor a 8, también podemos revisar el proceso juntos — sin costo.</p>
+        <a href="https://calendly.com/hrstrategypartners/seleccion-30min" target="_blank" class="suc-cta">Agendar revisión de proceso →</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <div class="sf-brand">HR Strategy Partners</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:3px">Consultoría Boutique · NOA · Argentina</div>
+  </div>
+  <div class="sf-info">
+    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="73101c1d071210071c331b01000701120716140a031201071d1601005d101c1e5d1201">[email&#160;protected]</a><br>+54 387 228 9285
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let score=0;
+const faltantes=[];
+
+function toggle(item){
+  const was=item.classList.contains('checked');
+  item.classList.toggle('checked');
+  const n=item.querySelector('.check-n').textContent.split('/')[0].trim();
+  if(!was){score=Math.min(12,score+1);const i=faltantes.indexOf(n);if(i>-1)faltantes.splice(i,1)}
+  else{score=Math.max(0,score-1);if(!faltantes.includes(n))faltantes.push(n)}
+  update();
+}
+
+function update(){
+  const pct=(score/12)*100;
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('capScoreNum').textContent=score;
+  document.getElementById('progFill').style.width=pct+'%';
+
+  let title='';
+  if(score===0)title='Hacé click en cada punto que tu proceso cumple';
+  else if(score<=4)title='Proceso con riesgo alto de error de contratación';
+  else if(score<=7)title='Proceso con brechas — seguí marcando';
+  else if(score<=10)title='Proceso sólido — algunos puntos por mejorar';
+  else if(score===11)title='Proceso muy robusto — falta solo uno';
+  else title='Proceso en condiciones óptimas ✓';
+  document.getElementById('scoreTitle').textContent=title;
+
+  const rb=document.getElementById('rb');
+  const rbT=document.getElementById('rbText');
+  const rbI=document.getElementById('rbIcon');
+  rb.className='rb show';
+  if(score<6){
+    rb.classList.add('rb-high');
+    rbI.textContent='⚡';
+    rbT.innerHTML=`<strong>Riesgo alto:</strong> Con ${score}/12, el proceso actual tiene brechas críticas. Cada contratación bajo estas condiciones es una inversión con alta probabilidad de error. Completá tus datos abajo para recibir el plan de mejora.`;
+    document.getElementById('capTitle').textContent='Plan de mejora para tu proceso';
+    document.getElementById('capSub').textContent='Te explico exactamente qué hacer con los puntos que faltan — antes de la próxima contratación.';
+  } else if(score<10){
+    rb.classList.add('rb-mid');
+    rbI.textContent='📋';
+    rbT.innerHTML=`<strong>Proceso con brechas:</strong> Tenés una base. Los ${12-score} puntos faltantes son los que con mayor probabilidad generan problemas que ya conocés. El diagnóstico completo te muestra cómo cerrarlos.`;
+    document.getElementById('capTitle').textContent='Diagnóstico de las brechas restantes';
+    document.getElementById('capSub').textContent='Acciones concretas para cerrar los puntos que faltan en la próxima búsqueda.';
+  } else {
+    rb.classList.add('rb-good');
+    rbI.textContent='✓';
+    rbT.innerHTML=`<strong>Proceso sólido:</strong> ${score}/12. Tu proceso tiene una base muy buena. El siguiente paso es elevar el estándar — de buen proceso a proceso excelente.`;
+    document.getElementById('capTitle').textContent='Recibí el informe completo';
+    document.getElementById('capSub').textContent='Con un proceso robusto, el foco pasa a la metodología avanzada de evaluación.';
+  }
+
+  document.getElementById('h_puntaje').value=score+'/12';
+  document.getElementById('h_faltantes').value=faltantes.length>0?faltantes.join(', '):'Todos completos';
+}
+
+async function enviar(e){
+  e.preventDefault();
+  const btn=document.getElementById('sendBtn');
+  const txt=document.getElementById('sendTxt');
+  const ldr=document.getElementById('sendLoader');
+  btn.disabled=true; txt.style.display='none'; ldr.style.display='block';
+  const fd=new FormData(document.getElementById('capForm'));
+  fd.append('message',`NUEVO LEAD — CHECKLIST CONTRATACIÓN\n\nPuntaje: ${score}/12\nPuntos faltantes: ${faltantes.join(', ')||'Ninguno'}\nPosición: ${fd.get('posicion')||'—'}\nEmpresa: ${fd.get('empresa')}`);
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'P

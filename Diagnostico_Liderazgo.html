@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diagnóstico de Liderazgo — HR Strategy Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B4E9F; --blue-light:#EEF2FA;
+  --violet:#7B5CC4; --violet-light:#F3F0FB;
+  --magenta:#C84FAE; --magenta-light:#FCF0F9;
+  --teal:#2B8698; --teal-light:#EDF6F8;
+  --ink:#0C1630; --ink2:#1E2A4A; --muted:#6B7A99;
+  --border:rgba(27,78,159,.12); --off-white:#F8F7FC; --white:#FFFFFF;
+  --g-main:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --shadow-sm:0 2px 12px rgba(27,78,159,.07);
+  --shadow-md:0 8px 32px rgba(27,78,159,.11);
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--off-white);color:var(--ink);line-height:1.6}
+
+/* HEADER */
+.site-header{background:var(--ink);position:sticky;top:0;z-index:100}
+.ht{padding:9px 48px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.35)}
+.hm{padding:15px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-sym{width:36px;height:36px;border-radius:9px;background:var(--g-main);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff}
+.logo-name{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff}
+.logo-sub{font-size:8px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-top:1px}
+.hdr-tag{padding:5px 15px;border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* HERO */
+.hero{background:var(--ink);padding:64px 48px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 55% at 88% 20%,rgba(123,92,196,.18) 0%,transparent 58%),radial-gradient(ellipse 30% 40% at 5% 85%,rgba(27,78,159,.2) 0%,transparent 55%)}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.hero-lbl{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-lbl::before{content:'';width:16px;height:1px;background:var(--teal)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:.95;letter-spacing:-2px;color:#fff;margin-bottom:18px}
+.hero-h1 strong{font-weight:600}
+.hero-h1 em{font-style:italic;background:var(--g-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.5);max-width:500px;line-height:1.8;border-left:2px solid rgba(255,255,255,.1);padding-left:14px}
+.hero-meta{margin-top:28px;display:flex;gap:24px;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.35)}
+.hero-meta-item span{width:6px;height:6px;border-radius:50%;background:var(--teal);display:block;flex-shrink:0}
+
+/* PROGRESS BAR TOP */
+.prog-bar-top{background:var(--white);border-bottom:1px solid var(--border);padding:16px 48px;position:sticky;top:64px;z-index:90}
+.prog-bar-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.pb-label{font-size:11px;font-weight:600;color:var(--muted);white-space:nowrap}
+.pb-track{flex:1;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.pb-fill{height:100%;background:var(--g-main);border-radius:100px;transition:width .4s cubic-bezier(.16,1,.3,1);width:0}
+.pb-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);font-weight:500;white-space:nowrap}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:40px 48px 80px}
+
+/* QUESTION CARDS */
+.q-section{margin-bottom:12px;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);margin-top:28px;display:flex;align-items:center;gap:10px}
+.q-section::before{content:'';width:12px;height:1px;background:var(--teal)}
+
+.q-card{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;margin-bottom:12px;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .2s;
+}
+.q-card.answered{border-color:rgba(43,134,152,.3)}
+.q-head{padding:20px 24px;border-bottom:1px solid var(--border);background:var(--off-white)}
+.q-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--teal);margin-bottom:4px;font-weight:500}
+.q-text{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:4px}
+.q-hint{font-size:11px;color:var(--muted);line-height:1.5}
+.q-body{padding:20px 24px 22px}
+.scale-labels{display:flex;justify-content:space-between;margin-bottom:12px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.sl-low{color:var(--magenta)}
+.sl-high{color:var(--teal)}
+.scale-opts{display:flex;gap:8px}
+.sopt{
+  flex:1;border:1.5px solid var(--border);border-radius:10px;
+  padding:14px 8px;text-align:center;cursor:pointer;
+  background:var(--white);
+  transition:all .2s;
+}
+.sopt:hover{border-color:rgba(27,78,159,.3);background:var(--blue-light)}
+.sopt.sel{background:var(--teal-light);border-color:var(--teal)}
+.sopt .val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--muted);display:block;margin-bottom:3px;transition:color .2s}
+.sopt.sel .val{color:var(--blue)}
+.sopt .val-lbl{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.sopt.sel .val-lbl{color:var(--teal)}
+
+/* BTN CALCULAR */
+.btn-calc{
+  width:100%;padding:16px;border-radius:100px;
+  background:var(--magenta);border:none;cursor:pointer;
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:#fff;
+  transition:opacity .2s,transform .15s,box-shadow .2s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin:32px 0 0;
+}
+.btn-calc:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 8px 24px rgba(200,79,174,.3)}
+.btn-calc:disabled{opacity:.3;cursor:not-allowed;transform:none}
+
+/* RESULTADO */
+.result-section{display:none;margin-top:40px}
+.result-section.show{display:block}
+
+.result-hero{
+  background:var(--ink);border-radius:20px;padding:44px;
+  margin-bottom:20px;position:relative;overflow:hidden;text-align:center;
+}
+.result-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(123,92,196,.15) 0%,transparent 60%)}
+.rh-in{position:relative;z-index:2}
+.rh-lbl{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.rh-score{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,9vw,88px);font-weight:600;line-height:1;letter-spacing:-3px;background:var(--g-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:6px}
+.rh-max{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:14px}
+.rh-level{display:inline-block;padding:6px 20px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.rl-urgente{background:rgba(200,79,174,.15);color:rgba(220,130,200,.95);border:1px solid rgba(200,79,174,.3)}
+.rl-moderado{background:rgba(123,92,196,.15);color:rgba(183,152,220,.95);border:1px solid rgba(123,92,196,.3)}
+.rl-solido{background:rgba(43,134,152,.15);color:rgba(83,184,208,.95);border:1px solid rgba(43,134,152,.3)}
+.rh-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;max-width:520px;margin:0 auto}
+
+/* DIMENSIONES */
+.dims-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;margin-top:28px;display:flex;align-items:center;gap:10px}
+.dims-title::before{content:'';width:12px;height:1px;background:var(--muted)}
+.dim-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
+.dim-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.dim-name{font-size:13px;font-weight:600;color:var(--ink)}
+.dim-badge{font-family:'JetBrains Mono',monospace;font-size:12px;padding:3px 10px;border-radius:6px;font-weight:500}
+.db-low{background:var(--magenta-light);color:var(--magenta)}
+.db-mid{background:var(--violet-light);color:var(--violet)}
+.db-high{background:var(--teal-light);color:var(--teal)}
+.dim-bar-track{background:var(--border);border-radius:100px;height:4px;overflow:hidden;margin-bottom:8px}
+.dim-bar-fill{height:100%;border-radius:100px;transition:width .8s cubic-bezier(.16,1,.3,1)}
+.dbf-low{background:var(--magenta)}
+.dbf-mid{background:var(--violet)}
+.dbf-high{background:var(--teal)}
+.dim-note{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* CAPTURE */
+.capture-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:24px;box-shadow:var(--shadow-md)}
+.cap-head{padding:24px 32px;border-bottom:1px solid var(--border);background:var(--off-white)}
+.cap-head-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.cap-head-sub{font-size:13px;color:var(--muted)}
+.cap-body{padding:32px}
+.cap-score-row{display:flex;justify-content:space-between;align-items:center;background:var(--blue-light);border:1px solid rgba(27,78,159,.15);border-radius:12px;padding:16px 20px;margin-bottom:24px}
+.csr-label{font-size:12px;color:var(--blue);font-weight:600}
+.csr-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--blue)}
+.cap-form{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.field input{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
+.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,78,159,.08)}
+.field input::placeholder{color:rgba(107,122,153,.5)}
+.btn-send{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.btn-send:hover{opacity:.9;transform:translateY(-1px)}
+.btn-send:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.loader{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.privacy{font-size:11px;color:var(--muted);text-align:center;margin-top:12px}
+.success-block{display:none;text-align:center;padding:40px 0}
+.success-block.show{display:block}
+.suc-icon{font-size:48px;margin-bottom:16px;display:block}
+.suc-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.suc-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:400px;margin:0 auto 24px}
+.suc-cta{display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;border-radius:100px;text-decoration:none;transition:opacity .2s}
+.suc-cta:hover{opacity:.88}
+
+/* FOOTER */
+.site-footer{background:var(--ink);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.sf-brand{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sf-info{font-size:11px;color:rgba(255,255,255,.25);text-align:right;line-height:1.8}
+
+@media(max-width:720px){
+  .ht,.hm,.hero,.prog-bar-top,.main,.site-footer{padding-left:20px;padding-right:20px}
+  .prog-bar-top{top:56px}
+  .scale-opts{gap:5px}
+  .sopt{padding:12px 5px}
+  .sopt .val{font-size:20px}
+  .cf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="ht">
+    <span>HR Strategy Partners · Consultoría Boutique | Alianzas Estratégicas</span>
+    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3808c8d978280978ca38b91909791829786849a938291978d869190cd808c8ecd8291">[email&#160;protected]</a> · +54 387 228 9285</span>
+  </div>
+  <div class="hm">
+    <a href="https://www.hrstrategypartners.com.ar" class="logo" target="_blank">
+      <div class="logo-sym">HR</div>
+      <div>
+        <div class="logo-name">HR Strategy Partners</div>
+        <div class="logo-sub">Alianzas Estratégicas</div>
+      </div>
+    </a>
+    <div class="hdr-tag">Lead Magnet · Flujo 03</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-lbl">Mini-Diagnóstico de Liderazgo</div>
+    <h1 class="hero-h1">
+      <strong>¿Tu equipo directivo está listo</strong><br>
+      <em>para el siguiente estadio?</em>
+    </h1>
+    <p class="hero-sub">5 preguntas · 3 minutos · Reporte personalizado inmediato. Identificá exactamente qué dimensión del liderazgo está limitando tu organización — antes de que el problema llegue a tu escritorio.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span></span>5 preguntas con escala 1–5</div>
+      <div class="hero-meta-item"><span></span>Análisis por dimensión</div>
+      <div class="hero-meta-item"><span></span>Reporte inmediato por email</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<div class="prog-bar-top">
+  <div class="prog-bar-inner">
+    <span class="pb-label">Progreso</span>
+    <div class="pb-track"><div class="pb-fill" id="pbFill"></div></div>
+    <span class="pb-count" id="pbCount">0 / 5</span>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- Q1 -->
+  <div class="q-section">Dimensión 01 · Delegación</div>
+  <div class="q-card" id="qc1">
+    <div class="q-head">
+      <div class="q-num">PREGUNTA 01 DE 05</div>
+      <div class="q-text">¿Con qué frecuencia tus líderes delegan tareas a sus equipos sin necesitar tu intervención?</div>
+      <div class="q-hint">Pensá en la semana típica — no en el mejor ni el peor caso</div>
+    </div>
+    <div class="q-body">
+      <div class="scale-labels"><span class="sl-low">Nunca delegan</span><span class="sl-high">Siempre delegan</span></div>
+      <div class="scale-opts" id="sc1"></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-section">Dimensión 02 · Feedback</div>
+  <div class="q-card" id="qc2">
+    <div class="q-head">
+      <div class="q-num">PREGUNTA 02 DE 05</div>
+      <div class="q-text">¿Tus líderes dan feedback de desempeño de forma regular y con criterios claros?</div>
+      <div class="q-hint">Feedback real y oportuno — no solo en la evaluación anual</div>
+    </div>
+    <div class="q-body">
+      <div class="scale-labels"><span class="sl-low">No existe proceso</span><span class="sl-high">Sistema robusto</span></div>
+      <div class="scale-opts" id="sc2"></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-section">Dimensión 03 · Autonomía decisional</div>
+  <div class="q-card" id="qc3">
+    <div class="q-head">
+      <div class="q-num">PREGUNTA 03 DE 05</div>
+      <div class="q-text">¿Qué porcentaje de las decisiones importantes de sus áreas toman tus gerentes sin consultarte?</div>
+      <div class="q-hint">Decisiones de impacto — no las triviales del día a día</div>
+    </div>
+    <div class="q-body">
+      <div class="scale-labels"><span class="sl-low">Menos del 20%</span><span class="sl-high">Más del 80%</span></div>
+      <div class="scale-opts" id="sc3"></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-section">Dimensión 04 · Gestión de conflicto</div>
+  <div class="q-card" id="qc4">
+    <div class="q-head">
+      <div class="q-num">PREGUNTA 04 DE 05</div>
+      <div class="q-text">Cuando hay un conflicto entre personas del equipo, ¿tus líderes lo resuelven antes de que llegue a vos?</div>
+      <div class="q-hint">Conflictos de trabajo reales — no problemas técnicos</div>
+    </div>
+    <div class="q-body">
+      <div class="scale-labels"><span class="sl-low">Siempre llega a vos</span><span class="sl-high">Lo gestionan solos</span></div>
+      <div class="scale-opts" id="sc4"></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-section">Dimensión 05 · Visión estratégica</div>
+  <div class="q-card" id="qc5">
+    <div class="q-head">
+      <div class="q-num">PREGUNTA 05 DE 05</div>
+      <div class="q-text">¿Tus líderes conectan claramente su trabajo con los objetivos estratégicos de la empresa?</div>
+      <div class="q-hint">No solo ejecutar — articular la visión y alinear a su equipo con ella</div>
+    </div>
+    <div class="q-body">
+      <div class="scale-labels"><span class="sl-low">Solo ven lo operativo</span><span class="sl-high">Articulan la visión</span></div>
+      <div class="scale-opts" id="sc5"></div>
+    </div>
+  </div>
+
+  <button class="btn-calc" id="btnCalc" onclick="calcular()" disabled>Ver mi diagnóstico de liderazgo →</button>
+
+  <!-- RESULTADO -->
+  <div class="result-section" id="resultSection">
+
+    <div class="result-hero">
+      <div class="rh-in">
+        <div class="rh-lbl">Diagnóstico de tu equipo de liderazgo</div>
+        <span class="rh-score" id="rhScore">0</span>
+        <div class="rh-max">sobre 25 puntos posibles</div>
+        <div class="rh-level" id="rhLevel">—</div>
+        <p class="rh-desc" id="rhDesc"></p>
+      </div>
+    </div>
+
+    <div class="dims-title">Análisis por dimensión</div>
+    <div id="dimList"></div>
+
+    <div class="capture-card">
+      <div class="cap-head">
+        <div class="cap-head-title" id="capTitle">Recibí el análisis completo</div>
+        <div class="cap-head-sub" id="capSub">Con recomendaciones específicas y el formato de programa más adecuado para tu organización</div>
+      </div>
+      <div class="cap-body">
+        <div class="cap-score-row">
+          <span class="csr-label">Puntaje del diagnóstico</span>
+          <span class="csr-val" id="capScoreVal">0/25</span>
+        </div>
+        <form class="cap-form" id="capForm" onsubmit="enviar(event)">
+          <input type="hidden" name="access_key" value="6bf00ed0-abd9-48cb-8cbc-b4b93cb7b4f4"/>
+          <input type="hidden" name="subject" value="Nuevo lead — Diagnóstico Liderazgo HRSP"/>
+          <input type="hidden" name="from_name" value="HR Strategy Partners"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="hidden" name="puntaje_total" id="h_puntaje"/>
+          <input type="hidden" name="nivel" id="h_nivel"/>
+          <input type="hidden" name="dimensiones" id="h_dims"/>
+          <div class="cf-row">
+            <div class="field"><label>Nombre *</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
+            <div class="field"><label>Empresa *</label><input type="text" name="empresa" placeholder="Tu organización" required/></div>
+          </div>
+          <div class="cf-row">
+            <div class="field"><label>Email *</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
+            <div class="field"><label>Cantidad de líderes evaluados</label><input type="number" name="lideres" placeholder="Ej: 4"/></div>
+          </div>
+          <button type="submit" class="btn-send" id="sendBtn">
+            <span id="sendTxt">Recibir mi análisis personalizado →</span>
+            <div class="loader" id="sendLoader"></div>
+          </button>
+        </form>
+        <p class="privacy">Reporte inmediato. Sin spam ni compromisos.</p>
+        <div class="success-block" id="diagSuccess">
+          <span class="suc-icon">✅</span>
+          <h3 class="suc-title">Análisis enviado</h3>
+          <p class="suc-sub">Revisá tu email. Si el diagnóstico identificó brechas, agendemos 30 minutos para revisar qué programa tiene mayor impacto.</p>
+          <a href="https://calendly.com/hrstrategypartners/liderazgo-propuesta" target="_blank" class="suc-cta">Agendar sesión de propuesta →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <div class="sf-brand">HR Strategy Partners</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:3px">Consultoría Boutique · NOA · Argentina</div>
+  </div>
+  <div class="sf-info">
+    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afccc0c1dbceccdbc0efc7dddcdbddcedbcac8d6dfcedddbc1cadddc81ccc0c281cedd">[email&#160;protected]</a><br>+54 387 228 9285
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const scores=[0,0,0,0,0];
+const done=[false,false,false,false,false];
+
+const DIMS=[
+  {name:'Delegación'},
+  {name:'Feedback y desarrollo'},
+  {name:'Autonomía decisional'},
+  {name:'Gestión de conflicto'},
+  {name:'Visión estratégica'}
+];
+
+const NOTES=[
+  ['Delegación crítica — los líderes ejecutan operación en lugar de dirigir. Cada tarea que debería estar en el equipo termina subiendo.','Delegación parcial — hay avances pero la dependencia persiste en decisiones de impacto moderado.','Delegación efectiva — el equipo opera con autonomía. El foco siguiente es elevar la calidad de lo que se delega.'],
+  ['Feedback ausente — los equipos operan sin orientación de desempeño. Los problemas se acumulan hasta explotar en crisis.','Feedback irregular — existe pero no es sistemático ni oportuno. Genera incertidumbre en el equipo.','Cultura de feedback sólida — el equipo recibe orientación continua y puede corregir rumbo proactivamente.'],
+  ['Dependencia decisional — todo sube. Los líderes no ejercen el criterio que el rol requiere.','Autonomía parcial — deciden en lo cotidiano pero escalan ante cualquier complejidad moderada.','Alta autonomía decisional — los líderes tienen criterio propio y lo ejercen. Liberan capacidad en la cima.'],
+  ['Conflictos sin gestión — llegan cronificados y con daño hecho. El equipo no tiene herramientas para resolverlos.','Gestión reactiva — intentan resolver pero sin marco claro. Algunos conflictos se resuelven, otros no.','Gestión proactiva — contienen y resuelven antes de que escale. El clima mejora como efecto de su liderazgo.'],
+  ['Liderazgo puramente operativo — gestionan tareas, no construyen capacidad. La empresa no escala con este perfil.','Conexión parcial — entienden hacia dónde va la empresa pero no conectan su rol cotidiano con ese destino.','Liderazgo estratégico — actúan como socios del negocio, no solo como supervisores. Este es el estándar de alto impacto.']
+];
+
+// Construir escalas
+[1,2,3,4,5].forEach(q=>{
+  const el=document.getElementById('sc'+q);
+  for(let v=1;v<=5;v++){
+    const o=document.createElement('div');
+    o.className='sopt';
+    o.innerHTML=`<span class="val">${v}</span><span class="val-lbl">${v===1?'Bajo':v===5?'Alto':''}</span>`;
+    o.addEventListener('click',()=>select(q,v,o));
+    el.appendChild(o);
+  }
+});
+
+function select(q,v,el){
+  document.getElementById('sc'+q).querySelectorAll('.sopt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  scores[q-1]=v;
+  done[q-1]=true;
+  document.getElementById('qc'+q).classList.add('answered');
+  updateProg();
+}
+
+function updateProg(){
+  const n=done.filter(Boolean).length;
+  document.getElementById('pbCount').textContent=n+' / 5';
+  document.getElementById('pbFill').style.width=(n/5*100)+'%';
+  document.getElementById('btnCalc').disabled=n<5;
+}
+
+function calcular(){
+  const total=scores.reduce((a,b)=>a+b,0);
+  document.getElementById('rhScore').textContent=total;
+  document.getElementById('capScoreVal').textContent=total+'/25';
+  document.getElementById('h_puntaje').value=total+'/25';
+
+  const lvl=document.getElementById('rhLevel');
+  let nivel,desc;
+  if(total<=10){
+    nivel='URGENTE';lvl.className='rh-level rl-urgente';
+    desc=`Con ${total} puntos, el equipo tiene brechas críticas en varias dimensiones. Cada mes sin intervención es un mes donde esas brechas absorben tu tiempo como CEO o Director.`;
+    document.getElementById('capTitle').textContent='Recibí el plan de intervención';
+    document.getElementById('capSub').textContent='Con diagnóstico urgente, el programa más efectivo tiene estructura intensiva. Te envío el diseño específico para tu situación.';
+  } else if(total<=17){
+    nivel='BRECHAS MODERADAS';lvl.className='rh-level rl-moderado';
+    desc=`Con ${total} puntos, hay dimensiones sólidas y otras que limitan el rendimiento. Trabajar las brechas ahora evita que se amplíen en la siguiente etapa de crecimiento.`;
+    document.getElementById('capTitle').textContent='Análisis de brechas y hoja de ruta';
+    document.getElementById('capSub').textContent='Qué dimensiones trabajar primero y el formato de programa con mayor impacto para tu equipo.';
+  } else {
+    nivel='BASE SÓLIDA';lvl.className='rh-level rl-solido';
+    desc=`Con ${total} puntos, el equipo tiene una base competente. El siguiente paso es elevar el estándar — de liderazgo competente a liderazgo estratégico de alto impacto.`;
+    document.getElementById('capTitle').textContent='Hoja de ruta al siguiente nivel';
+    document.getElementById('capSub').textContent='Con base sólida, el programa adecuado es diferente. Te envío el diseño para equipos que quieren pasar de buenos a excelentes.';
+  }
+
+  document.getElementById('rhLevel').textContent=nivel;
+  document.getElementById('rhDesc').textContent=desc;
+  document.getElementById('h_nivel').value=nivel;
+
+  // Dimensiones
+  const dl=document.getElementById('dimList');
+  dl.innerHTML='';
+  DIMS.forEach((d,i)=>{
+    const s=scores[i];
+    const pct=(s/5)*100;
+    const cls=s<=2?'low':s<=3?'mid':'high';
+    const note=s<=2?NOTES[i][0]:s<=3?NOTES[i][1]:NOTES[i][2];
+    dl.innerHTML+=`
+      <div class="dim-card">
+        <div class="dim-row">
+          <span class="dim-name">${d.name}</span>
+          <span class="dim-badge db-${cls}">${s}/5</span>
+        </div>
+        <div class="dim-bar-track"><div class="dim-bar-fill dbf-${cls}" style="width:${pct}%"></div></div>
+        <div class="dim-note">${note}</div>
+      </div>`;
+  });
+
+  document.getElementById('h_dims').value=DIMS.map((d,i)=>`${d.name}: ${scores[i]}/5`).join(' | ');
+  document.getElementById('resultSection').classList.add('show');
+  setTimeout(()=>document.getElementById('resultSection').scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+async function enviar(e){
+  e.preventDefault();
+  const btn=document.getElementById('sendBtn');
+  const txt=document.getElementById('sendTxt');
+  const ldr=document.getElementById('sendLoader');
+  btn.disabled=true; txt.style.display='none'; ldr.style.display='block';
+  const fd=new FormData(document.getElementById('capForm'));
+  fd.append('message',`NUEVO LEAD — DIAGNÓSTICO LIDERAZGO\n\nPuntaje: ${fd.get('puntaje_total')}\nNivel: ${fd.get('nivel')}\nLíderes evaluados: ${fd.get('lideres')||'—'}\nEmpresa: ${fd.get('empresa')}\n\nDimensiones:\n${fd.get('dimensiones').split('|').map(d=>'· '+d.trim()).join('\n')}`);
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
+    const d=a
