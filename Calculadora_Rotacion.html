@@ -56,7 +56,8 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
 .ff{display:flex;flex-direction:column;gap:5px}
 .ff label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .ff .hint{font-size:10px;color:var(--muted);opacity:.7;margin-top:2px}
-.ff input,.ff select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--white);font-family:Outfit,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;appearance:none}
+.ff input,.ff select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--white);font-family:Outfit,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none}
+.ff select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7A99' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
 .ff input:focus,.ff select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,78,159,.08)}
 .ff input::placeholder{color:rgba(107,122,153,.5)}
 .ipre{position:relative}
@@ -260,7 +261,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;hei
           <span class="csrlab">Tu costo calculado</span>
           <span class="csrval" id="capnum">$ 0</span>
         </div>
-        <form class="capform" id="capform">
+        <form class="capform" id="capform" action="">
           <input type="hidden" name="access_key" value="560db779-dcde-47d3-9945-1795d14184f3"/>
           <input type="hidden" name="subject" value="Nuevo lead - Calculadora Rotacion HRSP"/>
           <input type="hidden" name="from_name" value="HR Strategy Partners"/>
@@ -318,11 +319,13 @@ function goStep(n) {
 }
 
 function checkStep1() {
-  var sal = document.getElementById("f_sal").value;
-  var emp = document.getElementById("f_emp").value;
-  var rot = document.getElementById("f_rot").value;
-  var ok = sal && emp && rot && parseFloat(sal) > 0 && parseFloat(emp) > 0;
-  document.getElementById("btn1").disabled = !ok;
+  var sal = document.getElementById("f_sal") ? document.getElementById("f_sal").value : "";
+  var emp = document.getElementById("f_emp") ? document.getElementById("f_emp").value : "";
+  var rot = document.getElementById("f_rot") ? document.getElementById("f_rot").value : "";
+  // rot can be 0 (zero rotations is valid input), so only check it's not empty string
+  var ok = sal !== "" && emp !== "" && rot !== "" && parseFloat(sal) > 0 && parseFloat(emp) > 0 && parseFloat(rot) >= 0;
+  var btn = document.getElementById("btn1");
+  if (btn) btn.disabled = !ok;
 }
 
 function updateSlider(id, val, type) {
@@ -384,6 +387,7 @@ function sendForm() {
   var btn = document.getElementById("bsend");
   var btxt = document.getElementById("btxt");
   var ld = document.getElementById("ld");
+  if (!btn || !btxt || !ld) return;
   btn.disabled = true; btxt.style.display = "none"; ld.style.display = "block";
 
   var form = document.getElementById("capform");
@@ -402,54 +406,83 @@ function sendForm() {
     "- Equipo: $ " + fmt(desg.c4)
   );
 
-  fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
-    .then(function(r) { return r.json(); })
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: fd,
+    headers: { "Accept": "application/json" }
+  })
+    .then(function(r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
     .then(function(d) {
       if (d.success) {
         document.getElementById("capwrap").style.display = "none";
         document.getElementById("sucstate").classList.add("show");
-      } else { throw new Error(d.message); }
+      } else { throw new Error(d.message || "Error desconocido"); }
     })
-    .catch(function() {
+    .catch(function(err) {
+      console.error("Web3Forms error:", err);
       btn.disabled = false; btxt.style.display = "block"; ld.style.display = "none";
       alert("Error al enviar. Escribinos a contacto@hrstrategypartners.com.ar");
     });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Step 1 validation
-  ["f_sal", "f_emp", "f_rot"].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) {
-      el.addEventListener("input", checkStep1);
-      el.addEventListener("change", checkStep1);
+  try {
+    // Step 1 validation
+    ["f_sal", "f_emp", "f_rot"].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("input", checkStep1);
+        el.addEventListener("change", checkStep1);
+      }
+    });
+    var fSec = document.getElementById("f_sec");
+    if (fSec) fSec.addEventListener("change", checkStep1);
+
+    // Step 1 next
+    var btn1 = document.getElementById("btn1");
+    if (btn1) btn1.addEventListener("click", function() { goStep(2); });
+
+    // Step 2 sliders
+    var sliders = [
+      { id: "r1", vid: "v1", type: "m" },
+      { id: "r2", vid: "v2", type: "pct" },
+      { id: "r3", vid: "v3", type: "$" },
+      { id: "r4", vid: "v4", type: "$" },
+      { id: "r5", vid: "v5", type: "pct" }
+    ];
+    sliders.forEach(function(s) {
+      var el = document.getElementById(s.id);
+      if (el) el.addEventListener("input", function() { updateSlider(s.vid, this.value, s.type); });
+    });
+
+    // Step 2 nav
+    var btnBack2 = document.getElementById("btn_back2");
+    if (btnBack2) btnBack2.addEventListener("click", function() { goStep(1); });
+    var btn2 = document.getElementById("btn2");
+    if (btn2) btn2.addEventListener("click", function() { calcular(); });
+
+    // Step 3 nav
+    var btnBack3 = document.getElementById("btn_back3");
+    if (btnBack3) btnBack3.addEventListener("click", function() { goStep(2); });
+    var btn3 = document.getElementById("btn3");
+    if (btn3) btn3.addEventListener("click", function() { goStep(4); });
+
+    // Form submit - double-bind for safety
+    var form = document.getElementById("capform");
+    if (form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        sendForm();
+        return false;
+      });
     }
-  });
-  document.getElementById("f_sec").addEventListener("change", checkStep1);
-
-  // Step 1 next
-  document.getElementById("btn1").addEventListener("click", function() { goStep(2); });
-
-  // Step 2 sliders
-  document.getElementById("r1").addEventListener("input", function() { updateSlider("v1", this.value, "m"); });
-  document.getElementById("r2").addEventListener("input", function() { updateSlider("v2", this.value, "pct"); });
-  document.getElementById("r3").addEventListener("input", function() { updateSlider("v3", this.value, "$"); });
-  document.getElementById("r4").addEventListener("input", function() { updateSlider("v4", this.value, "$"); });
-  document.getElementById("r5").addEventListener("input", function() { updateSlider("v5", this.value, "pct"); });
-
-  // Step 2 nav
-  document.getElementById("btn_back2").addEventListener("click", function() { goStep(1); });
-  document.getElementById("btn2").addEventListener("click", function() { calcular(); });
-
-  // Step 3 nav
-  document.getElementById("btn_back3").addEventListener("click", function() { goStep(2); });
-  document.getElementById("btn3").addEventListener("click", function() { goStep(4); });
-
-  // Form submit
-  document.getElementById("capform").addEventListener("submit", function(e) {
-    e.preventDefault();
-    sendForm();
-  });
+  } catch(err) {
+    console.error("Init error:", err);
+  }
 });
 </script>
 </body>

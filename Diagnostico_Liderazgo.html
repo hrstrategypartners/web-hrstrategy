@@ -214,7 +214,7 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
         <span class="srlab">Puntaje del diagnostico</span>
         <span class="srval" id="csval">0/25</span>
       </div>
-      <form class="cform" id="capform">
+      <form class="cform" id="capform" action="">
         <input type="hidden" name="access_key" value="6bf00ed0-abd9-48cb-8cbc-b4b93cb7b4f4"/>
         <input type="hidden" name="subject" value="Nuevo lead - Diagnostico Liderazgo HRSP"/>
         <input type="hidden" name="from_name" value="HR Strategy Partners"/>
@@ -266,47 +266,57 @@ var NOTES = [
 ];
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Build scale options for each question
-  for (var q = 1; q <= 5; q++) {
-    var container = document.getElementById("sc" + q);
-    if (!container) continue;
-    for (var v = 1; v <= 5; v++) {
-      var opt = document.createElement("div");
-      opt.className = "sopt";
-      opt.setAttribute("data-q", q);
-      opt.setAttribute("data-v", v);
-      var spanVal = document.createElement("span");
-      spanVal.className = "sval";
-      spanVal.textContent = v;
-      var spanLbl = document.createElement("span");
-      spanLbl.className = "svlbl";
-      spanLbl.textContent = v === 1 ? "Bajo" : v === 5 ? "Alto" : "";
-      opt.appendChild(spanVal);
-      opt.appendChild(spanLbl);
-      opt.addEventListener("click", function() {
-        var qq = parseInt(this.getAttribute("data-q"));
-        var vv = parseInt(this.getAttribute("data-v"));
-        selectOpt(qq, vv, this);
-      });
-      container.appendChild(opt);
+  try {
+    // Build scale options for each question using IIFE to capture q and v correctly
+    for (var q = 1; q <= 5; q++) {
+      (function(qq) {
+        var container = document.getElementById("sc" + qq);
+        if (!container) return;
+        for (var v = 1; v <= 5; v++) {
+          (function(vv) {
+            var opt = document.createElement("div");
+            opt.className = "sopt";
+            opt.setAttribute("data-q", qq);
+            opt.setAttribute("data-v", vv);
+            var spanVal = document.createElement("span");
+            spanVal.className = "sval";
+            spanVal.textContent = vv;
+            var spanLbl = document.createElement("span");
+            spanLbl.className = "svlbl";
+            spanLbl.textContent = vv === 1 ? "Bajo" : vv === 5 ? "Alto" : "";
+            opt.appendChild(spanVal);
+            opt.appendChild(spanLbl);
+            opt.addEventListener("click", function(e) {
+              e.preventDefault();
+              selectOpt(qq, vv, opt);
+            });
+            container.appendChild(opt);
+          })(v);
+        }
+      })(q);
     }
-  }
 
-  // Bind calculate button
-  var btn = document.getElementById("bcalc");
-  if (btn) {
-    btn.addEventListener("click", function() {
-      calcular();
-    });
-  }
+    // Bind calculate button
+    var btn = document.getElementById("bcalc");
+    if (btn) {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        calcular();
+      });
+    }
 
-  // Bind form submit
-  var form = document.getElementById("capform");
-  if (form) {
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      sendForm();
-    });
+    // Bind form submit - double-bind for safety
+    var form = document.getElementById("capform");
+    if (form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        sendForm();
+        return false;
+      });
+    }
+  } catch(err) {
+    console.error("Init error:", err);
   }
 });
 
@@ -357,7 +367,7 @@ function calcular() {
   document.getElementById("h_nivel").value = nivel;
 
   var dl = document.getElementById("dlist");
-  dl.innerHTML = "";
+  if (dl) dl.innerHTML = "";
   var dimStrs = [];
   for (var i = 0; i < 5; i++) {
     var s = scores[i];
@@ -365,8 +375,42 @@ function calcular() {
     var cls = s <= 2 ? "lo" : s <= 3 ? "mi" : "hi";
     var note = s <= 2 ? NOTES[i][0] : s <= 3 ? NOTES[i][1] : NOTES[i][2];
     dimStrs.push(DIMS[i] + ": " + s + "/5");
+
+    // BUILD AND APPEND THE DCARD TO THE DOM (this was missing entirely!)
+    if (dl) {
+      var dcard = document.createElement("div");
+      dcard.className = "dcard";
+
+      var drow = document.createElement("div");
+      drow.className = "drow";
+      var dname = document.createElement("span");
+      dname.className = "dname";
+      dname.textContent = DIMS[i];
+      var dbadge = document.createElement("span");
+      dbadge.className = "dbadge db-" + cls;
+      dbadge.textContent = s + "/5";
+      drow.appendChild(dname);
+      drow.appendChild(dbadge);
+
+      var dbt = document.createElement("div");
+      dbt.className = "dbt";
+      var dbf = document.createElement("div");
+      dbf.className = "dbf dbf-" + cls;
+      dbf.style.width = pct + "%";
+      dbt.appendChild(dbf);
+
+      var dnote = document.createElement("div");
+      dnote.className = "dnote";
+      dnote.textContent = note;
+
+      dcard.appendChild(drow);
+      dcard.appendChild(dbt);
+      dcard.appendChild(dnote);
+      dl.appendChild(dcard);
+    }
   }
-  document.getElementById("h_dims").value = dimStrs.join(" | ");
+  var hDims = document.getElementById("h_dims");
+  if (hDims) hDims.value = dimStrs.join(" | ");
 
   var result = document.getElementById("result");
   result.classList.add("show");
@@ -377,6 +421,7 @@ function sendForm() {
   var btn = document.getElementById("bsend");
   var btxt = document.getElementById("btxt");
   var ld = document.getElementById("ld");
+  if (!btn || !btxt || !ld) return;
   btn.disabled = true; btxt.style.display = "none"; ld.style.display = "block";
 
   var form = document.getElementById("capform");
@@ -384,13 +429,21 @@ function sendForm() {
   var dims = fd.get("dimensiones") || "";
   fd.append("message", "NUEVO LEAD DIAGNOSTICO LIDERAZGO\n\nPuntaje: " + fd.get("puntaje_total") + "\nNivel: " + fd.get("nivel") + "\nEmpresa: " + (fd.get("empresa") || "") + "\n\nDimensiones:\n" + dims.split("|").map(function(d) { return "- " + d.trim(); }).join("\n"));
 
-  fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
-    .then(function(r) { return r.json(); })
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: fd,
+    headers: { "Accept": "application/json" }
+  })
+    .then(function(r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
     .then(function(d) {
       if (d.success) { form.style.display = "none"; document.getElementById("suc").classList.add("show"); }
-      else throw new Error(d.message);
+      else throw new Error(d.message || "Error desconocido");
     })
-    .catch(function() {
+    .catch(function(err) {
+      console.error("Web3Forms error:", err);
       btn.disabled = false; btxt.style.display = "block"; ld.style.display = "none";
       alert("Error al enviar. Escribinos a contacto@hrstrategypartners.com.ar");
     });
