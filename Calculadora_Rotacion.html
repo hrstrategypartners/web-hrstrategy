@@ -196,23 +196,23 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;hei
       <div class="sgrid">
         <div class="scard">
           <div><div class="sctag">VAR 01</div><div class="sclabel">Meses para cubrir una vacante</div><div class="scdesc">Desde que la persona sale hasta que el reemplazante opera con normalidad</div></div>
-          <div class="scright"><div class="scval" id="v1">2 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">meses</small></div><input type="range" id="r1" min="1" max="8" step="0.5" value="2"/></div>
+          <div class="scright"><div class="scval" id="v1">2 meses</div><input type="range" id="r1" min="1" max="8" step="0.5" value="2"/></div>
         </div>
         <div class="scard">
           <div><div class="sctag">VAR 02</div><div class="sclabel">Productividad del reemplazante (primeros 60 dias)</div><div class="scdesc">Porcentaje de productividad plena en los primeros 2 meses</div></div>
-          <div class="scright"><div class="scval" id="v2">45 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">%</small></div><input type="range" id="r2" min="10" max="90" step="5" value="45"/></div>
+          <div class="scright"><div class="scval" id="v2">45 %</div><input type="range" id="r2" min="10" max="90" step="5" value="45"/></div>
         </div>
         <div class="scard">
           <div><div class="sctag">VAR 03</div><div class="sclabel">Costo de busqueda y seleccion por posicion</div><div class="scdesc">Tiempo del equipo mas publicaciones mas entrevistas (en pesos)</div></div>
-          <div class="scright"><div class="scval" id="v3">$ <small style="font-size:13px;font-family:Outfit,sans-serif">80.000</small></div><input type="range" id="r3" min="20000" max="500000" step="10000" value="80000"/></div>
+          <div class="scright"><div class="scval" id="v3">$ 80.000</div><input type="range" id="r3" min="20000" max="500000" step="10000" value="80000"/></div>
         </div>
         <div class="scard">
           <div><div class="sctag">VAR 04</div><div class="sclabel">Costo de capacitacion e induccion</div><div class="scdesc">Tiempo de lider mas materiales mas RRHH en primeros 30 dias</div></div>
-          <div class="scright"><div class="scval" id="v4">$ <small style="font-size:13px;font-family:Outfit,sans-serif">45.000</small></div><input type="range" id="r4" min="10000" max="300000" step="5000" value="45000"/></div>
+          <div class="scright"><div class="scval" id="v4">$ 45.000</div><input type="range" id="r4" min="10000" max="300000" step="5000" value="45000"/></div>
         </div>
         <div class="scard">
           <div><div class="sctag">VAR 05</div><div class="sclabel">Caida de productividad del equipo durante la transicion</div><div class="scdesc">Porcentaje de baja en el equipo directo mientras la posicion esta vacante</div></div>
-          <div class="scright"><div class="scval" id="v5">15 <small style="font-size:13px;color:var(--muted);font-family:Outfit,sans-serif">%</small></div><input type="range" id="r5" min="5" max="40" step="5" value="15"/></div>
+          <div class="scright"><div class="scval" id="v5">15 %</div><input type="range" id="r5" min="5" max="40" step="5" value="15"/></div>
         </div>
       </div>
       <div class="brow">
@@ -328,10 +328,9 @@ function checkStep1() {
 function updateSlider(id, val, type) {
   var el = document.getElementById(id);
   var n = parseFloat(val);
-  var sm = "<small style=\"font-size:13px;color:var(--muted);font-family:Outfit,sans-serif\">";
-  if (type === "$") el.innerHTML = "$ " + sm + fmt(n) + "</small>";
-  else if (type === "pct") el.innerHTML = n + " " + sm + "%</small>";
-  else if (type === "m") el.innerHTML = n + " " + sm + "meses</small>";
+  if (type === "$") { el.textContent = "$ " + fmt(n); }
+  else if (type === "pct") { el.textContent = n + " %"; }
+  else if (type === "m") { el.textContent = n + " meses"; }
 }
 
 function calcular() {

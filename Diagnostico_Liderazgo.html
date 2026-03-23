@@ -275,7 +275,14 @@ document.addEventListener("DOMContentLoaded", function() {
       opt.className = "sopt";
       opt.setAttribute("data-q", q);
       opt.setAttribute("data-v", v);
-      opt.innerHTML = "<span class=\"sval\">" + v + "</span><span class=\"svlbl\">" + (v === 1 ? "Bajo" : v === 5 ? "Alto" : "") + "</span>";
+      var spanVal = document.createElement("span");
+      spanVal.className = "sval";
+      spanVal.textContent = v;
+      var spanLbl = document.createElement("span");
+      spanLbl.className = "svlbl";
+      spanLbl.textContent = v === 1 ? "Bajo" : v === 5 ? "Alto" : "";
+      opt.appendChild(spanVal);
+      opt.appendChild(spanLbl);
       opt.addEventListener("click", function() {
         var qq = parseInt(this.getAttribute("data-q"));
         var vv = parseInt(this.getAttribute("data-v"));
@@ -358,7 +365,6 @@ function calcular() {
     var cls = s <= 2 ? "lo" : s <= 3 ? "mi" : "hi";
     var note = s <= 2 ? NOTES[i][0] : s <= 3 ? NOTES[i][1] : NOTES[i][2];
     dimStrs.push(DIMS[i] + ": " + s + "/5");
-    dl.innerHTML += "<div class=\"dcard\"><div class=\"drow\"><span class=\"dname\">" + DIMS[i] + "</span><span class=\"dbadge db-" + cls + "\">" + s + "/5</span></div><div class=\"dbt\"><div class=\"dbf dbf-" + cls + "\" style=\"width:" + pct + "%\"></div></div><div class=\"dnote\">" + note + "</div></div>";
   }
   document.getElementById("h_dims").value = dimStrs.join(" | ");
 
