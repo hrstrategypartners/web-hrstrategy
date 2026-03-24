@@ -436,6 +436,7 @@ function calcular() {
 // ============================================================
 function enviarForm(e) {
   if (e) { e.preventDefault(); e.stopPropagation(); }
+
   var btn = document.getElementById("bsend");
   var btxt = document.getElementById("btxt");
   var ld = document.getElementById("ld");
@@ -448,34 +449,35 @@ function enviarForm(e) {
   var form = document.getElementById("capform");
   var fd = new FormData(form);
 
-  // Enviar a Make via FormData (evita CORS)
-  var fd2 = new FormData();
-    fd2.append("nombre", fd.get("nombre") || "");
-    fd2.append("email", fd.get("email") || "");
-    fd2.append("empresa", fd.get("empresa") || "");
-    fd2.append("puntaje_total", fd.get("puntaje_total") || "");
-    fd2.append("nivel", fd.get("nivel") || "");
-    fd2.append("dimensiones", fd.get("dimensiones") || "");
-    fd2.append("flujo", "Flujo03");
-    fd2.append("fuente", "Web3Forms");
-  var make = fetch("https://hook.us2.make.com/1h0m19luyrkdi7yhj5xwcaagwc8hojy1", {
+  // Enviar a Make via imagen pixel (sin CORS)
+  try {
+    var url = "https://hook.us2.make.com/1h0m19luyrkdi7yhj5xwcaagwc8hojy1?flujo=Flujo03&fuente=Web3Forms";
+    url += "&nombre=" + encodeURIComponent(fd.get("nombre") || "");
+    url += "&email=" + encodeURIComponent(fd.get("email") || "");
+    url += "&empresa=" + encodeURIComponent(fd.get("empresa") || "");
+    url += "&puntaje_total=" + encodeURIComponent(fd.get("puntaje_total") || "");
+    url += "&nivel=" + encodeURIComponent(fd.get("nivel") || "");
+    url += "&dimensiones=" + encodeURIComponent(fd.get("dimensiones") || "");
+    var img = new Image();
+    img.src = url;
+  } catch(ex) {}
+
+  // Enviar a Web3Forms
+  fetch("https://api.web3forms.com/submit", {
     method: "POST",
-    mode: "no-cors",
-    body: fd2
+    body: fd
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    document.getElementById("capform").style.display = "none";
+    document.getElementById("suc").classList.add("show");
+  })
+  .catch(function() {
+    document.getElementById("capform").style.display = "none";
+    document.getElementById("suc").classList.add("show");
   });
-  make.catch(function() {});
-  
-  // Wait only for Web3Forms response
-  w3f
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      document.getElementById("capform").style.display = "none";
-      document.getElementById("suc").classList.add("show");
-    })
-    .catch(function() {
-      document.getElementById("capform").style.display = "none";
-      document.getElementById("suc").classList.add("show");
-    });
+
+  return false;
 }
 </script>
 </body>

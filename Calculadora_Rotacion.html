@@ -437,47 +437,48 @@ function calcular() {
 function enviarForm(e) {
   if (e) { e.preventDefault(); e.stopPropagation(); }
 
-  var btn = el("bsend");
-  var btxt = el("btxt");
-  var ld = el("ld");
-  if (!btn) return;
+  var btn = document.getElementById("bsend");
+  var btxt = document.getElementById("btxt");
+  var ld = document.getElementById("ld");
+  if (!btn) return false;
 
   btn.disabled = true;
   if (btxt) btxt.style.display = "none";
   if (ld) ld.style.display = "block";
 
-  var form = el("capform");
+  var form = document.getElementById("capform");
   var fd = new FormData(form);
 
-  // Enviar a Make via FormData (evita CORS)
-  var fd2 = new FormData();
-    fd2.append("nombre", fd.get("nombre") || "");
-    fd2.append("email", fd.get("email") || "");
-    fd2.append("empresa", fd.get("empresa") || "");
-    fd2.append("empleados", fd.get("empleados") || "");
-    fd2.append("sector", fd.get("sector") || "");
-    fd2.append("costo_calculado", fd.get("costo_calculado") || "");
-    fd2.append("rotaciones", fd.get("rotaciones") || "");
-    fd2.append("flujo", "Flujo01");
-    fd2.append("fuente", "Web3Forms");
-  var make = fetch("https://hook.us2.make.com/wq9oa2pcoq9z3y9ppn2r0hkt2aulvty9", {
+  // Enviar a Make via imagen pixel (sin CORS)
+  try {
+    var url = "https://hook.us2.make.com/wq9oa2pcoq9z3y9ppn2r0hkt2aulvty9?flujo=Flujo01&fuente=Web3Forms";
+    url += "&nombre=" + encodeURIComponent(fd.get("nombre") || "");
+    url += "&email=" + encodeURIComponent(fd.get("email") || "");
+    url += "&empresa=" + encodeURIComponent(fd.get("empresa") || "");
+    url += "&empleados=" + encodeURIComponent(fd.get("empleados") || "");
+    url += "&sector=" + encodeURIComponent(fd.get("sector") || "");
+    url += "&costo_calculado=" + encodeURIComponent(fd.get("costo_calculado") || "");
+    url += "&rotaciones=" + encodeURIComponent(fd.get("rotaciones") || "");
+    var img = new Image();
+    img.src = url;
+  } catch(ex) {}
+
+  // Enviar a Web3Forms
+  fetch("https://api.web3forms.com/submit", {
     method: "POST",
-    mode: "no-cors",
-    body: fd2
+    body: fd
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    document.getElementById("capwrap").style.display = "none";
+    document.getElementById("sucstate").classList.add("show");
+  })
+  .catch(function() {
+    document.getElementById("capwrap").style.display = "none";
+    document.getElementById("sucstate").classList.add("show");
   });
-  make.catch(function() {});
-  
-  // Wait only for Web3Forms response
-  w3f
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      document.getElementById("capwrap").style.display = "none";
-      document.getElementById("sucstate").classList.add("show");
-    })
-    .catch(function() {
-      document.getElementById("capwrap").style.display = "none";
-      document.getElementById("sucstate").classList.add("show");
-    });
+
+  return false;
 }
 
 // ============================================================
