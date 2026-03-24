@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calculadora de Rotacion - HR Strategy Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B4E9F;--blue-light:#EEF2FA;
+  --violet:#7B5CC4;--violet-light:#F3F0FB;
+  --magenta:#C84FAE;--magenta-light:#FCF0F9;
+  --teal:#2B8698;--teal-light:#EDF6F8;
+  --ink:#0C1630;--ink2:#1E2A4A;--muted:#6B7A99;
+  --border:rgba(27,78,159,.12);--off:#F8F7FC;--white:#fff;
+  --grad:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --shadow-sm:0 2px 12px rgba(27,78,159,.07);
+  --shadow-md:0 8px 32px rgba(27,78,159,.11);
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-height:1.6}
+.hdr{background:var(--ink);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lsym{width:34px;height:34px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff}
+.lname{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.lsub{font-size:8px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase}
+.htag{padding:5px 14px;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.hero{background:var(--ink);padding:56px 40px 64px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 55% at 90% 20%,rgba(123,92,196,.18) 0%,transparent 58%)}
+.hi{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.hlbl{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.hh1{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,5vw,60px);font-weight:300;line-height:.95;letter-spacing:-2px;color:#fff;margin-bottom:16px}
+.hh1 strong{font-weight:600}
+.hh1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:14px;color:rgba(255,255,255,.5);max-width:500px;line-height:1.8;border-left:2px solid rgba(255,255,255,.1);padding-left:14px}
+.steps-track{background:var(--white);border-bottom:1px solid var(--border);padding:0 40px;position:sticky;top:62px;z-index:90}
+.steps-inner{max-width:900px;margin:0 auto;display:flex}
+.step-tab{padding:16px 20px;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.step-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.step-tab.done{color:var(--teal);border-bottom-color:var(--teal)}
+.step-circle{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+.step-tab.done .step-circle{background:var(--teal);border-color:var(--teal);color:#fff}
+.step-tab.active .step-circle{background:var(--blue);border-color:var(--blue);color:#fff}
+.main{max-width:900px;margin:0 auto;padding:40px 40px 80px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-md)}
+.cstep{display:none}
+.cstep.active{display:block}
+.chead{padding:20px 28px;border-bottom:1px solid var(--border);background:var(--off);display:flex;align-items:center;gap:12px}
+.chbadge{width:30px;height:30px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.chtitle{font-size:14px;font-weight:700;color:var(--ink)}
+.chsub{font-size:12px;color:var(--muted);margin-top:1px}
+.fbody{padding:28px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.ff{display:flex;flex-direction:column;gap:5px}
+.ff label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.ff .hint{font-size:10px;color:var(--muted);opacity:.7;margin-top:2px}
+.ff input,.ff select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--white);font-family:Outfit,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}.ff select{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%236B7A99' stroke-width='1.5' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.ff input:focus,.ff select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,78,159,.08)}
+.ff input::placeholder{color:rgba(107,122,153,.5)}
+.ipre{position:relative}
+.ipre span{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:var(--muted);pointer-events:none}
+.ipre input{padding-left:28px}
+.bprimary{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;margin-top:8px}
+.bprimary:hover{opacity:.9;transform:translateY(-1px)}
+.bprimary:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.bsecondary{padding:12px 22px;border-radius:100px;background:transparent;border:1.5px solid var(--border);cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:all .2s}
+.bsecondary:hover{border-color:var(--blue);color:var(--blue)}
+.brow{display:grid;grid-template-columns:auto 1fr;gap:12px;margin-top:20px}
+.sgrid{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.scard{border:1px solid var(--border);border-radius:12px;padding:16px 20px;background:var(--white);display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:center;transition:border-color .2s}
+.scard:hover{border-color:rgba(27,78,159,.25)}
+.sctag{font-family:monospace;font-size:9px;color:var(--teal);margin-bottom:3px}
+.sclabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.scdesc{font-size:11px;color:var(--muted);line-height:1.5}
+.scright{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.scval{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--blue);line-height:1}
+input[type="range"]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;box-shadow:0 2px 8px rgba(27,78,159,.3)}
+.rh{background:var(--ink);border-radius:14px;padding:36px;margin-bottom:20px;position:relative;overflow:hidden;text-align:center}
+.rh::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(123,92,196,.15) 0%,transparent 60%)}
+.rhi{position:relative;z-index:2}
+.rhlbl{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.rhnum{font-family:"Cormorant Garamond",serif;font-size:clamp(48px,8vw,80px);font-weight:600;line-height:1;letter-spacing:-3px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:6px}
+.rhper{font-size:13px;color:rgba(255,255,255,.35)}
+.bkgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.bk{border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:var(--off)}
+.bkl{font-size:11px;color:var(--muted);margin-bottom:5px;line-height:1.4}
+.bkv{font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:var(--blue)}
+.urgency{border-radius:12px;padding:16px 18px;margin-bottom:18px;display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.65}
+.urg-hi{background:var(--magenta-light);border:1px solid rgba(200,79,174,.2)}
+.urg-hi strong{color:var(--magenta)}
+.urg-mi{background:var(--violet-light);border:1px solid rgba(123,92,196,.2)}
+.urg-mi strong{color:var(--violet)}
+.urg-lo{background:var(--teal-light);border:1px solid rgba(43,134,152,.2)}
+.urg-lo strong{color:var(--teal)}
+.capbody{padding:28px}
+.capscorerow{display:flex;justify-content:space-between;align-items:center;background:var(--blue-light);border:1px solid rgba(27,78,159,.15);border-radius:10px;padding:14px 18px;margin-bottom:20px}
+.csrlab{font-size:12px;color:var(--blue);font-weight:600}
+.csrval{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;color:var(--blue)}
+.capform{display:flex;flex-direction:column;gap:12px}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bsend{width:100%;padding:14px;border-radius:100px;background:var(--magenta);border:none;cursor:pointer;font-family:Outfit,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.bsend:hover{opacity:.9;transform:translateY(-1px)}
+.bsend:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.ld{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prv{font-size:11px;color:var(--muted);text-align:center;margin-top:10px}
+.sucblock{display:none;text-align:center;padding:36px 16px}
+.sucblock.show{display:block}
+.sico{font-size:48px;margin-bottom:14px;display:block}
+.stit{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.ssub{font-size:14px;color:var(--muted);line-height:1.75;max-width:380px;margin:0 auto 22px}
+.scta{display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 26px;border-radius:100px;text-decoration:none}
+.foot{background:var(--ink);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fb{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.fi{font-size:11px;color:rgba(255,255,255,.25);text-align:right;line-height:1.8}
+@media(max-width:680px){.hdr,.hero,.steps-track,.main,.foot{padding-left:18px;padding-right:18px}.fgrid,.bkgrid,.crow{grid-template-columns:1fr}.scard{grid-template-columns:1fr}.scright{align-items:flex-start}.steps-track{top:54px}.brow{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="https://www.hrstrategypartners.com.ar" class="logo">
+    <div class="lsym">HR</div>
+    <div><div class="lname">HR Strategy Partners</div><div class="lsub">Alianzas Estrategicas</div></div>
+  </a>
+  <div class="htag">Lead Magnet - Flujo 01</div>
+</header>
+
+<section class="hero">
+  <div class="hi">
+    <div class="hlbl">Calculadora de Costo de Rotacion</div>
+    <h1 class="hh1"><strong>Cuanto te cuesta realmente</strong><br><em>tu rotacion de personas?</em></h1>
+    <p class="hsub">La mayoria de las empresas subestima este numero hasta que lo calcula. Completa 3 pasos y conoce el costo real en pesos, sin estimaciones genericas.</p>
+  </div>
+</section>
+
+<div class="steps-track">
+  <div class="steps-inner">
+    <div class="step-tab active" id="t1"><div class="step-circle" id="tc1">1</div>Tu empresa</div>
+    <div class="step-tab" id="t2"><div class="step-circle" id="tc2">2</div>Variables</div>
+    <div class="step-tab" id="t3"><div class="step-circle" id="tc3">3</div>Resultado</div>
+    <div class="step-tab" id="t4"><div class="step-circle" id="tc4">4</div>Tu informe</div>
+  </div>
+</div>
+
+<main class="main">
+<div class="card">
+
+  <!-- STEP 1 -->
+  <div class="cstep active" id="s1">
+    <div class="chead"><div class="chbadge">1</div><div><div class="chtitle">Datos de tu organizacion</div><div class="chsub">Sin estos datos el calculo no tiene precision real para tu empresa</div></div></div>
+    <div class="fbody">
+      <div class="fgrid">
+        <div class="ff">
+          <label for="f_sal">Salario mensual promedio</label>
+          <div class="ipre"><span>$</span><input type="number" id="f_sal" name="f_sal" placeholder="450000" min="1"/></div>
+          <span class="hint">De las posiciones que rotan con mas frecuencia (ARS)</span>
+        </div>
+        <div class="ff">
+          <label for="f_emp">Personas en la organizacion</label>
+          <input type="number" id="f_emp" name="f_emp" placeholder="45" min="1"/>
+          <span class="hint">Total de colaboradores activos hoy</span>
+        </div>
+        <div class="ff">
+          <label for="f_rot">Posiciones que rotaron (12 meses)</label>
+          <input type="number" id="f_rot" name="f_rot" placeholder="6" min="0"/>
+          <span class="hint">Bajas voluntarias mas desvinculaciones</span>
+        </div>
+        <div class="ff">
+          <label for="f_sec">Sector / Industria</label>
+          <select id="f_sec" name="f_sec">
+            <option value="">Seleccionar sector...</option>
+            <option>Construccion / Infraestructura</option>
+            <option>Manufactura / Industria</option>
+            <option>Agroindustria</option>
+            <option>Servicios empresariales</option>
+            <option>Salud</option>
+            <option>Logistica / Transporte</option>
+            <option>Comercio / Retail</option>
+            <option>Tecnologia</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="bprimary" id="btn1" disabled onclick="goStep(2)">Continuar &#8212; ajustar variables &#8594;</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="cstep" id="s2">
+    <div class="chead"><div class="chbadge">2</div><div><div class="chtitle">Ajusta las variables a tu realidad</div><div class="chsub">Valores predeterminados basados en promedios del mercado NOA</div></div></div>
+    <div class="fbody">
+      <div class="sgrid">
+        <div class="scard">
+          <div><div class="sctag">VAR 01</div><div class="sclabel">Meses para cubrir una vacante</div><div class="scdesc">Desde que la persona sale hasta que el reemplazante opera con normalidad</div></div>
+          <div class="scright"><div class="scval" id="v1">2 meses</div><input type="range" id="r1" min="1" max="8" step="0.5" value="2" oninput="updateSlider('v1',this.value,'m')"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 02</div><div class="sclabel">Productividad del reemplazante (primeros 60 dias)</div><div class="scdesc">Porcentaje de productividad plena en los primeros 2 meses</div></div>
+          <div class="scright"><div class="scval" id="v2">45 %</div><input type="range" id="r2" min="10" max="90" step="5" value="45" oninput="updateSlider('v2',this.value,'pct')"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 03</div><div class="sclabel">Costo de busqueda y seleccion por posicion</div><div class="scdesc">Tiempo del equipo mas publicaciones mas entrevistas (en pesos)</div></div>
+          <div class="scright"><div class="scval" id="v3">$ 80.000</div><input type="range" id="r3" min="20000" max="500000" step="10000" value="80000" oninput="updateSlider('v3',this.value,'$')"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 04</div><div class="sclabel">Costo de capacitacion e induccion</div><div class="scdesc">Tiempo de lider mas materiales mas RRHH en primeros 30 dias</div></div>
+          <div class="scright"><div class="scval" id="v4">$ 45.000</div><input type="range" id="r4" min="10000" max="300000" step="5000" value="45000" oninput="updateSlider('v4',this.value,'$')"/></div>
+        </div>
+        <div class="scard">
+          <div><div class="sctag">VAR 05</div><div class="sclabel">Caida de productividad del equipo durante la transicion</div><div class="scdesc">Porcentaje de baja en el equipo directo mientras la posicion esta vacante</div></div>
+          <div class="scright"><div class="scval" id="v5">15 %</div><input type="range" id="r5" min="5" max="40" step="5" value="15" oninput="updateSlider('v5',this.value,'pct')"/></div>
+        </div>
+      </div>
+      <div class="brow">
+        <button type="button" class="bsecondary" onclick="goStep(1)">Atras</button>
+        <button type="button" class="bprimary" onclick="calcular()">Ver mi resultado</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="cstep" id="s3">
+    <div class="chead"><div class="chbadge" style="background:var(--magenta);background-image:none">3</div><div><div class="chtitle">Tu resultado</div><div class="chsub" id="s3sub">Basado en los datos de tu organizacion</div></div></div>
+    <div class="fbody">
+      <div class="rh"><div class="rhi">
+        <div class="rhlbl">Costo anual estimado de rotacion</div>
+        <span class="rhnum" id="totalnum">$ 0</span>
+        <div class="rhper">en los ultimos 12 meses, incluyendo costos directos e indirectos</div>
+      </div></div>
+      <div class="bkgrid">
+        <div class="bk"><div class="bkl">Productividad perdida (vacantes + transicion)</div><div class="bkv" id="bk1">$ 0</div></div>
+        <div class="bk"><div class="bkl">Busqueda y seleccion</div><div class="bkv" id="bk2">$ 0</div></div>
+        <div class="bk"><div class="bkl">Capacitacion e induccion</div><div class="bkv" id="bk3">$ 0</div></div>
+        <div class="bk"><div class="bkl">Impacto en equipo circundante</div><div class="bkv" id="bk4">$ 0</div></div>
+      </div>
+      <div class="urgency" id="urg"><span id="urgtext"></span></div>
+      <div class="brow">
+        <button type="button" class="bsecondary" onclick="goStep(2)">Ajustar</button>
+        <button type="button" class="bprimary" onclick="goStep(4)">Recibir analisis completo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="cstep" id="s4">
+    <div class="sucblock" id="sucstate">
+      <span class="sico">&#9989;</span>
+      <h3 class="stit">Tu analisis esta en camino</h3>
+      <p class="ssub">En los proximos minutos recibis el desglose completo con recomendaciones especificas para reducir este numero en los proximos 90 dias.</p>
+      <a href="https://calendly.com/hrstrategypartners/diagnostico" class="scta">Agendar diagnostico estrategico</a>
+    </div>
+    <div id="capwrap">
+      <div class="chead"><div class="chbadge" style="background:var(--violet);background-image:none">4</div><div><div class="chtitle">Recibi tu analisis completo</div><div class="chsub">Con recomendaciones especificas para reducir este numero</div></div></div>
+      <div class="capbody">
+        <div class="capscorerow">
+          <span class="csrlab">Tu costo calculado</span>
+          <span class="csrval" id="capnum">$ 0</span>
+        </div>
+        <form id="capform" action="https://api.web3forms.com/submit" method="POST" onsubmit="enviarForm(event)">
+          <input type="hidden" name="access_key" value="560db779-dcde-47d3-9945-1795d14184f3"/>
+          <input type="hidden" name="subject" value="Nuevo lead - Calculadora Rotacion HRSP"/>
+          <input type="hidden" name="from_name" value="HR Strategy Partners"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="hidden" name="costo_calculado" id="h_costo"/>
+          <input type="hidden" name="sector" id="h_sector"/>
+          <input type="hidden" name="empleados" id="h_emp2"/>
+          <input type="hidden" name="rotaciones" id="h_rot2"/>
+          <input type="hidden" name="message" id="h_message"/>
+          <div class="crow">
+            <div class="ff"><label>Nombre *</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
+            <div class="ff"><label>Empresa *</label><input type="text" name="empresa" placeholder="Tu organizacion" required/></div>
+          </div>
+          <div class="ff"><label>Email *</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
+          <div class="ff"><label>Telefono (opcional)</label><input type="tel" name="telefono" placeholder="+54 387 000 0000"/></div>
+          <button type="submit" class="bsend" id="bsend">
+            <span id="btxt">Enviarme el analisis completo</span>
+            <div class="ld" id="ld"></div>
+          </button>
+        </form>
+        <p class="prv">Sin spam. Solo el analisis que pediste.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div><div class="fb">HR Strategy Partners</div><div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:3px">Consultoria Boutique - NOA - Argentina</div></div>
+  <div class="fi">contacto&#64;hrstrategypartners.com.ar<br>+54 387 228 9285</div>
+</footer>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+var total = 0;
+var desg = { c1: 0, c2: 0, c3: 0, c4: 0 };
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function fmt(n) {
+  return Math.round(n).toLocaleString("es-AR");
+}
+
+function el(id) {
+  return document.getElementById(id);
+}
+
+// ============================================================
+// STEP NAVIGATION
+// ============================================================
+function goStep(n) {
+  for (var i = 1; i <= 4; i++) {
+    var s = el("s" + i);
+    var t = el("t" + i);
+    var tc = el("tc" + i);
+    if (s) {
+      if (i === n) { s.classList.add("active"); } 
+      else { s.classList.remove("active"); }
+    }
+    if (t) {
+      t.classList.remove("active", "done");
+      if (i < n) { t.classList.add("done"); if (tc) tc.textContent = "✓"; }
+      else if (i === n) { t.classList.add("active"); if (tc) tc.textContent = i; }
+      else { if (tc) tc.textContent = i; }
+    }
+  }
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// STEP 1: VALIDATION — called on every keystroke
+// ============================================================
+function checkStep1() {
+  var salEl = el("f_sal");
+  var empEl = el("f_emp");
+  var rotEl = el("f_rot");
+  var btnEl = el("btn1");
+  if (!salEl || !empEl || !rotEl || !btnEl) return;
+
+  var sal = parseFloat(salEl.value);
+  var emp = parseFloat(empEl.value);
+  var rot = salEl.value !== "" && rotEl.value !== "" ? parseFloat(rotEl.value) : -1;
+
+  var ok = !isNaN(sal) && sal > 0 &&
+           !isNaN(emp) && emp > 0 &&
+           rotEl.value !== "" && !isNaN(parseFloat(rotEl.value)) && parseFloat(rotEl.value) >= 0;
+
+  btnEl.disabled = !ok;
+  btnEl.style.opacity = ok ? "1" : "0.3";
+  btnEl.style.cursor = ok ? "pointer" : "not-allowed";
+}
+
+// ============================================================
+// STEP 2: SLIDERS
+// ============================================================
+function updateSlider(id, val, type) {
+  var display = el(id);
+  if (!display) return;
+  var n = parseFloat(val);
+  if (type === "$") { display.textContent = "$ " + fmt(n); }
+  else if (type === "pct") { display.textContent = n + " %"; }
+  else if (type === "m") { display.textContent = n + (n === 1 ? " mes" : " meses"); }
+}
+
+// ============================================================
+// STEP 3: CALCULATE
+// ============================================================
+function calcular() {
+  var sal = parseFloat(el("f_sal").value) || 0;
+  var emp = parseInt(el("f_emp").value) || 1;
+  var rot = parseInt(el("f_rot").value) || 0;
+  var mes = parseFloat(el("r1").value);
+  var prd = parseFloat(el("r2").value) / 100;
+  var bus = parseFloat(el("r3").value);
+  var cap = parseFloat(el("r4").value);
+  var tea = parseFloat(el("r5").value) / 100;
+
+  var c1 = sal * mes * (1 - prd) * rot;
+  var c2 = bus * rot;
+  var c3 = cap * rot;
+  var tsz = Math.max(3, Math.round(emp / Math.max(rot, 1)));
+  var c4 = sal * tsz * (mes / 2) * tea * rot;
+  total = c1 + c2 + c3 + c4;
+  desg = { c1: c1, c2: c2, c3: c3, c4: c4 };
+
+  el("totalnum").textContent = "$ " + fmt(total);
+  el("bk1").textContent = "$ " + fmt(c1);
+  el("bk2").textContent = "$ " + fmt(c2);
+  el("bk3").textContent = "$ " + fmt(c3);
+  el("bk4").textContent = "$ " + fmt(c4);
+  el("capnum").textContent = "$ " + fmt(total);
+  el("s3sub").textContent = rot + " rotaciones en 12 meses";
+
+  // Hidden fields for form
+  el("h_costo").value = "$ " + fmt(total);
+  el("h_sector").value = el("f_sec").value;
+  el("h_emp2").value = el("f_emp").value;
+  el("h_rot2").value = rot;
+  el("h_message").value = "NUEVO LEAD CALCULADORA\n\nCosto: $ " + fmt(total) +
+    "\nSector: " + el("f_sec").value +
+    "\nEmpleados: " + el("f_emp").value +
+    "\nRotaciones: " + rot +
+    "\nDesglose: Productividad $" + fmt(c1) + " / Busqueda $" + fmt(c2) +
+    " / Capacitacion $" + fmt(c3) + " / Equipo $" + fmt(c4);
+
+  // Urgency badge
+  var urgEl = el("urg");
+  var urgTxt = el("urgtext");
+  var eq = sal > 0 ? total / sal : 0;
+  urgEl.className = "urgency";
+  if (eq >= 8) {
+    urgEl.classList.add("urg-hi");
+    urgTxt.innerHTML = "<strong>Impacto critico:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Este numero justifica intervencion inmediata.";
+  } else if (eq >= 4) {
+    urgEl.classList.add("urg-mi");
+    urgTxt.innerHTML = "<strong>Impacto significativo:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Reducirla un 40% en 6 meses es un objetivo realista.";
+  } else {
+    urgEl.classList.add("urg-lo");
+    urgTxt.innerHTML = "<strong>Impacto moderado:</strong> Tu rotacion equivale a " + eq.toFixed(1) + " salarios anuales. Hay margen de mejora concreto.";
+  }
+
+  goStep(3);
+}
+
+// ============================================================
+// STEP 4: SEND FORM
+// ============================================================
+function enviarForm(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+
+  var btn = el("bsend");
+  var btxt = el("btxt");
+  var ld = el("ld");
+  if (!btn) return;
+
+  btn.disabled = true;
+  if (btxt) btxt.style.display = "none";
+  if (ld) ld.style.display = "block";
+
+  var form = el("capform");
+  var fd = new FormData(form);
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Accept": "application/json" },
+    body: fd
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (d.success) {
+      el("capwrap").style.display = "none";
+      el("sucstate").classList.add("show");
+    } else {
+      throw new Error(d.message || "Error");
+    }
+  })
+  .catch(function(err) {
+    console.error("Error:", err);
+    btn.disabled = false;
+    if (btxt) btxt.style.display = "block";
+    if (ld) ld.style.display = "none";
+    alert("Error al enviar. Escribinos a contacto@hrstrategypartners.com.ar");
+  });
+
+  return false;
+}
+
+// ============================================================
+// INIT — attach listeners as soon as DOM is ready
+// ============================================================
+(function init() {
+  // Attach input listeners to Step 1 fields
+  var fields = ["f_sal", "f_emp", "f_rot", "f_sec"];
+  function attachField(id) {
+    var elem = el(id);
+    if (!elem) return;
+    var events = ["input", "change", "keyup", "keydown", "blur", "click", "focus"];
+    for (var i = 0; i < events.length; i++) {
+      elem.addEventListener(events[i], checkStep1);
+    }
+  }
+  
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      for (var i = 0; i < fields.length; i++) attachField(fields[i]);
+      checkStep1();
+      // Poll as absolute fallback
+      setInterval(checkStep1, 500);
+    });
+  } else {
+    // DOM already loaded
+    for (var i = 0; i < fields.length; i++) attachField(fields[i]);
+    checkStep1();
+    setInterval(checkStep1, 500);
+  }
+})();
+</script>
+</body>
+</html>
