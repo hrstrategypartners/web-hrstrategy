@@ -196,9 +196,9 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
     <p class="prv">Sin spam. Solo el analisis de los puntos que faltaron.</p>
     <div class="sucblock" id="suc">
       <span class="sico">&#9989;</span>
-      <h3 class="stit">Analisis en camino</h3>
-      <p class="ssub">Revisa tu email. Si tu puntaje es menor a 8, tambien podemos revisar el proceso juntos sin costo.</p>
-      <a href="https://calendly.com/hrstrategypartners/seleccion-30min" class="scta">Agendar revision de proceso</a>
+      <h3 class="stit">Tu diagnostico esta en camino</h3>
+      <p class="ssub">Revisa tu email con el analisis de tu proceso. Si tu puntaje es menor a 8, agendemos una revision juntos sin costo.</p>
+      <a href="https://calendly.com/hrstrategypartners2-0/revision-de-proceso-de-seleccion" class="scta">Agendar revision de proceso</a>
     </div>
   </div>
 </div>
@@ -211,6 +211,15 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
 </footer>
 
 <script>
+
+window.addEventListener("load", function() {
+  var capform = document.getElementById("capform");
+  var suc = document.getElementById("suc");
+  if (capform) capform.style.display = "";
+  if (suc) suc.classList.remove("show");
+  var result = document.getElementById("result");
+  if (result) result.classList.remove("show");
+});
 // ============================================================
 // STATE
 // ============================================================
@@ -325,6 +334,21 @@ function enviarForm(e) {
   })
   .then(function(r) { return r.json(); })
   .then(function(d) {
+    // Generar mensaje dinamico segun puntaje
+    var stit = document.getElementById("stit");
+    var ssub = document.getElementById("ssub");
+    if (stit && ssub) {
+      if (score < 6) {
+        stit.textContent = "Tu proceso tiene riesgo alto de error de contratacion.";
+        ssub.textContent = "Con " + score + "/12 puntos, cada busqueda que abris bajo estas condiciones tiene alta probabilidad de falla. El primer paso es una revision de 30 minutos sin costo.";
+      } else if (score < 10) {
+        stit.textContent = "Tu proceso tiene brechas concretas que podemos cerrar.";
+        ssub.textContent = "Con " + score + "/12 puntos, los puntos que faltan son exactamente los que generan los problemas que ya conoces. Una revision de 30 minutos te da el plan especifico.";
+      } else {
+        stit.textContent = "Tu proceso esta en condiciones solidas.";
+        ssub.textContent = "Con " + score + "/12, el foco pasa a metodologia avanzada de evaluacion para llevar el estandar al siguiente nivel.";
+      }
+    }
     document.getElementById("capform").style.display = "none";
     document.getElementById("suc").classList.add("show");
   })
