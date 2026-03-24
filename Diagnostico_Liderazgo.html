@@ -288,7 +288,7 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
         <span class="sico">&#9989;</span>
         <h3 class="stit">Analisis enviado</h3>
         <p class="ssub">Revisa tu email. Agendemos 30 minutos para revisar que programa tiene mayor impacto para tu equipo.</p>
-        <a href="https://calendly.com/hrstrategypartners/liderazgo-propuesta" class="scta">Agendar sesion de propuesta</a>
+        <a href="https://calendly.com/hrstrategypartners2-0/propuesta-de-liderazgo" class="scta">Agendar sesion de propuesta</a>
       </div>
     </div>
   </div>
@@ -302,6 +302,15 @@ body{font-family:Outfit,sans-serif;background:var(--off);color:var(--ink);line-h
 </footer>
 
 <script>
+
+window.addEventListener("load", function() {
+  var capform = document.getElementById("capform");
+  var suc = document.getElementById("suc");
+  if (capform) capform.style.display = "";
+  if (suc) suc.classList.remove("show");
+  var result = document.getElementById("result");
+  if (result) result.classList.remove("show");
+});
 // ============================================================
 // STATE
 // ============================================================
