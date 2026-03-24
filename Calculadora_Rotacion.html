@@ -253,7 +253,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;hei
       <span class="sico">&#9989;</span>
       <h3 class="stit">Tu analisis esta en camino</h3>
       <p class="ssub">En los proximos minutos recibis el desglose completo con recomendaciones especificas para reducir este numero en los proximos 90 dias.</p>
-      <a href="https://calendly.com/hrstrategypartners/diagnostico" class="scta">Agendar diagnostico estrategico</a>
+      <a href="https://calendly.com/hrstrategypartners2-0/diagnostico-estrategico" class="scta">Agendar diagnostico estrategico</a>
     </div>
     <div id="capwrap">
       <div class="chead"><div class="chbadge" style="background:var(--violet);background-image:none">4</div><div><div class="chtitle">Recibi tu analisis completo</div><div class="chsub">Con recomendaciones especificas para reducir este numero</div></div></div>
@@ -498,6 +498,11 @@ function enviarForm(e) {
   
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function() {
+  // Reset form state on page load
+  var capwrap = document.getElementById("capwrap");
+  var sucstate = document.getElementById("sucstate");
+  if (capwrap) capwrap.style.display = "";
+  if (sucstate) sucstate.classList.remove("show");
       for (var i = 0; i < fields.length; i++) attachField(fields[i]);
       checkStep1();
       // Poll as absolute fallback
