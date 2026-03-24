@@ -468,17 +468,20 @@ function enviarForm(e) {
   });
   var make = fetch("https://hook.us2.make.com/wq9oa2pcoq9z3y9ppn2r0hkt2au", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
     body: JSON.stringify(makePayload)
   });
 
-  Promise.all([w3f, make])
-    .then(function(responses) { return responses[0].json(); })
+  // Fire Make webhook (no-cors, fire and forget)
+  make.catch(function() {});
+  
+  // Wait only for Web3Forms response
+  w3f
+    .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (d.success) {
-        document.getElementById("capwrap").style.display = "none";
-        document.getElementById("sucstate").classList.add("show");
-      } else { throw new Error(d.message); }
+      document.getElementById("capwrap").style.display = "none";
+      document.getElementById("sucstate").classList.add("show");
     })
     .catch(function() {
       document.getElementById("capwrap").style.display = "none";

@@ -322,17 +322,20 @@ function enviarForm(e) {
   });
   var make = fetch("https://hook.us2.make.com/oxhwjwzmqtavuttx1xselybsi8e2q7sk", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
     body: JSON.stringify(makePayload)
   });
 
-  Promise.all([w3f, make])
-    .then(function(responses) { return responses[0].json(); })
+  // Fire Make webhook (no-cors, fire and forget)
+  make.catch(function() {});
+  
+  // Wait only for Web3Forms response
+  w3f
+    .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (d.success) {
-        document.getElementById("capform").style.display = "none";
-        document.getElementById("suc").classList.add("show");
-      } else { throw new Error(d.message); }
+      document.getElementById("capform").style.display = "none";
+      document.getElementById("suc").classList.add("show");
     })
     .catch(function() {
       document.getElementById("capform").style.display = "none";
