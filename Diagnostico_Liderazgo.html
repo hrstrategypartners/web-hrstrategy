@@ -448,30 +448,21 @@ function enviarForm(e) {
   var form = document.getElementById("capform");
   var fd = new FormData(form);
 
-  var makePayload = {
-    nombre: fd.get("nombre"),
-    email: fd.get("email"),
-    empresa: fd.get("empresa"),
-    puntaje_total: fd.get("puntaje_total"),
-    nivel: fd.get("nivel"),
-    dimensiones: fd.get("dimensiones"),
-    flujo: "Flujo03",
-    fuente: "Web3Forms"
-  };
-
-  var w3f = fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: { "Accept": "application/json" },
-    body: fd
-  });
+  // Enviar a Make via FormData (evita CORS)
+  var fd2 = new FormData();
+    fd2.append("nombre", fd.get("nombre") || "");
+    fd2.append("email", fd.get("email") || "");
+    fd2.append("empresa", fd.get("empresa") || "");
+    fd2.append("puntaje_total", fd.get("puntaje_total") || "");
+    fd2.append("nivel", fd.get("nivel") || "");
+    fd2.append("dimensiones", fd.get("dimensiones") || "");
+    fd2.append("flujo", "Flujo03");
+    fd2.append("fuente", "Web3Forms");
   var make = fetch("https://hook.us2.make.com/1h0m19luyrkdi7yhj5xwcaagwc8hojy1", {
     method: "POST",
     mode: "no-cors",
-    headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify(makePayload)
+    body: fd2
   });
-
-  // Fire Make webhook (no-cors, fire and forget)
   make.catch(function() {});
   
   // Wait only for Web3Forms response
