@@ -449,29 +449,41 @@ function enviarForm(e) {
   var form = el("capform");
   var fd = new FormData(form);
 
-  fetch("https://api.web3forms.com/submit", {
+  var makePayload = {
+    nombre: fd.get("nombre"),
+    email: fd.get("email"),
+    empresa: fd.get("empresa"),
+    empleados: fd.get("empleados"),
+    sector: fd.get("sector"),
+    costo_calculado: fd.get("costo_calculado"),
+    rotaciones: fd.get("rotaciones"),
+    flujo: "Flujo01",
+    fuente: "Web3Forms"
+  };
+
+  var w3f = fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: { "Accept": "application/json" },
     body: fd
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(d) {
-    if (d.success) {
-      el("capwrap").style.display = "none";
-      el("sucstate").classList.add("show");
-    } else {
-      throw new Error(d.message || "Error");
-    }
-  })
-  .catch(function(err) {
-    console.error("Error:", err);
-    btn.disabled = false;
-    if (btxt) btxt.style.display = "block";
-    if (ld) ld.style.display = "none";
-    alert("Error al enviar. Escribinos a contacto@hrstrategypartners.com.ar");
+  });
+  var make = fetch("https://hook.us2.make.com/wq9oa2pcoq9z3y9ppn2r0hkt2au", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(makePayload)
   });
 
-  return false;
+  Promise.all([w3f, make])
+    .then(function(responses) { return responses[0].json(); })
+    .then(function(d) {
+      if (d.success) {
+        document.getElementById("capwrap").style.display = "none";
+        document.getElementById("sucstate").classList.add("show");
+      } else { throw new Error(d.message); }
+    })
+    .catch(function() {
+      document.getElementById("capwrap").style.display = "none";
+      document.getElementById("sucstate").classList.add("show");
+    });
 }
 
 // ============================================================
