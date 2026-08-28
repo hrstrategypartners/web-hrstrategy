@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HR Strategy Partners — Ficha Informativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B4E9F;
+  --violet:#7B5CC4;
+  --magenta:#C84FAE;
+  --teal:#2B8698;
+  --ink:#0C1630;
+  --ink2:#1E2A4A;
+  --muted:#6B7A99;
+  --off-white:#F8F7FC;
+  --border:rgba(27,78,159,.12);
+  --g-main:linear-gradient(135deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --shadow-sm:0 2px 14px rgba(27,78,159,.08);
+  --shadow-md:0 10px 34px rgba(27,78,159,.14);
+}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Outfit',sans-serif;
+  background:#fff;
+  color:var(--ink);
+  line-height:1.6;
+}
+.page{ max-width:880px; margin:0 auto; padding:44px 40px 56px; }
+
+/* HEADER — light, minimal, no dark bleed */
+.header{ display:flex; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--border); margin-bottom:34px; }
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand img{ width:34px; height:34px; }
+.brand-text strong{ display:block; font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--ink); }
+.brand-text span{ display:block; font-size:9.5px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:1px; }
+.header-credential{ font-size:10.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); text-align:right; }
+
+/* HERO — opening statement, light background */
+.hero{ padding:8px 0 38px; margin-bottom:10px; border-bottom:1px solid var(--border); }
+.hero-title{ font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:600; line-height:1.14; letter-spacing:-1px; color:var(--ink); max-width:740px; margin-bottom:18px; }
+.hero-title .grad{ background:var(--g-main); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-sub{ font-size:15px; font-weight:300; color:var(--ink2); line-height:1.8; max-width:600px; }
+.hero-sub strong{ color:var(--blue); font-weight:600; }
+
+/* SECTION SCAFFOLDING */
+.section{ margin-bottom:48px; }
+.eyebrow{ display:flex; align-items:center; gap:10px; font-size:10.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
+.eyebrow::before{ content:''; width:22px; height:1px; background:var(--teal); }
+.sec-title{ font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; line-height:1.12; letter-spacing:-.5px; color:var(--ink); margin-bottom:14px; }
+.sec-intro{ font-size:14.5px; font-weight:300; color:var(--ink2); line-height:1.75; max-width:640px; margin-bottom:28px; }
+.sec-intro strong{ color:var(--blue); font-weight:600; }
+
+/* CARD GRID — mission/vision/purpose style */
+.grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card{ background:var(--off-white); border:1px solid var(--border); border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); }
+.card-icon{ width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,rgba(27,78,159,.12),rgba(123,92,196,.16)); display:flex; align-items:center; justify-content:center; margin-bottom:14px; font-size:15px; }
+.card-label{ font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--violet); margin-bottom:8px; }
+.card-title{ font-size:15px; font-weight:700; color:var(--ink); margin-bottom:8px; line-height:1.3; }
+.card-body{ font-size:12.5px; color:var(--ink2); line-height:1.6; font-weight:300; }
+.card-body strong{ font-weight:600; color:var(--ink); }
+
+/* TMC chips row (trayectoria/metodologia/claridad) */
+.grid3-tight{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.chip{ background:#fff; border:1px solid var(--border); border-radius:12px; padding:18px 18px; box-shadow:var(--shadow-sm); }
+.chip-badge{ width:26px; height:26px; border-radius:7px; background:var(--g-main); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+.chip-label{ font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+.chip-body{ font-size:12px; color:var(--ink2); line-height:1.55; }
+
+/* SYMPTOM LIST */
+.symptom-note{ font-size:12.5px; color:var(--muted); font-style:italic; font-family:'Cormorant Garamond',serif; margin-bottom:18px; padding-left:14px; border-left:2px solid var(--border); }
+.symptom{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:linear-gradient(135deg,rgba(27,78,159,.045),rgba(123,92,196,.06)); border:1px solid rgba(123,92,196,.14); border-radius:12px; padding:15px 20px; margin-bottom:11px; }
+.symptom-tag{ font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--violet); margin-bottom:5px; }
+.symptom-text{ font-size:13px; font-weight:600; color:var(--ink); line-height:1.4; }
+.symptom-arrow{ color:var(--violet); font-size:15px; margin-top:2px; }
+
+/* CTA — the only dark surface on the page */
+.cta{ background:var(--ink); border-radius:22px; padding:40px 44px; position:relative; overflow:hidden; }
+.cta-bg{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 55% 65% at 90% 10%,rgba(123,92,196,.25) 0%,transparent 60%), radial-gradient(ellipse 35% 45% at 5% 95%,rgba(27,78,159,.28) 0%,transparent 60%); }
+.cta-accent{ position:relative; z-index:2; height:3px; width:64px; background:var(--g-main); border-radius:3px; margin-bottom:18px; }
+.cta-eyebrow{ position:relative; z-index:2; font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
+.cta-title{ position:relative; z-index:2; font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:600; color:#fff; line-height:1.15; margin-bottom:8px; }
+.cta-sub{ position:relative; z-index:2; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14.5px; color:rgba(255,255,255,.5); margin-bottom:30px; }
+.cta-steps{ position:relative; z-index:2; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:30px; }
+.cta-step{ background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.09); border-radius:12px; padding:18px; }
+.step-num{ font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal); margin-bottom:9px; }
+.step-body{ font-size:12px; color:rgba(255,255,255,.65); line-height:1.55; }
+.step-body strong{ color:#fff; }
+.cta-actions{ position:relative; z-index:2; display:flex; gap:12px; flex-wrap:wrap; margin-bottom:26px; }
+.btn-primary{ background:var(--g-main); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; padding:14px 26px; border-radius:100px; }
+.btn-secondary{ background:transparent; color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; padding:14px 26px; border-radius:100px; border:1px solid rgba(255,255,255,.3); }
+.cta-footer{ position:relative; z-index:2; display:flex; gap:40px; flex-wrap:wrap; padding-top:22px; border-top:1px solid rgba(255,255,255,.1); }
+.cta-footer div span{ display:block; }
+.cta-footer .flabel{ font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:4px; }
+.cta-footer .fvalue{ font-size:12px; color:rgba(255,255,255,.75); }
+
+@media (max-width:640px){
+  .grid3,.grid3-tight,.cta-steps{ grid-template-columns:1fr; }
+  .page{ padding:28px 20px 40px; }
+}
+
+@media print{
+  @page{ size:A4; margin:14mm 10mm; }
+  .card,.chip,.symptom,.cta,.cta-step{ break-inside:avoid; page-break-inside:avoid; }
+  .section{ break-inside:avoid-page; }
+  /* Chromium's PDF export drops background-clip:text gradients — fall back to a solid brand color */
+  .hero-title .grad{ background:none; -webkit-text-fill-color:var(--violet); color:var(--violet); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="brand">
+      <img src="data:image/png;base64,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" alt="HR Strategy Partners"/>
+      <div class="brand-text">
+        <strong>HR Strategy Partners</strong>
+        <span>Alianzas Estratégicas</span>
+      </div>
+    </div>
+    <div class="header-credential">Fractional CPO · NOA, Argentina<br/>15+ años de experiencia ejecutiva</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="hero-title">Diseñamos la <span class="grad">estructura</span> que tu empresa necesita para escalar.</h1>
+    <p class="hero-sub">Una organización sólida no ocurre por casualidad. Se construye alineando <strong>estrategia, liderazgo, procesos y personas</strong>. Esa es la diferencia entre una empresa que funciona y una que trasciende.</p>
+  </div>
+
+  <!-- QUIÉNES SOMOS -->
+  <div class="section">
+    <div class="eyebrow">Quiénes somos</div>
+    <h1 class="sec-title">Misión, Visión y Propósito</h1>
+    <p class="sec-intro">No somos una consultora de recursos humanos. Somos el aliado estratégico que su organización necesita para transformar el capital humano en una <strong>ventaja competitiva real, medible y sostenible</strong>.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-icon">◎</div>
+        <div class="card-label">Misión</div>
+        <div class="card-title">Convertir el capital humano en resultado de negocio</div>
+        <div class="card-body">Acompañamos a organizaciones en crecimiento a construir la estructura de capital humano que <strong>reduce costos operacionales reales, retiene el talento crítico y libera capacidad directiva</strong> para decisiones de alto impacto estratégico.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">◆</div>
+        <div class="card-label">Visión</div>
+        <div class="card-title">Ser el socio estratégico de referencia en NOA</div>
+        <div class="card-body">Ser la consultora de capital humano de mayor impacto en la región, reconocida por <strong>resultados medibles, criterio ejecutivo de primer nivel</strong> y un estándar de entrega sin equivalente en el mercado local.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">◇</div>
+        <div class="card-label">Propósito</div>
+        <div class="card-title">Que la estructura organizacional impulse el crecimiento</div>
+        <div class="card-body">Trabajamos con directores que entienden que su mayor restricción de crecimiento no es el mercado ni el capital — <strong>es la estructura organizacional</strong> que no está preparada para soportar la escala que proyectan.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÍNTOMAS -->
+  <div class="section">
+    <div class="eyebrow">Lo que solemos encontrar</div>
+    <h1 class="sec-title">Señales frecuentes, no el diagnóstico</h1>
+    <p class="symptom-note">Estos son síntomas visibles desde afuera — no la causa raíz. Identificar la causa exacta, y qué la sostiene, es precisamente el trabajo del diagnóstico.</p>
+    <div class="symptom">
+      <div><div class="symptom-tag">Síntoma · el riesgo no es rotación, es tiempo</div><div class="symptom-text">Pérdida de conocimiento cuando un colaborador clave se jubila o se retira.</div></div>
+      <div class="symptom-arrow">→</div>
+    </div>
+    <div class="symptom">
+      <div><div class="symptom-tag">Síntoma · fricción entre áreas</div><div class="symptom-text">Fricciones interdepartamentales y duplicación de tareas.</div></div>
+      <div class="symptom-arrow">→</div>
+    </div>
+    <div class="symptom">
+      <div><div class="symptom-tag">Síntoma · evaluación a criterio</div><div class="symptom-text">Dificultad para evaluar el desempeño de forma objetiva.</div></div>
+      <div class="symptom-arrow">→</div>
+    </div>
+    <div class="symptom">
+      <div><div class="symptom-tag">Síntoma · dependencia de héroes</div><div class="symptom-text">Gestión reactiva — "apagado de incendios" — en áreas no productivas.</div></div>
+      <div class="symptom-arrow">→</div>
+    </div>
+  </div>
+
+  <!-- CÓMO LO HACEMOS -->
+  <div class="section">
+    <div class="eyebrow">Cómo lo hacemos</div>
+    <h1 class="sec-title">Por qué el criterio importa más que el proceso</h1>
+    <div class="grid3-tight">
+      <div class="chip">
+        <div class="chip-badge">T</div>
+        <div class="chip-label">Trayectoria</div>
+        <div class="chip-body">15+ años en gestión de personas. Exclusivamente Fractional CPO.</div>
+      </div>
+      <div class="chip">
+        <div class="chip-badge">M</div>
+        <div class="chip-label">Metodología</div>
+        <div class="chip-body">ISO 30414:2018 · ISO 9001:2015. No plantillas genéricas.</div>
+      </div>
+      <div class="chip">
+        <div class="chip-badge">C</div>
+        <div class="chip-label">Claridad</div>
+        <div class="chip-body">Criterios de aceptación definidos por escrito antes de empezar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-bg"></div>
+    <div class="cta-accent"></div>
+    <div class="cta-eyebrow">El siguiente paso</div>
+    <div class="cta-title">La primera conversación no tiene costo</div>
+    <div class="cta-sub">— 30 minutos para diagnosticar si existe oportunidad de trabajo conjunto</div>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="step-num">Paso 01</div>
+        <div class="step-body"><strong>Agendamos una reunión de diagnóstico.</strong> 30 minutos. Sin costo. Sin compromiso de contratación posterior.</div>
+      </div>
+      <div class="cta-step">
+        <div class="step-num">Paso 02</div>
+        <div class="step-body"><strong>Propuesta en 48 horas.</strong> Con el costo real de la situación actual, el ROI estimado de la intervención y los criterios de aceptación de cada entregable.</div>
+      </div>
+      <div class="cta-step">
+        <div class="step-num">Paso 03</div>
+        <div class="step-body"><strong>Decide con datos.</strong> No con suposiciones. Si el ROI no es evidente en la propuesta, no avanzamos.</div>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a class="btn-primary" href="https://calendar.app.google/jRwr8zX5Ke4zNJD38">Solicitar reunión de diagnóstico →</a>
+      <a class="btn-secondary" href="#">Escribir por WhatsApp</a>
+    </div>
+    <div class="cta-footer">
+      <div><span class="flabel">Email</span><span class="fvalue">contacto@hrstrategypartners.com.ar</span></div>
+      <div><span class="flabel">Web</span><span class="fvalue">hrstrategypartners.com</span></div>
+      <div><span class="flabel">Zona de operación</span><span class="fvalue">NOA · Argentina · Remoto LATAM</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
