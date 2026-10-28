@@ -1,8 +1,8 @@
 function initHeader() {
   const header = document.querySelector('[data-header]');
   if (!header) return;
-  const BASE_BG = 'bg-[rgba(15,46,107,.45)]';
-  const SCROLLED_CLASSES = ['bg-[rgba(15,46,107,.94)]', 'shadow-[0_8px_34px_rgba(12,22,48,.26)]'];
+  const BASE_BG = 'bg-[rgba(12,22,48,.45)]';
+  const SCROLLED_CLASSES = ['bg-[rgba(12,22,48,.94)]', 'shadow-[0_8px_34px_rgba(12,22,48,.26)]'];
   const onScroll = () => {
     const scrolled = header.hasAttribute('data-header-solid') || (window.scrollY || document.documentElement.scrollTop) > 80;
     header.classList.toggle(BASE_BG, !scrolled);
@@ -73,8 +73,6 @@ function initHeroVideo() {
   });
   tryPlay();
 
-  // El navegador elige <source media> solo al cargar: si la ventana cambia de celular a escritorio
-  // (o al revés) hay que volver a cargar el video para que use el archivo que corresponde.
   const celular = matchMedia('(max-width: 639px)');
   let eraCelular = celular.matches;
   const sincronizar = () => {
@@ -85,6 +83,63 @@ function initHeroVideo() {
   };
   celular.addEventListener('change', sincronizar);
   addEventListener('resize', sincronizar, { passive: true });
+}
+
+function initCartasCambia() {
+  const lista = document.querySelector('[data-cartas-cambia]');
+  if (!lista) return;
+  const cartas = Array.from(lista.children).filter((el) => el.tagName === 'LI');
+  const aplicar = (paso) => {
+    cartas.forEach((carta, i) => {
+      carta.classList.toggle('is-activo', i <= paso);
+      carta.classList.toggle('is-enlazado', i < paso);
+      carta.classList.toggle('is-actual', i === paso);
+    });
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    aplicar(cartas.length - 1);
+    cartas.forEach((carta) => carta.classList.remove('is-actual'));
+    return;
+  }
+  const PASO_MS = 1500;
+  const FINAL_MS = 2400;
+  const PAUSA_MS = 800;
+  let paso = -1;
+  let timer = null;
+  const tick = () => {
+    paso += 1;
+    if (paso < cartas.length) {
+      aplicar(paso);
+      timer = setTimeout(tick, PASO_MS);
+    } else if (paso === cartas.length) {
+      timer = setTimeout(tick, FINAL_MS);
+    } else {
+      aplicar(-1);
+      paso = -1;
+      timer = setTimeout(tick, PAUSA_MS);
+    }
+  };
+  const detener = () => {
+    clearTimeout(timer);
+    timer = null;
+  };
+  const arrancar = () => {
+    if (!timer && !document.hidden) tick();
+  };
+  if (typeof IntersectionObserver === 'undefined') {
+    arrancar();
+    return;
+  }
+  let visible = false;
+  new IntersectionObserver((entradas) => {
+    visible = entradas[0].isIntersecting;
+    if (visible) arrancar();
+    else detener();
+  }, { threshold: 0.25 }).observe(lista);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) detener();
+    else if (visible) arrancar();
+  });
 }
 
 function initReveal() {
@@ -261,7 +316,7 @@ function validateResourceField(field, errorEl) {
   errorEl.textContent = valid ? '' : validator.message;
   errorEl.classList.toggle('hidden', valid);
   field.classList.toggle('ring-2', !valid);
-  field.classList.toggle('ring-[#B33A99]', !valid);
+  field.classList.toggle('ring-[#C84FAE]', !valid);
   return valid;
 }
 
@@ -299,6 +354,7 @@ async function initResourceForm() {
 
     recursoId = json.recurso.id;
     titulo.textContent = json.recurso.titulo;
+    titulo.removeAttribute('aria-hidden');
     descripcion.textContent = json.recurso.descripcion;
     submitBtn.textContent = json.recurso.boton || 'Descargar gratis';
     submitBtn.disabled = false;
@@ -320,7 +376,7 @@ async function initResourceForm() {
 
     section.classList.remove('hidden');
   } catch (err) {
-    return; // sin recurso configurado: la sección queda oculta
+    return;
   }
 
   initResourceFieldValidation(form);
@@ -369,6 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initHeroVideo();
   initReveal();
+  initCartasCambia();
   initWhatsApp();
   initStatsCarousel();
   initBarraReserva();

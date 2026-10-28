@@ -6,6 +6,7 @@ import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import OndasFondo from '../../components/OndasFondo.astro';
 import IconoPrograma from '../../components/IconoPrograma.astro';
 import { programas } from '../../data/programas.js';
+import { servicio, migas } from '../../data/schema.js';
 
 export function getStaticPaths() {
   return programas.map((programa) => ({ params: { slug: programa.slug }, props: { programa } }));
@@ -25,7 +26,7 @@ const partir = (linea) => {
   return [linea.slice(0, corte), linea.slice(corte + 1).trim()];
 };
 ---
-<Layout title={`${titulo} · HR Strategy Partners`} description={programa.descripcion} path={`/programas/${programa.slug}`}>
+<Layout title={`${titulo} · HR Strategy Partners`} description={programa.descripcion} path={`/programas/${programa.slug}/`} schema={[servicio(programa), migas(programa)]}>
   <div class="font-sans text-[#0C1630] bg-[#F8F7FC] overflow-x-hidden">
     <Header solido />
     <main id="contenido" class="px-4 sm:px-8 lg:px-16 pt-[clamp(96px,10vw,120px)] pb-[clamp(40px,5vw,72px)]">
@@ -35,7 +36,7 @@ const partir = (linea) => {
           Todos los programas
         </a>
 
-        <header class="relative overflow-hidden mt-2 rounded-[24px] bg-[#0F2E6B] min-h-[clamp(300px,36vw,440px)] flex shadow-[0_16px_40px_rgba(15,46,107,.22)]">
+        <header class="relative overflow-hidden mt-2 rounded-[24px] bg-[#0C1630] min-h-[clamp(300px,36vw,440px)] flex shadow-[0_16px_40px_rgba(12,22,48,.22)]">
           <img src={portada} alt="" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover" style={`object-position:${programa.imagenPosicion ?? "70% 28%"}`} />
           <div class="absolute inset-0 bg-gradient-to-t from-[#0C1630]/95 via-[#0C1630]/60 to-[#0C1630]/25" aria-hidden="true"></div>
           <div class="relative z-10 mt-auto w-full p-[clamp(20px,3.4vw,48px)] text-white">
@@ -103,7 +104,7 @@ const partir = (linea) => {
           ))}
         </ul>
 
-        <div class="relative overflow-hidden mt-12 rounded-[24px] p-[clamp(24px,3vw,44px)]" style="background:#0F2E6B">
+        <div class="relative overflow-hidden mt-12 rounded-[24px] p-[clamp(24px,3vw,44px)]" style="background:#0C1630">
           <OndasFondo />
           <div class="relative z-10">
             <h2 class="m-0 max-w-[20ch] text-[clamp(24px,2.8vw,34px)] font-extrabold tracking-[-.5px] leading-[1.1] text-white">El diagnóstico no tiene costo.</h2>
@@ -118,7 +119,7 @@ const partir = (linea) => {
           <ul class="mt-3 m-0 p-0 list-none flex flex-wrap gap-3">
             {otros.map((otro) => (
               <li>
-                <a href={`/programas/${otro.slug}`} class="inline-flex items-center gap-2 min-h-11 px-5 rounded-full border border-ink/15 bg-white text-[14px] font-semibold text-ink hover:border-brand-blue transition">
+                <a href={`/programas/${otro.slug}/`} class="inline-flex items-center gap-2 min-h-11 px-5 rounded-full border border-ink/15 bg-white text-[14px] font-semibold text-ink hover:border-brand-blue transition">
                   <IconoPrograma numero={otro.numero} class="w-5 h-5 flex-none text-[#2B8698]" />
                   {otro.nombre}
                 </a>

@@ -1,6 +1,5 @@
 ---
-// Pegar acá la URL de implementación del Apps Script (termina en /exec).
-// Mientras esté vacía, la sección no se muestra.
+// URL del Apps Script (/exec). Vacía: la sección no se muestra.
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-JkmRWOzgSascZHzRVED01-Sd93gN-ig6pXcypv4sLoTNVu6jhnFo5aU1HeQdAJxD/exec';
 ---
 <section id="recurso" data-resource-section data-apps-script-url={APPS_SCRIPT_URL} class="hidden bg-[#F8F7FC] px-4 sm:px-8 lg:px-16 pt-[clamp(24px,3vw,40px)] pb-[clamp(40px,4.4vw,64px)]">
@@ -21,7 +20,7 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-JkmRWOzgSasc
 
     <div class="p-[clamp(20px,2.6vw,32px)]">
       <p class="mb-2.5 text-[12px] font-bold tracking-[3px] uppercase text-brand-blue underline underline-offset-4 decoration-2">Recurso gratuito</p>
-      <h2 data-resource-titulo class="m-0 max-w-[30ch] text-[clamp(19px,2vw,25px)] font-extrabold tracking-[-.5px] leading-[1.15] text-ink min-h-[1.2em] bg-[#EFECFB] rounded-[8px] [&:not(:empty)]:bg-transparent">&nbsp;</h2>
+      <h2 data-resource-titulo aria-hidden="true" class="m-0 max-w-[30ch] text-[clamp(19px,2vw,25px)] font-extrabold tracking-[-.5px] leading-[1.15] text-ink min-h-[1.2em] bg-[#EFECFB] rounded-[8px] [&:not(:empty)]:bg-transparent">&nbsp;</h2>
       <p data-resource-descripcion class="mt-2 max-w-[56ch] text-[14px] leading-[1.6] text-[#4A5568] min-h-[1.5em] bg-[#EFECFB] rounded-[8px] [&:not(:empty)]:bg-transparent">&nbsp;</p>
 
       <div data-resource-widget class="mt-4">
@@ -29,30 +28,30 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-JkmRWOzgSasc
           <label class="flex flex-col gap-1">
             <span class="text-[12px] font-semibold text-[#4A5568]">Nombre</span>
             <input type="text" required name="nombre" autocomplete="name" class="min-w-0 w-full px-3.5 py-[10px] rounded-[8px] border-0 bg-[#F3F2FA] text-[14px] text-ink" />
-            <span data-field-error="nombre" class="hidden text-[12px] font-semibold text-[#B33A99]"></span>
+            <span data-field-error="nombre" class="hidden text-[12px] font-semibold text-[#1B4E9F]"></span>
           </label>
           <label class="flex flex-col gap-1">
             <span class="text-[12px] font-semibold text-[#4A5568]">Email</span>
             <input type="email" required name="email" autocomplete="email" class="min-w-0 w-full px-3.5 py-[10px] rounded-[8px] border-0 bg-[#F3F2FA] text-[14px] text-ink" />
-            <span data-field-error="email" class="hidden text-[12px] font-semibold text-[#B33A99]"></span>
+            <span data-field-error="email" class="hidden text-[12px] font-semibold text-[#1B4E9F]"></span>
           </label>
           <label class="flex flex-col gap-1">
             <span class="text-[12px] font-semibold text-[#4A5568]">WhatsApp <span class="font-normal text-[#5C6B8A]">(opc.)</span></span>
             <input type="tel" name="telefono" inputmode="tel" autocomplete="tel" placeholder="+54 9 387 000 0000" class="min-w-0 w-full px-3.5 py-[10px] rounded-[8px] border-0 bg-[#F3F2FA] text-[14px] text-ink" />
-            <span data-field-error="telefono" class="hidden text-[12px] font-semibold text-[#B33A99]"></span>
+            <span data-field-error="telefono" class="hidden text-[12px] font-semibold text-[#1B4E9F]"></span>
           </label>
           <label class="sm:col-span-3 flex items-start gap-2.5 text-[12.5px] leading-[1.5] text-[#4A5568]">
             <input type="checkbox" required name="consentimiento" class="mt-0.5 w-5 h-5 flex-none accent-brand-blue" />
-            <span>Acepto que mis datos se usen para enviarme este recurso. Leí el <a href="/privacidad" target="_blank" rel="noopener" class="font-semibold text-brand-blue underline underline-offset-2">aviso de privacidad</a>.</span>
+            <span>Acepto que mis datos se usen para enviarme este recurso. Leí el <a href="/privacidad/" target="_blank" rel="noopener" class="font-semibold text-brand-blue underline underline-offset-2">aviso de privacidad</a>.</span>
           </label>
-          <span data-field-error="consentimiento" class="hidden sm:col-span-3 text-[12px] font-semibold text-[#B33A99]"></span>
+          <span data-field-error="consentimiento" class="hidden sm:col-span-3 text-[12px] font-semibold text-[#1B4E9F]"></span>
           <button
             type="submit"
             disabled
             data-resource-submit
             class="sm:col-span-3 mt-1 px-6 py-[12px] rounded-full border-0 bg-brand-blue text-white text-[13.5px] font-bold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:enabled:bg-[#153E7E] transition"
           >Cargando…</button>
-          <p data-resource-error class="hidden sm:col-span-3 text-[12.5px] text-[#B33A99] font-semibold"></p>
+          <p data-resource-error class="hidden sm:col-span-3 text-[12.5px] text-[#1B4E9F] font-semibold"></p>
         </form>
 
         <div data-resource-success class="hidden flex-col gap-2.5">
