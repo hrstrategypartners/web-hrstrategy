@@ -37,6 +37,7 @@ const robots = esBorrador ? 'noindex, nofollow' : indexable ? 'index, follow, ma
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    <meta name="google-site-verification" content="xBlXg2hsR0TYDNAJKRVv0udFIg0kI72D_2FPEgEG-Vo" />
     <meta name="theme-color" content="#0C1630" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -62,6 +63,25 @@ const robots = esBorrador ? 'noindex, nofollow' : indexable ? 'index, follow, ma
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
+    {!esBorrador && (
+      <>
+        {/* Analítica solo en producción: local y vistas previas no cargan visitas falsas. */}
+        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-49DPPX4M0W"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-49DPPX4M0W');
+        </script>
+        <script is:inline>
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "z4xtjtnuhv");
+        </script>
+      </>
+    )}
   </head>
   <body class="font-sans text-[#0C1630] bg-[#F8F7FC] overflow-x-hidden">
     <a
