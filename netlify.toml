@@ -1,0 +1,16 @@
+# Despliegue en Netlify (sitio lively-otter-8d4ced → hrstrategypartners.com.ar).
+# Cada push a main publica en producción; los PR generan una vista previa.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # La misma versión con la que se compila en local (Astro exige >= 22.12).
+  NODE_VERSION = "24"
+
+# Los archivos de /_astro llevan un hash en el nombre: si cambian, cambia la URL.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

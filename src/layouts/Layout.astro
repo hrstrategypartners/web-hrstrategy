@@ -12,8 +12,9 @@ export interface Props {
   schema?: object[];
 }
 
-// false al publicar en el dominio final
-const esBorrador = true;
+// Solo el deploy de producción de Netlify (CONTEXT=production) se indexa;
+// las vistas previas de PR y el build local salen con noindex.
+const esBorrador = process.env.CONTEXT !== 'production';
 const BASE = 'https://hrstrategypartners.com.ar';
 
 const {
