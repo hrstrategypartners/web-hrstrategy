@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscripción | De Emprendedor a CEO</title>
+<meta name="description" content="Inscripción a la mentoría presencial De Emprendedor a CEO, de HR Strategy Partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   1. COLORES Y TIPOGRAFÍA DE MARCA HRSP
+   Para cambiar la paleta, editá solo estas variables.
+   ========================================================= */
+:root{
+  --tinta:#0C1630;          /* texto principal y franja oscura */
+  --azul:#1B4E9F;           /* acento principal, foco y enlaces */
+  --teal:#2B8698;           /* acento secundario */
+  --gradiente:linear-gradient(90deg,#1B4E9F 0%,#7B5CC4 55%,#C84FAE 100%);
+  --fondo:#F8F7FC;          /* fondo de la página */
+  --tarjeta:#FFFFFF;        /* fondo del formulario */
+  --linea:#D9DAE6;          /* bordes de los campos */
+  --texto-suave:#4F5470;    /* textos de ayuda */
+  --error:#B42318;          /* mensajes de error */
+  --exito:#1F7A4D;          /* confirmaciones */
+  --mp:#009EE3;             /* azul de Mercado Pago, solo en el botón de pago */
+  --radio:12px;
+  --fuente-titulos:"Cormorant Garamond",Georgia,serif;
+  --fuente-texto:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.55 var(--fuente-texto)}
+a{color:var(--azul)}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.contenedor{max-width:640px;margin:0 auto;padding:24px 16px 48px}
+
+/* =========================================================
+   3. ENCABEZADO
+   ========================================================= */
+.barra{height:6px;background:var(--gradiente);border-radius:6px;margin-bottom:20px}
+.marca{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--texto-suave);margin-bottom:18px}
+.marca img{width:40px;height:40px}
+h1{font-family:var(--fuente-titulos);font-size:clamp(34px,8vw,48px);line-height:1.05;margin:0 0 6px}
+.speaker{font-size:17px;color:var(--azul);font-weight:500;margin:0 0 16px}
+.apertura{font-size:18px;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--teal)}
+.datos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.datos li{background:var(--tarjeta);border:1px solid var(--linea);border-radius:var(--radio);padding:10px 12px;font-size:14px}
+.datos b{display:block;font-size:12px;font-weight:600;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.04em}
+@media (max-width:420px){.datos{grid-template-columns:1fr}}
+
+/* =========================================================
+   4. FORMULARIO
+   ========================================================= */
+.tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:16px;padding:24px 20px}
+h2{font-family:var(--fuente-titulos);font-size:26px;margin:0 0 4px}
+.nota{font-size:14px;color:var(--texto-suave);margin:0 0 18px}
+.campo{margin-bottom:18px}
+label,.etiqueta{display:block;font-weight:500;margin-bottom:6px}
+.req{color:var(--error)}
+input[type=text],input[type=email],input[type=tel],select{
+  width:100%;padding:12px 14px;font:inherit;color:var(--tinta);background:#fff;
+  border:1.5px solid var(--linea);border-radius:10px;min-height:48px}
+input:focus,select:focus{border-color:var(--azul)}
+.ayuda{font-size:13px;color:var(--texto-suave);margin-top:5px}
+.msj-error{display:none;font-size:14px;color:var(--error);margin-top:6px;font-weight:500}
+.campo.invalido input,.campo.invalido select{border-color:var(--error)}
+.campo.invalido .msj-error{display:block}
+.oculto{display:none}
+
+/* Casillas de verificación */
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{width:22px;height:22px;margin:2px 0 0;flex:none;accent-color:var(--azul)}
+.check label{font-weight:400;margin:0}
+
+/* Bloque de pago */
+.pago{margin:26px 0 22px;padding:18px;border-radius:var(--radio);background:#F1F4FB;border:1px solid #CBD6EE}
+.pago h3{margin:0 0 4px;font-size:18px}
+.precio{font-family:var(--fuente-titulos);font-size:34px;font-weight:700;margin:4px 0 10px}
+.pasos{margin:0 0 14px;padding-left:20px;font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  min-height:52px;padding:14px 18px;border:0;border-radius:10px;font:600 17px var(--fuente-texto);
+  cursor:pointer;text-decoration:none}
+.btn-mp{background:var(--mp);color:#fff}
+.btn-mp:hover{filter:brightness(.95)}
+.btn-enviar{background:var(--tinta);color:#fff;margin-top:8px}
+.btn-enviar:hover{background:#18244a}
+.btn-enviar[disabled]{opacity:.6;cursor:wait}
+.btn-wa{background:#1F7A4D;color:#fff}
+
+/* Resumen de errores (se anuncia a lectores de pantalla) */
+.resumen-error{display:none;background:#FEF3F2;border:1px solid #F4C7C3;color:var(--error);
+  border-radius:10px;padding:12px 14px;margin-bottom:18px;font-weight:500}
+.resumen-error.visible{display:block}
+
+/* Trampa anti-spam: invisible para personas */
+.trampa{position:absolute;left:-9999px}
+
+/* =========================================================
+   5. PANTALLA DE ÉXITO
+   ========================================================= */
+.exito{text-align:left}
+.exito .ok{width:56px;height:56px;border-radius:50%;background:#E7F4EC;color:var(--exito);
+  display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:12px}
+.exito h2{font-size:32px}
+.exito p{margin:0 0 14px}
+.franja{background:var(--tinta);color:#fff;border-radius:var(--radio);padding:18px;margin-top:20px}
+.franja p{margin:0 0 12px}
+
+.pie{text-align:center;font-size:13px;color:var(--texto-suave);margin-top:28px}
+</style>
+</head>
+<body>
+<main class="contenedor">
+
+  <!-- =======================================================
+       ENCABEZADO EDITABLE
+       Cambiá aquí el nombre de la speaker y la frase de apertura.
+       ======================================================= -->
+  <div class="barra" aria-hidden="true"></div>
+  <div class="marca">
+    <img src="data:image/png;base64,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" alt="HR Strategy Partners">
+    <span>HR Strategy Partners</span>
+  </div>
+
+  <h1>De Emprendedor a CEO</h1>
+  <p class="speaker" id="speaker">Speaker: Caro Navamuel</p>
+  <p class="apertura" id="frase-apertura">Ya tuviste el coraje de crear tu empresa. Ahora toca construir la estructura que te devuelva el tiempo.</p>
+
+  <ul class="datos" aria-label="Datos del evento">
+    <li><b>Fecha</b>Viernes 4 de diciembre de 2026</li>
+    <li><b>Horario</b>18:30 a 20:30</li>
+    <li><b>Lugar</b>Casa Real Hotel, Bartolomé Mitre 669, Salta</li>
+    <li><b>Entrada</b>$35.000</li>
+  </ul>
+
+  <!-- =======================================================
+       FORMULARIO DE INSCRIPCIÓN
+       ======================================================= -->
+  <section class="tarjeta" id="vista-formulario">
+    <h2>Inscripción</h2>
+    <p class="nota">Los campos con <span class="req" aria-hidden="true">*</span> son obligatorios.</p>
+
+    <div class="resumen-error" id="resumen-error" role="alert" tabindex="-1"></div>
+
+    <form id="form-inscripcion" novalidate>
+
+      <!-- Nombre y apellido -->
+      <div class="campo">
+        <label for="nombre">Nombre y apellido <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="nombre" name="nombre" autocomplete="name" required
+               aria-describedby="nombre-error">
+        <p class="msj-error" id="nombre-error">Escribí tu nombre y apellido.</p>
+      </div>
+
+      <!-- DNI: se usa type="text" con teclado numérico para evitar flechas y notación científica -->
+      <div class="campo">
+        <label for="dni">DNI <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="dni" name="dni" inputmode="numeric" autocomplete="off"
+               maxlength="10" required aria-describedby="dni-ayuda dni-error">
+        <p class="ayuda" id="dni-ayuda">Solo números, sin puntos.</p>
+        <p class="msj-error" id="dni-error">Ingresá un DNI válido de 7 u 8 números.</p>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="campo">
+        <label for="whatsapp">WhatsApp <span class="req" aria-hidden="true">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel"
+               placeholder="+54 9 387 123 4567" required aria-describedby="wa-ayuda wa-error">
+        <p class="ayuda" id="wa-ayuda">Con código de país y de área. Ejemplo: +54 9 387 123 4567.</p>
+        <p class="msj-error" id="wa-error">Ingresá un número de WhatsApp válido, con código de área.</p>
+      </div>
+
+      <!-- Email -->
+      <div class="campo">
+        <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email"
+               required aria-describedby="email-ayuda email-error">
+        <p class="ayuda" id="email-ayuda">Ahí te llega la confirmación de tu inscripción.</p>
+        <p class="msj-error" id="email-error">Ingresá un email válido, por ejemplo nombre@empresa.com.</p>
+      </div>
+
+      <!-- Rol / profesión -->
+      <div class="campo">
+        <label for="rol">Rol o profesión <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="rol" name="rol" autocomplete="organization-title"
+               placeholder="Ej.: dueño, directora comercial, contador" required aria-describedby="rol-error">
+        <p class="msj-error" id="rol-error">Contanos tu rol o profesión.</p>
+      </div>
+
+      <!-- Rubro o industria -->
+      <div class="campo">
+        <label for="rubro">Rubro o industria <span class="req" aria-hidden="true">*</span></label>
+        <select id="rubro" name="rubro" required aria-describedby="rubro-error">
+          <option value="">Elegí una opción</option>
+          <option>Emprendimiento/Freelance</option>
+          <option>Comercio y ventas</option>
+          <option>Educación</option>
+          <option>Tecnología</option>
+          <option>Administración/Finanzas</option>
+          <option>Recursos humanos</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <p class="msj-error" id="rubro-error">Elegí tu rubro.</p>
+      </div>
+
+      <!-- Rubro "Otro": aparece solo si se elige Otro -->
+      <div class="campo oculto" id="campo-rubro-otro">
+        <label for="rubro_otro">¿Cuál es tu rubro? <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="rubro_otro" name="rubro_otro" aria-describedby="rubro-otro-error">
+        <p class="msj-error" id="rubro-otro-error">Escribí tu rubro.</p>
+      </div>
+
+      <!-- Cómo se enteró -->
+      <div class="campo">
+        <label for="fuente">¿Cómo te enteraste del curso? <span class="req" aria-hidden="true">*</span></label>
+        <select id="fuente" name="fuente" required aria-describedby="fuente-error">
+          <option value="">Elegí una opción</option>
+          <option>Instagram</option>
+          <option>LinkedIn</option>
+          <option>Facebook</option>
+          <option>WhatsApp</option>
+          <option>Recomendación de un conocido</option>
+          <option>Email de HR Strategy Partners</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <p class="msj-error" id="fuente-error">Elegí cómo te enteraste.</p>
+      </div>
+
+      <!-- Fuente "Otro": aparece solo si se elige Otro -->
+      <div class="campo oculto" id="campo-fuente-otro">
+        <label for="fuente_otro">¿Por dónde te enteraste? <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="fuente_otro" name="fuente_otro" aria-describedby="fuente-otro-error">
+        <p class="msj-error" id="fuente-otro-error">Contanos por dónde te enteraste.</p>
+      </div>
+
+      <!-- Trampa anti-spam: los bots la completan, las personas no la ven -->
+      <div class="trampa" aria-hidden="true">
+        <label for="sitio_web">No completar</label>
+        <input type="text" id="sitio_web" name="sitio_web" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- ===================== PAGO ===================== -->
+      <div class="pago" aria-labelledby="titulo-pago">
+        <h3 id="titulo-pago">Pago de la entrada</h3>
+        <p class="precio">$35.000</p>
+        <ol class="pasos">
+          <li>Tocá el botón y pagá en Mercado Pago. Se abre en una pestaña nueva.</li>
+          <li>Volvé a esta página y confirmá tu inscripción.</li>
+        </ol>
+        <!-- Enlace de pago. Para cambiarlo, editá CONFIG.ENLACE_PAGO en el script -->
+        <a class="btn btn-mp" id="btn-pago" href="https://mpago.la/22Hcf52" target="_blank" rel="noopener noreferrer">
+          Pagar con Mercado Pago
+          <span class="sr-only">(se abre en una pestaña nueva)</span>
+        </a>
+        <p class="ayuda">Tu lugar queda confirmado cuando se acredita el pago.</p>
+
+        <div class="campo" style="margin:16px 0 0">
+          <div class="check">
+            <input type="checkbox" id="pago_realizado" name="pago_realizado" required aria-describedby="pago-error">
+            <label for="pago_realizado">Ya realicé el pago en Mercado Pago. <span class="req" aria-hidden="true">*</span></label>
+          </div>
+          <p class="msj-error" id="pago-error">Completá el pago y marcá esta casilla para confirmar.</p>
+        </div>
+      </div>
+
+      <!-- ============ ACEPTACIÓN DE COMUNICACIONES ============ -->
+      <div class="campo">
+        <div class="check">
+          <input type="checkbox" id="acepta_comunicaciones" name="acepta_comunicaciones" required aria-describedby="consent-error">
+          <label for="acepta_comunicaciones">Acepto que HR Strategy Partners me envíe por email y WhatsApp la confirmación de inscripción, la información del evento y futuras comunicaciones. Puedo darme de baja cuando quiera. <span class="req" aria-hidden="true">*</span></label>
+        </div>
+        <p class="msj-error" id="consent-error">Necesitamos tu aceptación para enviarte la confirmación.</p>
+      </div>
+
+      <button type="submit" class="btn btn-enviar" id="btn-enviar">Confirmar inscripción</button>
+    </form>
+  </section>
+
+  <!-- =======================================================
+       PANTALLA DE ÉXITO (se muestra al confirmar)
+       ======================================================= -->
+  <section class="tarjeta exito oculto" id="vista-exito" tabindex="-1" aria-labelledby="titulo-exito">
+    <div class="ok" aria-hidden="true">✓</div>
+    <h2 id="titulo-exito">Inscripción confirmada</h2>
+    <p id="exito-saludo">Gracias por inscribirte.</p>
+    <p>Te esperamos el <b>viernes 4 de diciembre a las 18:30</b> en Casa Real Hotel, Bartolomé Mitre 669, Salta. La acreditación abre a las 18:00.</p>
+    <p id="exito-email">Te enviamos la confirmación por email.</p>
+    <div class="franja">
+      <p><b>Sumate al grupo de WhatsApp del evento.</b> Ahí compartimos novedades y el material previo.</p>
+      <!-- Enlace del grupo. Para cambiarlo, editá CONFIG.ENLACE_WHATSAPP en el script -->
+      <a class="btn btn-wa" id="btn-wa" href="https://chat.whatsapp.com/HUGARJIuylvLI8xxEaEK5t?s=sh&amp;p=a&amp;iam=2" target="_blank" rel="noopener noreferrer">
+        Unirme al grupo de WhatsApp
+        <span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+    </div>
+  </section>
+
+  <p class="pie">HR Strategy Partners · hrstrategypartners.com.ar</p>
+</main>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN: lo único que el equipo tiene que completar
+   ========================================================= */
+const CONFIG = {
+  // Enlace de pago de Mercado Pago
+  ENLACE_PAGO: "https://mpago.la/22Hcf52",
+
+  // Enlace del grupo de WhatsApp del evento
+  ENLACE_WHATSAPP: "https://chat.whatsapp.com/HUGARJIuylvLI8xxEaEK5t?s=sh&p=a&iam=2",
+
+  // >>> PUNTO DE INTEGRACIÓN: GOOGLE SHEETS + EMAIL <<<
+  // Pegá acá la URL de la aplicación web de Google Apps Script
+  // (termina en /exec). El script guarda la fila en la planilla y
+  // envía el correo "Inscripción confirmada". Ver archivo Code.gs.
+  // Mientras esté vacío, el formulario funciona en MODO PRUEBA:
+  // no envía nada y muestra los datos en la consola del navegador.
+  ENDPOINT_INSCRIPCION: "https://script.google.com/macros/s/AKfycby63muwiYedSGBth1xr-rrNqvrKRX2qXQ1tdRNtY0QofE2OtdI0M5DbZG3s8a2otAhl/exec"
+};
+
+/* =========================================================
+   REFERENCIAS AL DOCUMENTO
+   ========================================================= */
+const form = document.getElementById("form-inscripcion");
+const selectRubro = document.getElementById("rubro");
+const campoOtro = document.getElementById("campo-rubro-otro");
+const inputOtro = document.getElementById("rubro_otro");
+const resumen = document.getElementById("resumen-error");
+const btnEnviar = document.getElementById("btn-enviar");
+
+// Los enlaces toman los valores de CONFIG, así se editan en un solo lugar
+document.getElementById("btn-pago").href = CONFIG.ENLACE_PAGO;
+document.getElementById("btn-wa").href = CONFIG.ENLACE_WHATSAPP;
+
+/* =========================================================
+   CAMPO "OTRO" EN RUBRO
+   ========================================================= */
+selectRubro.addEventListener("change", () => {
+  const esOtro = selectRubro.value === "Otro";
+  campoOtro.classList.toggle("oculto", !esOtro);
+  inputOtro.required = esOtro;
+  if (esOtro) inputOtro.focus(); else { inputOtro.value = ""; marcar(inputOtro, true); }
+});
+
+// Lo mismo para "¿Cómo te enteraste?"
+const selectFuente = document.getElementById("fuente");
+const campoFuenteOtro = document.getElementById("campo-fuente-otro");
+const inputFuenteOtro = document.getElementById("fuente_otro");
+selectFuente.addEventListener("change", () => {
+  const esOtro = selectFuente.value === "Otro";
+  campoFuenteOtro.classList.toggle("oculto", !esOtro);
+  inputFuenteOtro.required = esOtro;
+  if (esOtro) inputFuenteOtro.focus(); else { inputFuenteOtro.value = ""; marcar(inputFuenteOtro, true); }
+});
+
+// El DNI solo acepta números mientras se escribe
+document.getElementById("dni").addEventListener("input", e => {
+  e.target.value = e.target.value.replace(/\D/g, "");
+});
+
+/* =========================================================
+   REGLAS DE VALIDACIÓN
+   Cada regla devuelve true si el valor es válido.
+   ========================================================= */
+const reglas = {
+  nombre: v => v.trim().split(/\s+/).length >= 2 && v.trim().length >= 5,
+  dni: v => /^\d{7,8}$/.test(v),
+  // WhatsApp: entre 10 y 15 dígitos, con o sin "+", espacios o guiones
+  whatsapp: v => /^\+?[\d\s\-()]+$/.test(v.trim()) && (v.replace(/\D/g, "").length >= 10 && v.replace(/\D/g, "").length <= 15),
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  rol: v => v.trim().length >= 2,
+  rubro: v => v !== "",
+  rubro_otro: v => selectRubro.value !== "Otro" || v.trim().length >= 2,
+  fuente: v => v !== "",
+  fuente_otro: v => selectFuente.value !== "Otro" || v.trim().length >= 2,
+  pago_realizado: (v, el) => el.checked,
+  acepta_comunicaciones: (v, el) => el.checked
+};
+
+// Muestra u oculta el error de un campo y actualiza aria-invalid
+function marcar(el, valido) {
+  const campo = el.closest(".campo");
+  campo.classList.toggle("invalido", !valido);
+  el.setAttribute("aria-invalid", valido ? "false" : "true");
+}
+
+function validarCampo(el) {
+  const regla = reglas[el.name];
+  if (!regla) return true;
+  const valido = regla(el.value, el);
+  marcar(el, valido);
+  return valido;
+}
+
+// Valida al salir de cada campo, y en vivo una vez que mostró un error
+Object.keys(reglas).forEach(nombre => {
+  const el = form.elements[nombre];
+  el.addEventListener("blur", () => { if (el.value || el.type === "checkbox") validarCampo(el); });
+  el.addEventListener("input", () => { if (el.closest(".campo").classList.contains("invalido")) validarCampo(el); });
+  el.addEventListener("change", () => { if (el.closest(".campo").classList.contains("invalido")) validarCampo(el); });
+});
+
+/* =========================================================
+   ENVÍO DE LA INSCRIPCIÓN (función de integración)
+   Manda los datos a Google Apps Script, que los guarda en
+   Google Sheets y envía el correo de confirmación.
+   Se envía como texto plano a propósito: así el navegador no hace
+   la consulta previa (CORS) que Apps Script no responde.
+   ========================================================= */
+async function enviarInscripcion(datos) {
+  if (!CONFIG.ENDPOINT_INSCRIPCION) {
+    console.info("[MODO PRUEBA] Configurá CONFIG.ENDPOINT_INSCRIPCION. Datos que se enviarían:", datos);
+    return;
+  }
+
+  const resp = await fetch(CONFIG.ENDPOINT_INSCRIPCION, {
+    method: "POST",
+    body: JSON.stringify({ inscripcion: datos })
+  });
+  if (!resp.ok) throw new Error("El servicio respondió " + resp.status);
+
+  const r = await resp.json();
+  if (!r.ok) throw new Error(r.error || "Inscripción rechazada");
+}
+
+/* =========================================================
+   ENVÍO DEL FORMULARIO
+   ========================================================= */
+form.addEventListener("submit", async ev => {
+  ev.preventDefault();
+
+  // Si la trampa anti-spam tiene texto, se descarta en silencio
+  if (form.elements.sitio_web.value) return;
+
+  // Valida todos los campos y junta los que fallan
+  const invalidos = Object.keys(reglas)
+    .map(n => form.elements[n])
+    .filter(el => !(el.name === "rubro_otro" && selectRubro.value !== "Otro"))
+    .filter(el => !(el.name === "fuente_otro" && selectFuente.value !== "Otro"))
+    .filter(el => !validarCampo(el));
+
+  if (invalidos.length) {
+    resumen.textContent = invalidos.length === 1
+      ? "Revisá 1 campo marcado en rojo."
+      : `Revisá los ${invalidos.length} campos marcados en rojo.`;
+    resumen.classList.add("visible");
+    invalidos[0].focus();
+    return;
+  }
+  resumen.classList.remove("visible");
+
+  // Datos que se guardan
+  const d = Object.fromEntries(new FormData(form));
+  const datos = {
+    nombre: d.nombre.trim(),
+    dni: d.dni,
+    whatsapp: d.whatsapp.trim(),
+    email: d.email.trim().toLowerCase(),
+    rol: d.rol.trim(),
+    rubro: d.rubro === "Otro" ? `Otro: ${d.rubro_otro.trim()}` : d.rubro,
+    fuente: d.fuente === "Otro" ? `Otro: ${d.fuente_otro.trim()}` : d.fuente,
+    pago_informado: true,
+    acepta_comunicaciones: true,
+    fecha_registro: new Date().toISOString()
+  };
+
+  btnEnviar.disabled = true;
+  btnEnviar.textContent = "Enviando…";
+
+  try {
+    await enviarInscripcion(datos);
+    mostrarExito(datos);
+  } catch (err) {
+    console.error(err);
+    resumen.textContent = "No pudimos registrar tu inscripción. Probá de nuevo en unos minutos o escribinos por WhatsApp.";
+    resumen.classList.add("visible");
+    resumen.focus();
+    btnEnviar.disabled = false;
+    btnEnviar.textContent = "Confirmar inscripción";
+  }
+});
+
+/* =========================================================
+   PANTALLA DE ÉXITO
+   ========================================================= */
+function mostrarExito(d) {
+  document.getElementById("exito-saludo").textContent =
+    `Gracias, ${d.nombre.split(/\s+/)[0]}. Tu inscripción a De Emprendedor a CEO quedó registrada.`;
+  document.getElementById("exito-email").textContent =
+    `Te enviamos la confirmación a ${d.email}. Si no la ves, revisá la carpeta de spam.`;
+  document.getElementById("vista-formulario").classList.add("oculto");
+  const exito = document.getElementById("vista-exito");
+  exito.classList.remove("oculto");
+  exito.focus();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+</body>
+</html>
